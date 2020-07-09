@@ -1,29 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FileMetadata.Dynamic
 {
     public class Metadata
     {
-        public static List<(string title, string[] artists)> GetProperties(dynamic folderItems)
-        {
-            List<(string title, string[] artists)> metaDataList = new List<(string title, string[] artists)>();
-            foreach (var item in folderItems)
-            {
-                string title = Shell.ExtendedProperty(item, "System.Title");
-                if (title == null)
-                {
-                    metaDataList.Add((null, null));
-                    continue;
-                }
-                string[] artist = Shell.ExtendedProperty(item, "Artist");
-                metaDataList.Add((title, artist));
-                Console.WriteLine(artist == null ? title : $"({title}, {string.Join(',', artist)})");
-            }
-
-            return metaDataList;
-        }
-
         public static Dictionary<dynamic, Dictionary<string, string>> GetProperties(dynamic folderItems,
             string[] propertyFullNames)
         {
