@@ -1,4 +1,4 @@
-﻿namespace MusicMetadataRenamer.Dynamic.Extensions
+﻿namespace FileMetadata.Dynamic
 {
     public static class PropertyNames
     {

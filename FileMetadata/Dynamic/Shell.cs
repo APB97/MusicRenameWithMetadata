@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace MusicMetadataRenamer.Dynamic.Extensions
+namespace FileMetadata.Dynamic
 {
     public static class Shell
     {

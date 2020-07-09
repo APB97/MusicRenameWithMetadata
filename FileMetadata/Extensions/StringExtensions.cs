@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace MusicMetadataRenamer
+namespace FileMetadata.Extensions
 {
     public static class StringExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MusicMetadataRenamer.Dynamic.Extensions;
+using FileMetadata.Dynamic;
 
 namespace MusicMetadataRenamer
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MusicMetadataRenamer.Dynamic.Extensions
+namespace FileMetadata.Dynamic
 {
     public class Metadata
     {

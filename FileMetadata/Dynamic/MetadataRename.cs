@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FileMetadata.Extensions;
 
-namespace MusicMetadataRenamer.Dynamic.Extensions
+namespace FileMetadata.Dynamic
 {
     public class MetadataRename
     {
