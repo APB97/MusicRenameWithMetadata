@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMetadataRenamer", "MusicMetadataRenamer\MusicMetadataRenamer.csproj", "{51B88263-2444-4329-BBE2-BB741AD0CEB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMetadata", "FileMetadata\FileMetadata.csproj", "{2110A7D2-3003-4A71-80E3-08C1DB15E541}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{51B88263-2444-4329-BBE2-BB741AD0CEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51B88263-2444-4329-BBE2-BB741AD0CEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51B88263-2444-4329-BBE2-BB741AD0CEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
