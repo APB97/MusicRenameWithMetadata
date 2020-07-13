@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMetadataRenamer", "Mus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMetadata", "FileMetadata\FileMetadata.csproj", "{2110A7D2-3003-4A71-80E3-08C1DB15E541}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor", "StringProcessor\StringProcessor.csproj", "{61641265-018C-4F20-95D0-25F2B31BAE1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.SkipCommonWords", "StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj", "{CD02A2C8-98AD-4BDB-B406-745882CB760C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.DefaultNone", "StringProcessor.DefaultNone\StringProcessor.DefaultNone.csproj", "{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2110A7D2-3003-4A71-80E3-08C1DB15E541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61641265-018C-4F20-95D0-25F2B31BAE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61641265-018C-4F20-95D0-25F2B31BAE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61641265-018C-4F20-95D0-25F2B31BAE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61641265-018C-4F20-95D0-25F2B31BAE1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD02A2C8-98AD-4BDB-B406-745882CB760C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD02A2C8-98AD-4BDB-B406-745882CB760C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD02A2C8-98AD-4BDB-B406-745882CB760C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD02A2C8-98AD-4BDB-B406-745882CB760C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
