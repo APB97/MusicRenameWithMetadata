@@ -7,6 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FileMetadata\FileMetadata.csproj" />
+      <ProjectReference Include="..\StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj" />
     </ItemGroup>
 
 </Project>
