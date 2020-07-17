@@ -10,4 +10,10 @@
       <ProjectReference Include="..\StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="skip.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
