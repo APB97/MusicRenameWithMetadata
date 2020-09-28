@@ -7,13 +7,33 @@ using StringProcessor.SkipCommonWords;
 
 namespace MusicMetadataRenamer
 {
-    class Program
+    static class Program
     {
         private static string _skipTxtFile = "skip.txt";
 
         private static async Task Main(string[] args)
         {
-            if (args.Length == 0) Console.WriteLine("Enter full directory path:");
+            if (args.Length == 0)
+            {
+                PropertySelector propertySelector = new PropertySelector();
+                var propertiesToUse = propertySelector.StartInteractive();
+
+                DirectorySelector directorySelector = new DirectorySelector();
+                var inputDirectories = directorySelector.StartInteractive();
+                
+                new Rename().Execute(directorySelector, propertySelector);
+                
+                return;
+            }
+
+            if (args.Length == 1)
+            {
+                var resolver = new RenameActionResolver();
+                await resolver.Execute(args[0]);
+                
+                return;
+            }
+            
             string directoryWithMusic = args.Length > 0 ? args[0] : Console.ReadLine();
 
             string[] properties = ChooseProperties();
@@ -21,7 +41,10 @@ namespace MusicMetadataRenamer
             var items = Shell.GetFolderItems(directoryWithMusic);
             Dictionary<dynamic, Dictionary<string, string>> propertiesMap =
                 Metadata.GetProperties(items, properties);
-            MetadataRename.RenameMultiple(propertiesMap, new SkipCommonWordsProcessor { CommonWords = new HashSet<string>(await File.ReadAllLinesAsync(_skipTxtFile))});
+            MetadataRename.RenameMultiple(propertiesMap,
+                new SkipCommonWordsProcessor
+                    {CommonWords = new HashSet<string>(await File.ReadAllLinesAsync(_skipTxtFile))});
+            
             Console.WriteLine();
             Console.WriteLine("Operation completed. Press [Enter] to exit.");
             Console.ReadLine();

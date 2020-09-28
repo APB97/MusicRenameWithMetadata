@@ -1,0 +1,20 @@
+﻿{
+  "Actions": [
+    {
+      "ActionClass": "PropertySelector",
+      "ActionName": "Add",
+      "ActionParameters": [
+        "Artist",
+        "System.Title"
+      ]
+    },
+    {
+      "ActionClass": "DirectorySelector",
+      "ActionName": "Add",
+      "ActionParameters": [
+        "C:\\Users\\Adrian\\Music\\test-1",
+        "C:\\Users\\Adrian\\Music\\test-2"
+      ]
+    }
+  ]
+}
