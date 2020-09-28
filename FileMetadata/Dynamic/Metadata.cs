@@ -1,28 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace FileMetadata.Dynamic
 {
     public class Metadata
     {
         public static Dictionary<dynamic, Dictionary<string, string>> GetProperties(dynamic folderItems,
-            string[] propertyFullNames)
+            IEnumerable<string> propertyFullNames)
         {
             var dict = new Dictionary<dynamic, Dictionary<string, string>>();
 
+            IEnumerable<string> fullNames = propertyFullNames as string[] ?? propertyFullNames.ToArray();
             foreach (var folderItem in folderItems)
             {
-                int namesArrayLength = propertyFullNames.Length;
                 Dictionary<string, string> innerDict = new Dictionary<string, string>();
-                for (int i = 0; i < namesArrayLength; i++)
+                foreach (var fullName in fullNames)
                 {
-                    var propertyValue = Shell.ExtendedProperty(folderItem, propertyFullNames[i]);
+                    var propertyValue = Shell.ExtendedProperty(folderItem, fullName);
                     switch (propertyValue)
                     {
                         case string _:
-                            innerDict.Add(propertyFullNames[i], propertyValue);
+                            innerDict.Add(fullName, propertyValue);
                             break;
                         case string[] strArray:
-                            innerDict.Add(propertyFullNames[i], string.Join(", ", strArray));
+                            innerDict.Add(fullName, string.Join(", ", strArray));
                             break;
                     }
                 }
