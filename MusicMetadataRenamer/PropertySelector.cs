@@ -6,13 +6,13 @@ using FileMetadata.Dynamic;
 
 namespace MusicMetadataRenamer
 {
-    public class PropertySelector
+    public class PropertySelector : SelectorBase
     {
-        private readonly List<string> _properties = new List<string>();
-
-        private static readonly HashSet<string> Commands = new HashSet<string>(
-        new []{
+        protected override HashSet<string> Commands { get; } = new HashSet<string>(
+        new []
+        {
             nameof(Add),
+            nameof(Complete),
             nameof(ClearScreen),
             nameof(Help),
             nameof(HelpCommands),
@@ -20,7 +20,7 @@ namespace MusicMetadataRenamer
             nameof(List)
         });
 
-        public List<string> Properties => _properties;
+        public List<string> Properties { get; } = new List<string>();
 
         public virtual IEnumerable<string> StartInteractive()
         {
@@ -32,40 +32,46 @@ namespace MusicMetadataRenamer
                 string[] inputs = line?.Split(' ');
                 string command = inputs?[0];
 
-                if (string.IsNullOrWhiteSpace(line))
-                    return Properties;
-
-                if (!Commands.Contains(command))
+                if (string.IsNullOrWhiteSpace(command) || !Commands.Contains(command))
                     continue;
 
                 MethodInfo methodInfo = GetType().GetMethod(command);
-                methodInfo?.Invoke(this,
+                object callResult = methodInfo?.Invoke(this,
                     methodInfo.GetParameters().Length == 1
                         ? new object[] {inputs.Skip(1).ToArray()}
                         : new object[] { });
+
+                if (callResult is bool shouldComplete && shouldComplete)
+                    return Properties;
             }
         }
 
         public virtual void Add(params string[] properties)
         {
-            Properties.AddRange(properties);
+            foreach (string property in properties)
+            {
+                if (Properties.Contains(property))
+                {
+                    Console.WriteLine($"{property} is already on the list so it wasn't added.");
+                }
+                else
+                {
+                    Properties.Add(property);
+                }
+            }
 
             Console.WriteLine("Properties added to list.");
         }
-
-        public virtual void Help()
+        
+        public override void Help()
         {
-            HelpCommands();
+            base.Help();
             HelpProperties();
         }
 
         public virtual void HelpCommands()
         {
-            Console.WriteLine("Available Commands:");
-            foreach (string methodName in Commands)
-            {
-                Console.WriteLine(methodName);
-            }
+            base.Help();
         }
 
         public virtual void HelpProperties()
@@ -84,11 +90,6 @@ namespace MusicMetadataRenamer
             {
                 Console.WriteLine(property);
             }
-        }
-
-        public virtual void ClearScreen()
-        {
-            Console.Clear();
         }
     }
 }

@@ -5,21 +5,20 @@ using System.Reflection;
 
 namespace MusicMetadataRenamer
 {
-    public class DirectorySelector
+    public class DirectorySelector : SelectorBase
     {
-        private readonly HashSet<string> _directories = new HashSet<string>();
-        
-        private static readonly HashSet<string> Commands = new HashSet<string>(
-            new []
-            {
-                nameof(Add),
-                nameof(ClearScreen),
-                nameof(Help),
-                nameof(List)
-            });
+        protected override HashSet<string> Commands { get; } = new HashSet<string>(
+        new []
+        {
+            nameof(Add),
+            nameof(Complete),
+            nameof(ClearScreen),
+            nameof(Help),
+            nameof(List)
+        });
 
-        public IEnumerable<string> Directories => _directories;
-        
+        public HashSet<string> Directories { get; } = new HashSet<string>();
+
         public IEnumerable<string> StartInteractive()
         {
             while (true)
@@ -30,25 +29,17 @@ namespace MusicMetadataRenamer
                 string[] inputs = line?.Split(' ');
                 string command = inputs?[0];
 
-                if (string.IsNullOrWhiteSpace(line))
-                    return Directories;
-                
-                if (!Commands.Contains(command))
+                if (string.IsNullOrWhiteSpace(command) || !Commands.Contains(command))
                     continue;
 
                 MethodInfo methodInfo = GetType().GetMethod(command);
-                methodInfo?.Invoke(this,
+                object callResult = methodInfo?.Invoke(this,
                     methodInfo.GetParameters().Length == 1
                         ? new object[] {inputs.Skip(1).ToArray()}
                         : new object[] { });
-            }
-        }
-
-        public virtual void Help()
-        {
-            foreach (string command in Commands)
-            {
-                Console.WriteLine(command);
+                
+                if (callResult is bool shouldComplete && shouldComplete)
+                    return Directories;
             }
         }
 
@@ -56,7 +47,7 @@ namespace MusicMetadataRenamer
         {
             foreach (string dir in dirs)
             {
-                _directories.Add(dir);
+                Directories.Add(dir);
             }
 
             Console.WriteLine("Directories added to list.");
@@ -64,15 +55,10 @@ namespace MusicMetadataRenamer
 
         public virtual void List()
         {
-            foreach (string directory in _directories)
+            foreach (string directory in Directories)
             {
                 Console.WriteLine(directory);
             }
-        }
-
-        public void ClearScreen()
-        {
-            Console.Clear();
         }
     }
 }
