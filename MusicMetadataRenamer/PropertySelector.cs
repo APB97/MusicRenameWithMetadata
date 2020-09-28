@@ -12,6 +12,7 @@ namespace MusicMetadataRenamer
         new []
         {
             nameof(Add),
+            nameof(Clear),
             nameof(Complete),
             nameof(ClearScreen),
             nameof(Help),
@@ -62,7 +63,13 @@ namespace MusicMetadataRenamer
 
             Console.WriteLine("Properties added to list.");
         }
-        
+
+        public override void Clear()
+        {
+            Properties.Clear();
+            Console.WriteLine("Property list cleared.");
+        }
+
         public override void Help()
         {
             base.Help();

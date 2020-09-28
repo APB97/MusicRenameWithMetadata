@@ -7,6 +7,8 @@ namespace MusicMetadataRenamer
     {
         protected abstract HashSet<string> Commands { get; }
 
+        public abstract void Clear();
+        
         public virtual void Help()
         {
             foreach (string command in Commands)

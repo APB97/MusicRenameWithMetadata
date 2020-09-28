@@ -11,11 +11,18 @@ namespace MusicMetadataRenamer
         new []
         {
             nameof(Add),
+            nameof(Clear),
             nameof(Complete),
             nameof(ClearScreen),
             nameof(Help),
             nameof(List)
         });
+
+        public override void Clear()
+        {
+            Directories.Clear();
+            Console.WriteLine("Directory list cleared.");
+        }
 
         public HashSet<string> Directories { get; } = new HashSet<string>();
 
