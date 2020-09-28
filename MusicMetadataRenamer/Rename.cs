@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using FileMetadata.Dynamic;
@@ -19,7 +20,10 @@ namespace MusicMetadataRenamer
                 {
                     CommonWords = new HashSet<string>(await File.ReadAllLinesAsync("skip.txt"))
                 });
+                
+                Console.WriteLine($"Renaming in '{dirName}' complete.");
             });
+            Console.WriteLine("Renaming finished.");
         }
     }
 }

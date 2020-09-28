@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FileMetadata.Dynamic;
-// ReSharper disable UnusedMember.Global
 
 namespace MusicMetadataRenamer
 {
@@ -51,7 +50,7 @@ namespace MusicMetadataRenamer
         {
             Properties.AddRange(properties);
 
-            Console.WriteLine("Properties added.");
+            Console.WriteLine("Properties added to list.");
         }
 
         public virtual void Help()

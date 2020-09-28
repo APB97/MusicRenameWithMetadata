@@ -54,14 +54,12 @@ namespace MusicMetadataRenamer
 
         public virtual void Add(params string[] dirs)
         {
-            
-            
             foreach (string dir in dirs)
             {
                 _directories.Add(dir);
             }
 
-            Console.WriteLine("Directories added.");
+            Console.WriteLine("Directories added to list.");
         }
 
         public virtual void List()
