@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace MusicMetadataRenamer
 {
-    public class DirectorySelector : SelectorBase
+    public class DirectorySelector : SelectorBase, IDirectorySet
     {
         public DirectorySelector(ConsoleWrapper consoleWrapper) : base(consoleWrapper) { }
         
