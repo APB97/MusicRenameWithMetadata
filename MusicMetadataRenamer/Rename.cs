@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using FileMetadata.Dynamic;
@@ -9,9 +8,16 @@ namespace MusicMetadataRenamer
 {
     public class Rename
     {
+        private readonly ConsoleWrapper _console;
+
+        public Rename(ConsoleWrapper console)
+        {
+            _console = console;
+        }
+
         public void Execute(DirectorySelector directorySelector, PropertySelector propertySelector)
         {
-            var result = Parallel.ForEach(directorySelector.Directories, async dirName =>
+            Parallel.ForEach(directorySelector.Directories, async dirName =>
             {
                 var items = Shell.GetFolderItems(dirName);
                 var propertiesMap = Metadata.GetProperties(items, propertySelector.Properties);
@@ -21,9 +27,9 @@ namespace MusicMetadataRenamer
                     CommonWords = new HashSet<string>(await File.ReadAllLinesAsync("skip.txt"))
                 });
                 
-                Console.WriteLine($"Renaming in '{dirName}' complete.");
+                _console.WriteLine($"Renaming in '{dirName}' complete.");
             });
-            Console.WriteLine("Renaming finished.");
+            _console.WriteLine("Renaming finished.");
         }
     }
 }
