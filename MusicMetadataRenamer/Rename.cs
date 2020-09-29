@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
 using Rename.Helpers.Interfaces;

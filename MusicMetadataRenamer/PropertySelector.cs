@@ -25,6 +25,19 @@ namespace MusicMetadataRenamer
             nameof(List)
         });
 
+        protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
+            new []
+            {
+                new KeyValuePair<string, string>(nameof(Add), "Add properties to list. Usage: Add <p1> [<p2>] [...]"),
+                new KeyValuePair<string, string>(nameof(Clear), "Clear properties list. Usage: Clear"),
+                new KeyValuePair<string, string>(nameof(Complete), "Complete property selection step. Usage: Complete"),
+                new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
+                new KeyValuePair<string, string>(nameof(Help), "Display list of commands with their help and available properties. Usage: Help [<cmd1>] [<cmd2>] [...]"),
+                new KeyValuePair<string, string>(nameof(HelpCommands), "Display list of commands. Usage: HelpCommands"),
+                new KeyValuePair<string, string>(nameof(HelpProperties), "Display list of available properties. Usage: HelpProperties"),
+                new KeyValuePair<string, string>(nameof(List), "Display list of selected properties. Usage: List"), 
+            });
+
         public List<string> Properties { get; } = new List<string>();
 
         public virtual void StartInteractive()
@@ -73,15 +86,15 @@ namespace MusicMetadataRenamer
             ConsoleWrapper.WriteLine("Property list cleared.");
         }
 
-        public override void Help()
+        public override void Help(string[] forCommands)
         {
-            base.Help();
+            base.Help(forCommands);
             HelpProperties();
         }
 
         public virtual void HelpCommands()
         {
-            base.Help();
+            HelpInternal(Commands);
         }
 
         public virtual void HelpProperties()

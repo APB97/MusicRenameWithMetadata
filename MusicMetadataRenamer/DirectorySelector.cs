@@ -22,6 +22,17 @@ namespace MusicMetadataRenamer
             nameof(List)
         });
 
+        protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
+            new []
+            {
+                new KeyValuePair<string, string>(nameof(Add), "Add directories to processing list. Usage: Add <dir1> [<dir2> [...]]"),
+                new KeyValuePair<string, string>(nameof(Clear), "Clear list of directories to process. Usage: Clear"),
+                new KeyValuePair<string, string>(nameof(Complete), "Complete directory selection step. Usage: Complete"), 
+                new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
+                new KeyValuePair<string, string>(nameof(Help), "Display list of Commands and their usage or chosen commands' help. Usage: Help [<cmd1>] [<cmd2>] [...]"),
+                new KeyValuePair<string, string>(nameof(List), "Display list of directories to process. Usage: List"), 
+            });
+
         public override void Clear()
         {
             Directories.Clear();
