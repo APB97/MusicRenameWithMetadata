@@ -9,7 +9,7 @@ namespace MusicMetadataRenamer
     public class RenameActionResolver
     {
         private readonly Dictionary<string, object> _classDefaultObjects;
-        private readonly PropertySelector _propertySelector;
+        private readonly IPropertyList _propertySelector;
         private readonly IDirectorySet _directorySelector;
 
         public RenameActionResolver()
