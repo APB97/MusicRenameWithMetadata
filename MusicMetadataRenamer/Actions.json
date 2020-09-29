@@ -1,6 +1,11 @@
 ﻿{
   "Actions": [
     {
+      "ActionClass": "ConsoleWrapper",
+      "ActionName": "BeSilent",
+      "ActionParameters": []
+    },
+    {
       "ActionClass": "PropertySelector",
       "ActionName": "Add",
       "ActionParameters": [

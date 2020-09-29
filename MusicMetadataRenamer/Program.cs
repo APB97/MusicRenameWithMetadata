@@ -15,13 +15,14 @@ namespace MusicMetadataRenamer
         {
             if (args.Length == 0)
             {
-                PropertySelector propertySelector = new PropertySelector();
-                var propertiesToUse = propertySelector.StartInteractive();
+                ConsoleWrapper console = new ConsoleWrapper();
+                PropertySelector propertySelector = new PropertySelector(console);
+                propertySelector.StartInteractive();
 
-                DirectorySelector directorySelector = new DirectorySelector();
-                var inputDirectories = directorySelector.StartInteractive();
+                DirectorySelector directorySelector = new DirectorySelector(console);
+                directorySelector.StartInteractive();
                 
-                new Rename().Execute(directorySelector, propertySelector);
+                new Rename(console).Execute(directorySelector, propertySelector);
                 
                 return;
             }
