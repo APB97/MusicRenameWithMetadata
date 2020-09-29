@@ -8,31 +8,31 @@ namespace FileMetadata.Dynamic
         public static Dictionary<dynamic, Dictionary<string, string>> GetProperties(dynamic folderItems,
             IEnumerable<string> propertyFullNames)
         {
-            var dict = new Dictionary<dynamic, Dictionary<string, string>>();
+            var filesPropertiesDictionary = new Dictionary<dynamic, Dictionary<string, string>>();
 
-            IEnumerable<string> fullNames = propertyFullNames as string[] ?? propertyFullNames.ToArray();
-            foreach (var folderItem in folderItems)
+            IEnumerable<string> fullNamesArray = propertyFullNames as string[] ?? propertyFullNames.ToArray();
+            foreach (dynamic folderItem in folderItems)
             {
-                Dictionary<string, string> innerDict = new Dictionary<string, string>();
-                foreach (var fullName in fullNames)
+                Dictionary<string, string> singleFileProperties = new Dictionary<string, string>();
+                foreach (var fullName in fullNamesArray)
                 {
-                    var propertyValue = Shell.ExtendedProperty(folderItem, fullName);
+                    dynamic propertyValue = Shell.ExtendedProperty(folderItem, fullName);
                     switch (propertyValue)
                     {
                         case string _:
-                            innerDict.Add(fullName, propertyValue);
+                            singleFileProperties.Add(fullName, propertyValue);
                             break;
-                        case string[] strArray:
-                            innerDict.Add(fullName, string.Join(", ", strArray));
+                        case string[] array:
+                            singleFileProperties.Add(fullName, string.Join(", ", array));
                             break;
                     }
                 }
 
-                if (innerDict.Count > 0)
-                    dict[folderItem] = innerDict;
+                if (singleFileProperties.Count > 0)
+                    filesPropertiesDictionary[folderItem] = singleFileProperties;
             }
             
-            return dict;
+            return filesPropertiesDictionary;
         }
     }
 }
