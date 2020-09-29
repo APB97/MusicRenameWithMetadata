@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.SkipCommonW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.DefaultNone", "StringProcessor.DefaultNone\StringProcessor.DefaultNone.csproj", "{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rename.Helpers", "Rename.Helpers\Rename.Helpers.csproj", "{C086C6CA-8632-4437-AB14-40BAA3687E73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
