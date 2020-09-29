@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
+using Rename.Helpers.Interfaces;
 using StringProcessor.SkipCommonWords;
 
 namespace MusicMetadataRenamer

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Rename.Helpers
+namespace Rename.Helpers.Interfaces
 {
     public interface IPropertyList
     {

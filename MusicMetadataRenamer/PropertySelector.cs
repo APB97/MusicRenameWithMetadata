@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
+using Rename.Helpers.Interfaces;
 
 namespace MusicMetadataRenamer
 {
