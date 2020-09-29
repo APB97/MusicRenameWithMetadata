@@ -6,7 +6,7 @@ using FileMetadata.Dynamic;
 
 namespace MusicMetadataRenamer
 {
-    public class PropertySelector : SelectorBase
+    public class PropertySelector : SelectorBase, IPropertyList
     {
         public PropertySelector(ConsoleWrapper consoleWrapper) : base(consoleWrapper) { }
         
