@@ -5,10 +5,5 @@ audio
 video
 official
 remix
-Lyric
-Lyrics
-Music
-Audio
-Video
-Official
-Remix
+radio
+edit

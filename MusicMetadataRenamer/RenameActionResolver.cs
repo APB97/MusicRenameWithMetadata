@@ -40,8 +40,10 @@ namespace MusicMetadataRenamer
                 MethodInfo method = defaultObject.GetType().GetMethod(action.ActionName);
                 method?.Invoke(defaultObject, method.GetParameters().Length == 0 ? new object[0] : new object[]{ action.ActionParameters });
             }
-            
-            new Rename(_console).Execute(_directorySelector, _propertySelector, new MetadataRename(_console));
+
+            var wordsToSkip = new WordSkipping();
+            await wordsToSkip.GetCommonWordsFrom("skip.txt");
+            new Rename(_console).Execute(_directorySelector, _propertySelector, wordsToSkip, new MetadataRename(_console));
         }
     }
 }

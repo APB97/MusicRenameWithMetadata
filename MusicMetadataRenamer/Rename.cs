@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
@@ -17,16 +16,16 @@ namespace MusicMetadataRenamer
             _console = console;
         }
 
-        public void Execute(IDirectorySet directorySelector, IPropertyList propertySelector, MetadataRename metadataRename)
+        public void Execute(IDirectorySet directorySelector, IPropertyList propertySelector, ICommonWords wordsToSkip, MetadataRename metadataRename)
         {
-            Parallel.ForEach(directorySelector.Directories, async dirName =>
+            Parallel.ForEach(directorySelector.Directories, dirName =>
             {
                 var items = Shell.GetFolderItems(dirName);
                 var propertiesMap = Metadata.GetProperties(items, propertySelector.Properties);
                 
-                metadataRename.RenameMultiple(propertiesMap, new SkipCommonWordsProcessor()
+                metadataRename.RenameMultiple(propertiesMap, new SkipCommonWordsProcessor
                 {
-                    CommonWords = new HashSet<string>(await File.ReadAllLinesAsync("skip.txt"))
+                    CommonWords = wordsToSkip.CommonWords
                 });
                 
                 _console.WriteLine($"Renaming in '{dirName}' complete.");
