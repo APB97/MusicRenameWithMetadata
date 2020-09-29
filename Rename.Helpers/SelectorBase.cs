@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public abstract class SelectorBase
     {

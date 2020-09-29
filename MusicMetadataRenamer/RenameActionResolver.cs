@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using FileMetadata.Dynamic;
 using Newtonsoft.Json;
+using Rename.Helpers;
 
 namespace MusicMetadataRenamer
 {

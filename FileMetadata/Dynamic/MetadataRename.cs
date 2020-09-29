@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FileMetadata.Extensions;
-using MusicMetadataRenamer;
+using Rename.Helpers;
 using StringProcessor;
 
 namespace FileMetadata.Dynamic

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public interface IDirectorySet
     {

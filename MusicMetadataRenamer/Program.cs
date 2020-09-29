@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FileMetadata.Dynamic;
+using Rename.Helpers;
 
 namespace MusicMetadataRenamer
 {

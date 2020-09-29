@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public class ConsoleWrapper
     {

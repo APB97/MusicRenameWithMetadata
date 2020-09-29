@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FileMetadata.Dynamic;
+using Rename.Helpers;
 
 namespace MusicMetadataRenamer
 {

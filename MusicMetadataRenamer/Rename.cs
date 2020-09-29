@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using FileMetadata.Dynamic;
+using Rename.Helpers;
 using StringProcessor.SkipCommonWords;
 
 namespace MusicMetadataRenamer
