@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FileMetadata.Extensions;
+using MusicMetadataRenamer;
 using StringProcessor;
 
 namespace FileMetadata.Dynamic
 {
-    public static class MetadataRename
+    public class MetadataRename
     {
-        public static void RenameMultiple(Dictionary<dynamic, Dictionary<string, string>> filePropertiesMap,
+        private readonly ConsoleWrapper _console;
+
+        public MetadataRename(ConsoleWrapper console)
+        {
+            _console = console;
+        }
+        
+        /// <summary>
+        /// Renames multiple files based on dictionary obtained via <see cref="Metadata"/>.<see cref="Metadata.GetProperties"/>.
+        /// </summary>
+        /// <param name="filePropertiesMap">Dictionary of pairs (file, propertyValues)</param>
+        /// <param name="processor">Additional processor to apply to names of files</param>
+        public void RenameMultiple(Dictionary<dynamic, Dictionary<string, string>> filePropertiesMap,
             IStringProcessor processor)
         {
             foreach (var (file, properties) in filePropertiesMap)
@@ -18,20 +31,26 @@ namespace FileMetadata.Dynamic
             }
         }
 
-        public static void RenameSingle(dynamic folderItem, Dictionary<string, string> properties, IStringProcessor processor)
+        private void RenameSingle(dynamic folderItem, Dictionary<string, string> properties, IStringProcessor processor)
         {
-            string path = Shell.Path(folderItem);
-            string extension = Path.GetExtension(path);
-            string joinedNoIllegalCharacters = properties.Values.ToArray().JoinForFilePath();
-            string additionallyProcessed = processor.Process(joinedNoIllegalCharacters);
+            // Get path of a folderItem
+            string filePath = Shell.Path(folderItem);
+            // Extract extension from filePath
+            string extension = Path.GetExtension(filePath);
+            // Combine properties' values and skip invalid fileName characters
+            string fileNameWithSkippedChars = properties.Values.ToArray().JoinForFilePath();
+            // Apply additional processing
+            string additionallyProcessedName = processor.Process(fileNameWithSkippedChars);
             try
             {
-                File.Move(path, Path.Combine(Path.GetDirectoryName(path) ?? throw new Exception("path is not correct."),
-                    $"{additionallyProcessed}{extension}"));
+                // Rename from filePath to new name
+                File.Move(filePath, Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("path is not correct."),
+                    $"{additionallyProcessedName}{extension}"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // Display exception if not in Silent Console mode
+                _console.WriteLine(e);
             }
         }
     }

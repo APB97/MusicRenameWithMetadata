@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using FileMetadata.Dynamic;
 using Newtonsoft.Json;
 
 namespace MusicMetadataRenamer
@@ -11,18 +12,19 @@ namespace MusicMetadataRenamer
         private readonly Dictionary<string, object> _classDefaultObjects;
         private readonly IPropertyList _propertySelector;
         private readonly IDirectorySet _directorySelector;
+        private readonly ConsoleWrapper _console;
 
         public RenameActionResolver()
         {
-            var console = new ConsoleWrapper();
-            _propertySelector = new PropertySelector(console);
-            _directorySelector = new DirectorySelector(console);
+            _console = new ConsoleWrapper();
+            _propertySelector = new PropertySelector(_console);
+            _directorySelector = new DirectorySelector(_console);
             
             _classDefaultObjects = new Dictionary<string, object>(new []
             {
                 new KeyValuePair<string, object>(nameof(PropertySelector), _propertySelector),
                 new KeyValuePair<string, object>(nameof(DirectorySelector), _directorySelector),
-                new KeyValuePair<string, object>(nameof(ConsoleWrapper), console)
+                new KeyValuePair<string, object>(nameof(ConsoleWrapper), _console)
             });
         }
         
@@ -37,7 +39,7 @@ namespace MusicMetadataRenamer
                 method?.Invoke(defaultObject, method.GetParameters().Length == 0 ? new object[0] : new object[]{ action.ActionParameters });
             }
             
-            new Rename(_classDefaultObjects[nameof(ConsoleWrapper)] as ConsoleWrapper).Execute(_directorySelector, _propertySelector);
+            new Rename(_console).Execute(_directorySelector, _propertySelector, new MetadataRename(_console));
         }
     }
 }

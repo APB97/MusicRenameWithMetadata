@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FileMetadata.Dynamic;
 
 namespace MusicMetadataRenamer
 {
@@ -17,7 +18,7 @@ namespace MusicMetadataRenamer
                     DirectorySelector directorySelector = new DirectorySelector(console);
                     directorySelector.StartInteractive();
                 
-                    new Rename(console).Execute(directorySelector, propertySelector);
+                    new Rename(console).Execute(directorySelector, propertySelector, new MetadataRename(console));
                     break;
                 }
                 case 1:
