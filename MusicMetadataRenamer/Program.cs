@@ -20,7 +20,9 @@ namespace MusicMetadataRenamer
                     directorySelector.StartInteractive();
                 
                     WordSkipping skippingThese = new WordSkipping();
-                    await skippingThese.GetCommonWordsFrom("skip.txt");
+                    SkipFile skipFile = new SkipFile();
+                    skipFile.Prompt();
+                    await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
                     
                     new Rename(console).Execute(directorySelector, propertySelector, skippingThese, new MetadataRename(console));
                     break;
