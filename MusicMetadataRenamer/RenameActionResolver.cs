@@ -10,7 +10,7 @@ namespace MusicMetadataRenamer
     {
         private readonly Dictionary<string, object> _classDefaultObjects;
         private readonly PropertySelector _propertySelector;
-        private readonly DirectorySelector _directorySelector;
+        private readonly IDirectorySet _directorySelector;
 
         public RenameActionResolver()
         {

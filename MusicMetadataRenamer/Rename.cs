@@ -15,7 +15,7 @@ namespace MusicMetadataRenamer
             _console = console;
         }
 
-        public void Execute(DirectorySelector directorySelector, PropertySelector propertySelector)
+        public void Execute(IDirectorySet directorySelector, PropertySelector propertySelector)
         {
             Parallel.ForEach(directorySelector.Directories, async dirName =>
             {
