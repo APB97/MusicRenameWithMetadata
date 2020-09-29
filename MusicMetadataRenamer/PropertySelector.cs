@@ -25,11 +25,11 @@ namespace MusicMetadataRenamer
 
         public List<string> Properties { get; } = new List<string>();
 
-        public virtual IEnumerable<string> StartInteractive()
+        public virtual void StartInteractive()
         {
             while (true)
             {
-                ConsoleWrapper.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
+                Console.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
 
                 string line = Console.ReadLine();
                 string[] inputs = line?.Split(' ');
@@ -44,8 +44,7 @@ namespace MusicMetadataRenamer
                         ? new object[] {inputs.Skip(1).ToArray()}
                         : new object[] { });
 
-                if (callResult is bool shouldComplete && shouldComplete)
-                    return Properties;
+                if (callResult is bool shouldComplete && shouldComplete) return;
             }
         }
 

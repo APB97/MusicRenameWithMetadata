@@ -28,11 +28,11 @@ namespace MusicMetadataRenamer
 
         public HashSet<string> Directories { get; } = new HashSet<string>();
 
-        public IEnumerable<string> StartInteractive()
+        public void StartInteractive()
         {
             while (true)
             {
-                ConsoleWrapper.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
+                Console.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
                 
                 string line = Console.ReadLine();
                 string[] inputs = line?.Split(' ');
@@ -47,8 +47,7 @@ namespace MusicMetadataRenamer
                         ? new object[] {inputs.Skip(1).ToArray()}
                         : new object[] { });
                 
-                if (callResult is bool shouldComplete && shouldComplete)
-                    return Directories;
+                if (callResult is bool shouldComplete && shouldComplete) return;
             }
         }
 
