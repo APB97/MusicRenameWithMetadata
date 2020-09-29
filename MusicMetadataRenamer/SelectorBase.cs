@@ -5,6 +5,13 @@ namespace MusicMetadataRenamer
 {
     public abstract class SelectorBase
     {
+        protected readonly ConsoleWrapper ConsoleWrapper;
+
+        protected SelectorBase(ConsoleWrapper consoleWrapper)
+        {
+            ConsoleWrapper = consoleWrapper;
+        }
+
         protected abstract HashSet<string> Commands { get; }
 
         public abstract void Clear();
@@ -19,7 +26,7 @@ namespace MusicMetadataRenamer
 
         public void ClearScreen()
         {
-            Console.Clear();
+            ConsoleWrapper.Clear();
         }
 
         public bool Complete()

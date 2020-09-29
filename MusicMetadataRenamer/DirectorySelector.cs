@@ -7,6 +7,8 @@ namespace MusicMetadataRenamer
 {
     public class DirectorySelector : SelectorBase
     {
+        public DirectorySelector(ConsoleWrapper consoleWrapper) : base(consoleWrapper) { }
+        
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
         {
@@ -21,7 +23,7 @@ namespace MusicMetadataRenamer
         public override void Clear()
         {
             Directories.Clear();
-            Console.WriteLine("Directory list cleared.");
+            ConsoleWrapper.WriteLine("Directory list cleared.");
         }
 
         public HashSet<string> Directories { get; } = new HashSet<string>();
@@ -30,7 +32,7 @@ namespace MusicMetadataRenamer
         {
             while (true)
             {
-                Console.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
+                ConsoleWrapper.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
                 
                 string line = Console.ReadLine();
                 string[] inputs = line?.Split(' ');
@@ -57,14 +59,14 @@ namespace MusicMetadataRenamer
                 Directories.Add(dir);
             }
 
-            Console.WriteLine("Directories added to list.");
+            ConsoleWrapper.WriteLine("Directories added to list.");
         }
 
         public virtual void List()
         {
             foreach (string directory in Directories)
             {
-                Console.WriteLine(directory);
+                ConsoleWrapper.WriteLine(directory);
             }
         }
     }

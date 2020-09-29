@@ -8,6 +8,8 @@ namespace MusicMetadataRenamer
 {
     public class PropertySelector : SelectorBase
     {
+        public PropertySelector(ConsoleWrapper consoleWrapper) : base(consoleWrapper) { }
+        
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
         {
@@ -27,7 +29,7 @@ namespace MusicMetadataRenamer
         {
             while (true)
             {
-                Console.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
+                ConsoleWrapper.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
 
                 string line = Console.ReadLine();
                 string[] inputs = line?.Split(' ');
@@ -53,7 +55,7 @@ namespace MusicMetadataRenamer
             {
                 if (Properties.Contains(property))
                 {
-                    Console.WriteLine($"{property} is already on the list so it wasn't added.");
+                    ConsoleWrapper.WriteLine($"{property} is already on the list so it wasn't added.");
                 }
                 else
                 {
@@ -61,13 +63,13 @@ namespace MusicMetadataRenamer
                 }
             }
 
-            Console.WriteLine("Properties added to list.");
+            ConsoleWrapper.WriteLine("Properties added to list.");
         }
 
         public override void Clear()
         {
             Properties.Clear();
-            Console.WriteLine("Property list cleared.");
+            ConsoleWrapper.WriteLine("Property list cleared.");
         }
 
         public override void Help()
@@ -92,10 +94,10 @@ namespace MusicMetadataRenamer
 
         public virtual void List()
         {
-            Console.WriteLine("Selected Properties:");
+            ConsoleWrapper.WriteLine("Selected Properties:");
             foreach (string property in Properties)
             {
-                Console.WriteLine(property);
+                ConsoleWrapper.WriteLine(property);
             }
         }
     }
