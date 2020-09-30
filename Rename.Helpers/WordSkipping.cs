@@ -2,8 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Rename.Helpers.Interfaces;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public class WordSkipping : ICommonWords
     {

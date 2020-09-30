@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Console;
-using Rename.Helpers;
 
 namespace MusicMetadataRenamer
 {
