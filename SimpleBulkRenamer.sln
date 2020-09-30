@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.DefaultNone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rename.Helpers", "Rename.Helpers\Rename.Helpers.csproj", "{C086C6CA-8632-4437-AB14-40BAA3687E73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleWrapper", "ConsoleWrapper\ConsoleWrapper.csproj", "{DCAF7CE8-4467-428F-9272-F725A029AE9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C086C6CA-8632-4437-AB14-40BAA3687E73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

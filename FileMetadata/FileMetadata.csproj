@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Rename.Helpers\Rename.Helpers.csproj" />
+      <ProjectReference Include="..\ConsoleWrapper\ConsoleWrapper.csproj" />
       <ProjectReference Include="..\StringProcessor\StringProcessor.csproj" />
     </ItemGroup>
 
