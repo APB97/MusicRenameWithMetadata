@@ -36,7 +36,7 @@ For list of possible definitions see [How do I use it](#how-do-i-use-it)
 
 ## How do I use it?
 
-### Console Wrapper
+### Console
 
 - Enable __Silent__ mode - no console output
 
@@ -44,9 +44,9 @@ For list of possible definitions see [How do I use it](#how-do-i-use-it)
 {
   "Actions": [
     {
-          "ActionClass": "ConsoleWrapper",
-          "ActionName": "BeSilent",
-          "ActionParameters": []
+      "ActionClass": "Console",
+      "ActionName": "BeSilent",
+      "ActionParameters": []
     }
   ]
 }
@@ -57,9 +57,27 @@ For list of possible definitions see [How do I use it](#how-do-i-use-it)
 {
   "Actions": [
     {
-          "ActionClass": "ConsoleWrapper",
-          "ActionName": "DontBeSilent",
-          "ActionParameters": []
+      "ActionClass": "Console",
+      "ActionName": "DontBeSilent",
+      "ActionParameters": []
+    }
+  ]
+}
+```
+
+### Directory Selector
+
+- Add directories to processing list
+```json
+{
+  "Actions": [
+    {
+      "ActionClass": "DirectorySelector",
+      "ActionName": "Add",
+      "ActionParameters": [
+        "C:\\\\Music\\\\Example - 1",
+        "C:\\\\Music\\\\Example - 2"
+      ]
     }
   ]
 }
