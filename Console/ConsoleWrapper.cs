@@ -1,5 +1,8 @@
-﻿namespace Console
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Console
 {
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class ConsoleWrapper
     {
         private bool Silent { get; set; }
@@ -18,6 +21,7 @@
 
         public void Clear()
         {
+            if (Silent) return;
             System.Console.Clear();
         }
 
