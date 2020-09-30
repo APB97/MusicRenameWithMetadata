@@ -1,7 +1,7 @@
 ﻿{
   "Actions": [
     {
-      "ActionClass": "ConsoleWrapper",
+      "ActionClass": "Console",
       "ActionName": "BeSilent",
       "ActionParameters": []
     },

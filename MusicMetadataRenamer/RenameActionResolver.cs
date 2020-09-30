@@ -28,15 +28,20 @@ namespace MusicMetadataRenamer
             {
                 new KeyValuePair<string, object>(nameof(PropertySelector), _propertySelector),
                 new KeyValuePair<string, object>(nameof(DirectorySelector), _directorySelector),
-                new KeyValuePair<string, object>(nameof(ConsoleWrapper), _console),
+                new KeyValuePair<string, object>("Console", _console),
                 new KeyValuePair<string, object>(nameof(SkipFile), _skipFile)
             });
         }
         
         public async Task Execute(string actionsFile)
         {
+            if (!File.Exists(actionsFile))
+                return;
+            
             var definitions = JsonConvert.DeserializeObject<ActionDefinitions>(await File.ReadAllTextAsync(actionsFile));
-
+            if (definitions.Actions == null)
+                return;
+            
             foreach (ActionDefinition action in definitions.Actions)
             {
                 object defaultObject = _classDefaultObjects[action.ActionClass];
