@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using Console;
-using Rename.Helpers;
 using Rename.Helpers.Interfaces;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public class DirectorySelector : SelectorBase, IDirectorySet
     {
