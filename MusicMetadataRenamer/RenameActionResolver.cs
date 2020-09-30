@@ -22,7 +22,7 @@ namespace MusicMetadataRenamer
             _console = new ConsoleWrapper();
             _propertySelector = new PropertySelector(_console);
             _directorySelector = new DirectorySelector(_console);
-            _skipFile = new SkipFile();
+            _skipFile = new SkipFile(_console);
 
             _classDefaultObjects = new Dictionary<string, object>(new []
             {
