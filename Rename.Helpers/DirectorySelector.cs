@@ -18,18 +18,20 @@ namespace Rename.Helpers
             nameof(Complete),
             nameof(ClearScreen),
             nameof(Help),
-            nameof(List)
+            nameof(List),
+            nameof(Remove)
         });
 
         protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
             new []
             {
-                new KeyValuePair<string, string>(nameof(Add), "Add directories to processing list. Usage: Add <dir1> [<dir2> [...]]"),
+                new KeyValuePair<string, string>(nameof(Add), "Add directories to processing list. Usage: Add <dir1> [<dir2>] [...]"),
                 new KeyValuePair<string, string>(nameof(Clear), "Clear list of directories to process. Usage: Clear"),
                 new KeyValuePair<string, string>(nameof(Complete), "Complete directory selection step. Usage: Complete"), 
                 new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
                 new KeyValuePair<string, string>(nameof(Help), "Display list of Commands and their usage or chosen commands' help. Usage: Help [<cmd1>] [<cmd2>] [...]"),
                 new KeyValuePair<string, string>(nameof(List), "Display list of directories to process. Usage: List"), 
+                new KeyValuePair<string, string>(nameof(Remove), "Remove directories from the list. Usage: Remove <dir1> [<dir2>] [...]"), 
             });
 
         public override void Clear()
@@ -79,6 +81,16 @@ namespace Rename.Helpers
             {
                 ConsoleWrapper.WriteLine(directory);
             }
+        }
+
+        public void Remove(params string[] dirs)
+        {
+            foreach (string directory in dirs)
+            {
+                Directories.Remove(directory);
+            }
+            
+            ConsoleWrapper.WriteLine($"Directories removed from the list.");
         }
     }
 }
