@@ -14,7 +14,7 @@ namespace FileMetadata.Dynamic
 
         public MetadataRename(ConsoleWrapper console)
         {
-            _console = console;
+            _console = console ?? throw new ArgumentNullException(nameof(console));
         }
         
         /// <summary>
@@ -25,6 +25,8 @@ namespace FileMetadata.Dynamic
         public void RenameMultiple(Dictionary<dynamic, Dictionary<string, string>> filePropertiesMap,
             IStringProcessor processor)
         {
+            if (filePropertiesMap == null) throw new ArgumentNullException(nameof(filePropertiesMap));
+            if (processor == null) throw new ArgumentNullException(nameof(processor));
             foreach (var (file, properties) in filePropertiesMap)
             {
                 RenameSingle(file, properties, processor);
