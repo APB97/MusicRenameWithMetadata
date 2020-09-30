@@ -38,18 +38,34 @@ namespace MusicMetadataRenamer
         {
             if (!File.Exists(actionsFile))
                 return;
-            
-            var definitions = JsonConvert.DeserializeObject<ActionDefinitions>(await File.ReadAllTextAsync(actionsFile));
+
+            var definitions = await GetActionsFromFile(actionsFile);
             if (definitions.Actions == null)
                 return;
             
+            InvokeActions(definitions);
+            await ExecuteRenameOperation();
+        }
+
+        private static async Task<ActionDefinitions> GetActionsFromFile(string actionsFile)
+        {
+            string actionsFileContents = await File.ReadAllTextAsync(actionsFile);
+            return JsonConvert.DeserializeObject<ActionDefinitions>(actionsFileContents);
+        }
+
+        private void InvokeActions(ActionDefinitions definitions)
+        {
             foreach (ActionDefinition action in definitions.Actions)
             {
                 object defaultObject = _classDefaultObjects[action.ActionClass];
                 MethodInfo method = defaultObject.GetType().GetMethod(action.ActionName);
-                method?.Invoke(defaultObject, method.GetParameters().Length == 0 ? new object[0] : new object[]{ action.ActionParameters });
+                method?.Invoke(defaultObject,
+                    method.GetParameters().Length == 0 ? new object[0] : new object[] {action.ActionParameters});
             }
+        }
 
+        private async Task ExecuteRenameOperation()
+        {
             var wordsToSkip = new WordSkipping();
             await wordsToSkip.GetCommonWordsFrom(_skipFile.SelectedPath);
             new Rename(_console).Execute(_directorySelector, _propertySelector, wordsToSkip, new MetadataRename(_console));
