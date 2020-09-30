@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Console;
 
 namespace Rename.Helpers
 {
@@ -34,7 +35,7 @@ namespace Rename.Helpers
         {
             foreach (string command in forCommands)
             {
-                Console.WriteLine(HelpDictionary.TryGetValue(command, out string helpText)
+                System.Console.WriteLine(HelpDictionary.TryGetValue(command, out string helpText)
                     ? $"{command}\t{helpText}"
                     : command);
             }

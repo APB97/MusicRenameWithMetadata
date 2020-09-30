@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Console;
 using FileMetadata.Extensions;
-using Rename.Helpers;
 using StringProcessor;
 
 namespace FileMetadata.Dynamic

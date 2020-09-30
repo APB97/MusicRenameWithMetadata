@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Console;
 using FileMetadata.Dynamic;
 using Newtonsoft.Json;
 using Rename.Helpers;

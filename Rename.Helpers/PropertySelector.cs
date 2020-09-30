@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
 using Rename.Helpers.Interfaces;
@@ -44,9 +45,9 @@ namespace MusicMetadataRenamer
         {
             while (true)
             {
-                Console.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
+                System.Console.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
 
-                string line = Console.ReadLine();
+                string line = System.Console.ReadLine();
                 string[] inputs = line?.Split(' ');
                 string command = inputs?[0];
 
@@ -99,10 +100,10 @@ namespace MusicMetadataRenamer
 
         public virtual void HelpProperties()
         {
-            Console.WriteLine("Available Properties:");
+            System.Console.WriteLine("Available Properties:");
             foreach (FieldInfo field in typeof(PropertyNames).GetFields())
             {
-                Console.WriteLine(field.GetValue(null));
+                System.Console.WriteLine(field.GetValue(null));
             }
         }
 

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using Console;
 using Rename.Helpers;
 
 namespace MusicMetadataRenamer
@@ -39,16 +39,16 @@ namespace MusicMetadataRenamer
         /// </summary>
         public void Prompt()
         {
-            Console.WriteLine("Enter the skip file path to use or press Enter to use the default:");
+            System.Console.WriteLine("Enter the skip file path to use or press Enter to use the default:");
             while (true)
             {
-                string file = Console.ReadLine();
+                string file = System.Console.ReadLine();
                 if (string.IsNullOrEmpty(file))
                     break;
                 if (!File.Exists(file))
                     continue;
                 Select(new [] { file });
-                Console.WriteLine("Press Enter once more to confirm or enter different path:");
+                System.Console.WriteLine("Press Enter once more to confirm or enter different path:");
             }
         }
     }

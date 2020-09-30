@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Console;
 using Rename.Helpers;
 using Rename.Helpers.Interfaces;
 
@@ -45,9 +46,9 @@ namespace MusicMetadataRenamer
         {
             while (true)
             {
-                Console.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
+                System.Console.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
                 
-                string line = Console.ReadLine();
+                string line = System.Console.ReadLine();
                 string[] inputs = line?.Split(' ');
                 string command = inputs?[0];
 

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
 

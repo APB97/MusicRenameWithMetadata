@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Rename.Helpers
+﻿namespace Console
 {
     public class ConsoleWrapper
     {
@@ -9,24 +7,24 @@ namespace Rename.Helpers
         public void WriteLine()
         {
             if (Silent) return;
-            Console.WriteLine();
+            System.Console.WriteLine();
         }
 
         public void WriteLine(string text)
         {
             if (Silent) return;
-            Console.WriteLine(text);
+            System.Console.WriteLine(text);
         }
 
         public void Clear()
         {
-            Console.Clear();
+            System.Console.Clear();
         }
 
         public void WriteLine(object value)
         {
             if (Silent) return;
-            Console.WriteLine(value);
+            System.Console.WriteLine(value);
         }
         
         public void BeSilent()
