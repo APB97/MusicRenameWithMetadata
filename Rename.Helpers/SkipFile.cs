@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Console;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public class SkipFile
     {
