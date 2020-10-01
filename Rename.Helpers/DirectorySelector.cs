@@ -92,5 +92,10 @@ namespace Rename.Helpers
             
             ConsoleWrapper.WriteLine($"Directories removed from the list.");
         }
+
+        public override string ToString()
+        {
+            return nameof(DirectorySelector);
+        }
     }
 }

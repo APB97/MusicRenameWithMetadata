@@ -5,4 +5,23 @@
         <RootNamespace>Console</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Console.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Console.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Console.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Console.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CommandClassInterface\CommandClassInterface.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -50,5 +50,10 @@ namespace Rename.Helpers
                 System.Console.WriteLine("Press Enter once more to confirm or enter different path:");
             }
         }
+
+        public override string ToString()
+        {
+            return nameof(SkipFile);
+        }
     }
 }

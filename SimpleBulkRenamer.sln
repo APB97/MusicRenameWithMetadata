@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rename.Helpers", "Rename.He
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{DCAF7CE8-4467-428F-9272-F725A029AE9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionsCreator", "ActionsCreator\ActionsCreator.csproj", "{B18CA19C-0BAC-42A2-B821-7862B458DD6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandClassInterface", "CommandClassInterface\CommandClassInterface.csproj", "{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +52,13 @@ Global
 		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCAF7CE8-4467-428F-9272-F725A029AE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B18CA19C-0BAC-42A2-B821-7862B458DD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18CA19C-0BAC-42A2-B821-7862B458DD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18CA19C-0BAC-42A2-B821-7862B458DD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18CA19C-0BAC-42A2-B821-7862B458DD6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

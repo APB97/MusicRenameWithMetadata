@@ -1,12 +1,25 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using CommandClassInterface;
 
 namespace Console
 {
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public class ConsoleWrapper : IConsole
+    public class ConsoleWrapper : IConsole, ICommandClass
     {
         private bool Silent { get; set; }
 
+        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
+
+        public ConsoleWrapper()
+        {
+            CommandsWithHelp = new Dictionary<string, string>(new []
+            {
+                new KeyValuePair<string, string>(nameof(BeSilent), Console.BeSilentHelp), 
+                new KeyValuePair<string, string>(nameof(DontBeSilent), Console.DontBeSilentHelp), 
+            });
+        }
+        
         public void WriteLine()
         {
             if (Silent) return;
@@ -39,6 +52,11 @@ namespace Console
         public void DontBeSilent()
         {
             Silent = false;
+        }
+
+        public override string ToString()
+        {
+            return nameof(Console);
         }
     }
 }

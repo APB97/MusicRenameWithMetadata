@@ -124,5 +124,10 @@ namespace Rename.Helpers
             }
             ConsoleWrapper.WriteLine("Properties removed from the list.");
         }
+
+        public override string ToString()
+        {
+            return nameof(PropertySelector);
+        }
     }
 }
