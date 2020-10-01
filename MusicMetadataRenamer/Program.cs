@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
@@ -11,19 +12,19 @@ namespace MusicMetadataRenamer
     {
         private static async Task Main(string[] args)
         {
+            ConsoleWrapper console = new ConsoleWrapper();
+            PropertySelector propertySelector = new PropertySelector(console);
+            DirectorySelector directorySelector = new DirectorySelector(console);
+            SkipFile skipFile = new SkipFile(console);
+            
             switch (args.Length)
             {
                 case 0:
                 {
-                    ConsoleWrapper console = new ConsoleWrapper();
-                    PropertySelector propertySelector = new PropertySelector(console);
                     propertySelector.StartInteractive();
-
-                    DirectorySelector directorySelector = new DirectorySelector(console);
                     directorySelector.StartInteractive();
                 
                     WordSkipping skippingThese = new WordSkipping();
-                    SkipFile skipFile = new SkipFile(console);
                     skipFile.Prompt();
                     await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
                     IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
@@ -33,8 +34,15 @@ namespace MusicMetadataRenamer
                 }
                 case 1:
                 {
-                    var resolver = new RenameActionResolver();
+                    var resolver = new ActionResolver(new []
+                    {
+                        new KeyValuePair<string, object>(nameof(PropertySelector), propertySelector),
+                        new KeyValuePair<string, object>(nameof(DirectorySelector), directorySelector),
+                        new KeyValuePair<string, object>("Console", console),
+                        new KeyValuePair<string, object>(nameof(SkipFile), skipFile)
+                    });
                     await resolver.Execute(args[0]);
+                    await new RenameOperation().ExecuteRenameOperation(console, directorySelector, propertySelector, skipFile);
                     break;
                 }
             }
