@@ -6,11 +6,11 @@ using StringProcessor;
 
 namespace Rename.Helpers
 {
-    public class Rename
+    public class RenameFiles
     {
         private readonly ConsoleWrapper _console;
 
-        public Rename(ConsoleWrapper console)
+        public RenameFiles(ConsoleWrapper console)
         {
             _console = console;
         }

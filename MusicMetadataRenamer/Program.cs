@@ -28,7 +28,7 @@ namespace MusicMetadataRenamer
                     await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
                     IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
-                    new Rename.Helpers.Rename(console).Execute(directorySelector, propertySelector, processor, new MetadataRename(console));
+                    new RenameFiles(console).Execute(directorySelector, propertySelector, processor, new MetadataRename(console));
                     break;
                 }
                 case 1:
