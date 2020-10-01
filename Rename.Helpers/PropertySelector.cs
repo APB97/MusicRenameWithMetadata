@@ -21,7 +21,8 @@ namespace Rename.Helpers
             nameof(Help),
             nameof(HelpCommands),
             nameof(HelpProperties),
-            nameof(List)
+            nameof(List),
+            nameof(Remove)
         });
 
         protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
@@ -35,6 +36,7 @@ namespace Rename.Helpers
                 new KeyValuePair<string, string>(nameof(HelpCommands), "Display list of commands. Usage: HelpCommands"),
                 new KeyValuePair<string, string>(nameof(HelpProperties), "Display list of available properties. Usage: HelpProperties"),
                 new KeyValuePair<string, string>(nameof(List), "Display list of selected properties. Usage: List"), 
+                new KeyValuePair<string, string>(nameof(Remove), "Remove properties from the list. Usage: Remove <p1> [<p2>] [...]"), 
             });
 
         public List<string> Properties { get; } = new List<string>();
@@ -112,6 +114,15 @@ namespace Rename.Helpers
             {
                 ConsoleWrapper.WriteLine(property);
             }
+        }
+
+        public void Remove(string[] properties)
+        {
+            foreach (string property in properties)
+            {
+                Properties.Remove(property);
+            }
+            ConsoleWrapper.WriteLine("Properties removed from the list.");
         }
     }
 }
