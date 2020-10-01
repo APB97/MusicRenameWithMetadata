@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Console;
-using FileMetadata.Dynamic;
 using Rename.Helpers;
 using StringProcessor;
 using StringProcessor.SkipCommonWords;
@@ -30,7 +29,6 @@ namespace MusicMetadataRenamer
                     skipFile.Prompt();
                     processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
-                    new RenameFiles(console).Execute(directorySelector, propertySelector, processor, new MetadataRename(console));
                     break;
                 }
                 case 1:
@@ -43,10 +41,11 @@ namespace MusicMetadataRenamer
                         new KeyValuePair<string, object>(nameof(SkipFile), skipFile)
                     });
                     await resolver.Execute(args[0]);
-                    new RenameOperation().ExecuteRenameOperation(console, directorySelector, propertySelector, processor);
                     break;
                 }
             }
+            
+            new RenameOperation().ExecuteRenameOperation(console, directorySelector, propertySelector, processor);
         }
     }
 }
