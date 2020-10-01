@@ -4,7 +4,7 @@ using FileMetadata.Dynamic;
 using Rename.Helpers.Interfaces;
 using StringProcessor;
 
-namespace MusicMetadataRenamer
+namespace Rename.Helpers
 {
     public class Rename
     {
