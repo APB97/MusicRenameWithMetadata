@@ -3,7 +3,7 @@
 namespace Console
 {
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public class ConsoleWrapper
+    public class ConsoleWrapper : IConsole
     {
         private bool Silent { get; set; }
 
