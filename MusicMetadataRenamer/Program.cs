@@ -16,7 +16,10 @@ namespace MusicMetadataRenamer
             PropertySelector propertySelector = new PropertySelector(console);
             DirectorySelector directorySelector = new DirectorySelector(console);
             SkipFile skipFile = new SkipFile(console);
-            
+            WordSkipping skippingThese = new WordSkipping();
+            await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
+            IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
+
             switch (args.Length)
             {
                 case 0:
@@ -24,10 +27,8 @@ namespace MusicMetadataRenamer
                     propertySelector.StartInteractive();
                     directorySelector.StartInteractive();
                 
-                    WordSkipping skippingThese = new WordSkipping();
                     skipFile.Prompt();
-                    await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
-                    IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
+                    processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
                     new RenameFiles(console).Execute(directorySelector, propertySelector, processor, new MetadataRename(console));
                     break;
@@ -42,7 +43,7 @@ namespace MusicMetadataRenamer
                         new KeyValuePair<string, object>(nameof(SkipFile), skipFile)
                     });
                     await resolver.Execute(args[0]);
-                    await new RenameOperation().ExecuteRenameOperation(console, directorySelector, propertySelector, skipFile);
+                    new RenameOperation().ExecuteRenameOperation(console, directorySelector, propertySelector, processor);
                     break;
                 }
             }
