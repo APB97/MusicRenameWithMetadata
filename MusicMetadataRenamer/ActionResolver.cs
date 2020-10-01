@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Rename.Helpers;
 
 namespace MusicMetadataRenamer
 {
