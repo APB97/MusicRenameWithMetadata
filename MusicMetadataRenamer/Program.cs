@@ -12,7 +12,7 @@ namespace MusicMetadataRenamer
     {
         private static async Task Main(string[] args)
         {
-            ConsoleWrapper console = new ConsoleWrapper();
+            IConsole console = new ConsoleWrapper();
             PropertySelector propertySelector = new PropertySelector(console);
             DirectorySelector directorySelector = new DirectorySelector(console);
             SkipFile skipFile = new SkipFile(console);

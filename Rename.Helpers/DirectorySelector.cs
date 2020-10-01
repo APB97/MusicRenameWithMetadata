@@ -8,7 +8,7 @@ namespace Rename.Helpers
 {
     public class DirectorySelector : SelectorBase, IDirectorySet
     {
-        public DirectorySelector(ConsoleWrapper consoleWrapper) : base(consoleWrapper) { }
+        public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper) { }
         
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []

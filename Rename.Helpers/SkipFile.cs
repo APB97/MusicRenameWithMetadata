@@ -7,9 +7,9 @@ namespace Rename.Helpers
 {
     public class SkipFile
     {
-        private readonly ConsoleWrapper _console;
+        private readonly IConsole _console;
 
-        public SkipFile(ConsoleWrapper console)
+        public SkipFile(IConsole console)
         {
             _console = console;
         }

@@ -9,7 +9,7 @@ namespace Rename.Helpers
 {
     public class PropertySelector : SelectorBase, IPropertyList
     {
-        public PropertySelector(ConsoleWrapper consoleWrapper) : base(consoleWrapper) { }
+        public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper) { }
         
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []

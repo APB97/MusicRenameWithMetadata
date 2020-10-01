@@ -8,9 +8,9 @@ namespace Rename.Helpers
 {
     public class RenameFiles
     {
-        private readonly ConsoleWrapper _console;
+        private readonly IConsole _console;
 
-        public RenameFiles(ConsoleWrapper console)
+        public RenameFiles(IConsole console)
         {
             _console = console;
         }

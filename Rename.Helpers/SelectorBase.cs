@@ -5,9 +5,9 @@ namespace Rename.Helpers
 {
     public abstract class SelectorBase
     {
-        protected readonly ConsoleWrapper ConsoleWrapper;
+        protected readonly IConsole ConsoleWrapper;
 
-        protected SelectorBase(ConsoleWrapper consoleWrapper)
+        protected SelectorBase(IConsole consoleWrapper)
         {
             ConsoleWrapper = consoleWrapper;
         }

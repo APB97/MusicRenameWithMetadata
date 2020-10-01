@@ -10,7 +10,7 @@ namespace MusicMetadataRenamer
 {
     public class RenameOperation
     {
-        public async Task ExecuteRenameOperation(ConsoleWrapper console, IDirectorySet directorySelector, IPropertyList propertySelector, SkipFile skipFile)
+        public async Task ExecuteRenameOperation(IConsole console, IDirectorySet directorySelector, IPropertyList propertySelector, SkipFile skipFile)
         {
             var wordsToSkip = new WordSkipping();
             await wordsToSkip.GetCommonWordsFrom(skipFile.SelectedPath);

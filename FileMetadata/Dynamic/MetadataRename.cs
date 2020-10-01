@@ -10,9 +10,9 @@ namespace FileMetadata.Dynamic
 {
     public class MetadataRename
     {
-        private readonly ConsoleWrapper _console;
+        private readonly IConsole _console;
 
-        public MetadataRename(ConsoleWrapper console)
+        public MetadataRename(IConsole console)
         {
             _console = console ?? throw new ArgumentNullException(nameof(console));
         }
