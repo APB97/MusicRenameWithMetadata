@@ -7,6 +7,8 @@ using FileMetadata.Dynamic;
 using Newtonsoft.Json;
 using Rename.Helpers;
 using Rename.Helpers.Interfaces;
+using StringProcessor;
+using StringProcessor.SkipCommonWords;
 
 namespace MusicMetadataRenamer
 {
@@ -68,7 +70,8 @@ namespace MusicMetadataRenamer
         {
             var wordsToSkip = new WordSkipping();
             await wordsToSkip.GetCommonWordsFrom(_skipFile.SelectedPath);
-            new Rename(_console).Execute(_directorySelector, _propertySelector, wordsToSkip, new MetadataRename(_console));
+            IStringProcessor processor = new SkipCommonWordsProcessor { CommonWords = wordsToSkip.CommonWords };
+            new Rename(_console).Execute(_directorySelector, _propertySelector, processor, new MetadataRename(_console));
         }
     }
 }

@@ -2,6 +2,8 @@
 using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers;
+using StringProcessor;
+using StringProcessor.SkipCommonWords;
 
 namespace MusicMetadataRenamer
 {
@@ -24,8 +26,9 @@ namespace MusicMetadataRenamer
                     SkipFile skipFile = new SkipFile(console);
                     skipFile.Prompt();
                     await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
+                    IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
-                    new Rename(console).Execute(directorySelector, propertySelector, skippingThese, new MetadataRename(console));
+                    new Rename(console).Execute(directorySelector, propertySelector, processor, new MetadataRename(console));
                     break;
                 }
                 case 1:

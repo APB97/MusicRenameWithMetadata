@@ -2,7 +2,7 @@
 using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers.Interfaces;
-using StringProcessor.SkipCommonWords;
+using StringProcessor;
 
 namespace MusicMetadataRenamer
 {
@@ -15,17 +15,14 @@ namespace MusicMetadataRenamer
             _console = console;
         }
 
-        public void Execute(IDirectorySet directorySelector, IPropertyList propertySelector, ICommonWords wordsToSkip, MetadataRename metadataRename)
+        public void Execute(IDirectorySet directorySelector, IPropertyList propertySelector, IStringProcessor wordProcessor, MetadataRename metadataRename)
         {
             Parallel.ForEach(directorySelector.Directories, dirName =>
             {
                 var items = Shell.GetFolderItems(dirName);
                 var propertiesMap = Metadata.GetProperties(items, propertySelector.Properties);
                 
-                metadataRename.RenameMultiple(propertiesMap, new SkipCommonWordsProcessor
-                {
-                    CommonWords = wordsToSkip.CommonWords
-                });
+                metadataRename.RenameMultiple(propertiesMap, wordProcessor);
                 
                 _console.WriteLine($"Renaming in '{dirName}' complete.");
             });
