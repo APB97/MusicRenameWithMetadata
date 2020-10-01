@@ -1,17 +1,25 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using CommandClassInterface;
 using Console;
 
 namespace Rename.Helpers
 {
-    public class SkipFile
+    public class SkipFile : ICommandClass
     {
         private readonly IConsole _console;
+
+        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
 
         public SkipFile(IConsole console)
         {
             _console = console;
+            CommandsWithHelp = new Dictionary<string, string>(new []
+            {
+                new KeyValuePair<string, string>(nameof(Select), Rename_Helpers_Commands.SkipFile_SelectHelp), 
+            });
         }
 
         public string SelectedPath { get; private set; } = "skip.txt";
@@ -38,7 +46,7 @@ namespace Rename.Helpers
         /// </summary>
         public void Prompt()
         {
-            System.Console.WriteLine("Enter the skip file path to use or press Enter to use the default:");
+            System.Console.WriteLine(Rename_Helpers_Commands.SkipFile_Prompt_Enter_the_skip_file);
             while (true)
             {
                 string file = System.Console.ReadLine();
@@ -47,7 +55,7 @@ namespace Rename.Helpers
                 if (!File.Exists(file))
                     continue;
                 Select(new [] { file });
-                System.Console.WriteLine("Press Enter once more to confirm or enter different path:");
+                System.Console.WriteLine(Rename_Helpers_Commands.SkipFile_Prompt_Press_Enter_once_more);
             }
         }
 

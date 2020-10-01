@@ -1,16 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CommandClassInterface;
 using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class PropertySelector : SelectorBase, IPropertyList
+    public class PropertySelector : SelectorBase, IPropertyList, ICommandClass
     {
-        public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper) { }
+        public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper)
+        {
+            CommandsWithHelp = new Dictionary<string, string>(new []
+            {
+                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.PropertySelector_AddHelp), 
+            });
+        }
         
+        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
+
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
         {
@@ -28,7 +37,7 @@ namespace Rename.Helpers
         protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
             new []
             {
-                new KeyValuePair<string, string>(nameof(Add), "Add properties to list. Usage: Add <p1> [<p2>] [...]"),
+                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.PropertySelector_AddHelp),
                 new KeyValuePair<string, string>(nameof(Clear), "Clear properties list. Usage: Clear"),
                 new KeyValuePair<string, string>(nameof(Complete), "Complete property selection step. Usage: Complete"),
                 new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
@@ -45,7 +54,7 @@ namespace Rename.Helpers
         {
             while (true)
             {
-                System.Console.WriteLine($"{nameof(PropertySelector)} - Type \'Help\' for help:");
+                System.Console.WriteLine(Rename_Helpers_Commands.Type_Help_for_help, nameof(PropertySelector));
 
                 string line = System.Console.ReadLine();
                 string[] inputs = line?.Split(' ');

@@ -1,14 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CommandClassInterface;
 using Console;
 using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class DirectorySelector : SelectorBase, IDirectorySet
+    public class DirectorySelector : SelectorBase, IDirectorySet, ICommandClass
     {
-        public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper) { }
+        public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper)
+        {
+            CommandsWithHelp = new Dictionary<string, string>(new []
+            {
+                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.DirectorySelector_AddHelp), 
+            });
+        }
+
+        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
         
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
@@ -25,7 +34,7 @@ namespace Rename.Helpers
         protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
             new []
             {
-                new KeyValuePair<string, string>(nameof(Add), "Add directories to processing list. Usage: Add <dir1> [<dir2>] [...]"),
+                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.DirectorySelector_AddHelp),
                 new KeyValuePair<string, string>(nameof(Clear), "Clear list of directories to process. Usage: Clear"),
                 new KeyValuePair<string, string>(nameof(Complete), "Complete directory selection step. Usage: Complete"), 
                 new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
@@ -46,7 +55,7 @@ namespace Rename.Helpers
         {
             while (true)
             {
-                System.Console.WriteLine($"{nameof(DirectorySelector)} - Type \'Help\' for help:");
+                System.Console.WriteLine(Rename_Helpers_Commands.Type_Help_for_help, nameof(DirectorySelector));
                 
                 string line = System.Console.ReadLine();
                 string[] inputs = line?.Split(' ');
@@ -90,7 +99,7 @@ namespace Rename.Helpers
                 Directories.Remove(directory);
             }
             
-            ConsoleWrapper.WriteLine($"Directories removed from the list.");
+            ConsoleWrapper.WriteLine("Directories removed from the list.");
         }
 
         public override string ToString()
