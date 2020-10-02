@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using Console;
-using FileMetadata.Dynamic;
 using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
@@ -78,12 +77,6 @@ namespace Rename.Helpers
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
         }
 
-        public override void Help(string[] forCommands)
-        {
-            base.Help(forCommands);
-            HelpProperties();
-        }
-
         public void HelpCommands()
         {
             HelpInternal(Commands);
@@ -92,10 +85,6 @@ namespace Rename.Helpers
         public void HelpProperties()
         {
             System.Console.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
-            foreach (FieldInfo field in typeof(PropertyNames).GetFields())
-            {
-                System.Console.WriteLine(field.GetValue(null));
-            }
         }
 
         public void List()
