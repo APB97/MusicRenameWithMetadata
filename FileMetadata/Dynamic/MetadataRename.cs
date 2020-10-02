@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Console;
 using FileMetadata.Extensions;
+using FileMetadata.Mp3;
 using StringProcessor;
 
 namespace FileMetadata.Dynamic
@@ -16,44 +16,28 @@ namespace FileMetadata.Dynamic
         {
             _console = console ?? throw new ArgumentNullException(nameof(console));
         }
-        
+
         /// <summary>
-        /// Renames multiple files based on dictionary obtained via <see cref="Metadata"/>.<see cref="Metadata.GetProperties"/>.
+        /// Renames multiple files
         /// </summary>
-        /// <param name="filePropertiesMap">Dictionary of pairs (file, propertyValues)</param>
-        /// <param name="processor">Additional processor to apply to names of files</param>
-        public void RenameMultiple(Dictionary<dynamic, Dictionary<string, string>> filePropertiesMap,
-            IStringProcessor processor)
+        /// <param name="filePaths">Collection of file paths</param>
+        /// <param name="processor">String processor instance</param>
+        public void RenameMultiple(IEnumerable<string> filePaths, IStringProcessor processor)
         {
-            if (filePropertiesMap == null) throw new ArgumentNullException(nameof(filePropertiesMap));
-            if (processor == null) throw new ArgumentNullException(nameof(processor));
-            foreach (var (file, properties) in filePropertiesMap)
+            foreach (string filePath in filePaths)
             {
-                RenameSingle(file, properties, processor);
+                RenameSingle(filePath, processor);
             }
         }
-
-        private void RenameSingle(dynamic folderItem, Dictionary<string, string> properties, IStringProcessor processor)
+        
+        public void RenameSingle(string filePath, IStringProcessor processor)
         {
-            // Get path of a folderItem
-            string filePath = Shell.Path(folderItem);
-            // Extract extension from filePath
             string extension = Path.GetExtension(filePath);
-            // Combine properties' values and skip invalid fileName characters
-            string fileNameWithSkippedChars = properties.Values.ToArray().JoinForFilePath();
-            // Apply additional processing
-            string additionallyProcessedName = processor.Process(fileNameWithSkippedChars);
-            try
-            {
-                // Rename from filePath to new name
-                File.Move(filePath, Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("path is not correct."),
-                    $"{additionallyProcessedName}{extension}"));
-            }
-            catch (Exception e)
-            {
-                // Display exception if not in Silent Console mode
-                _console.WriteLine(e);
-            }
+            string unprocessed = Mp3InfoReader.TitleOf(filePath);
+            string withNoInvalid = new[] {unprocessed}.JoinForFilePath();
+            File.Move(filePath,
+                Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("path is not correct."),
+                    $"{processor.Process(withNoInvalid)}{extension}"));
         }
     }
 }

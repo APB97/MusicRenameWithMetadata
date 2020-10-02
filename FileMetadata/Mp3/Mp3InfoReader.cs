@@ -10,19 +10,33 @@ namespace FileMetadata.Mp3
 
         public static string TitleOf(string fileAtPath)
         {
-            return TitleFrom(File.ReadAllText(fileAtPath));
-        }
+            // using declarations
+            using FileStream stream = File.OpenRead(fileAtPath);
+            using StreamReader reader = new StreamReader(stream);
 
-        private static string TitleFrom(string contents)
-        {
-            string contentsFirstN = contents.Substring(0, ushort.MaxValue);
+            // Initial values
+            string cumulativeString = string.Empty;
+            int searchStart = 0;
+            
+            while (!reader.EndOfStream)
+            {
+                cumulativeString += reader.ReadLine();
+                int indexOfTitleId = cumulativeString.IndexOf(TitleIdSearchPattern, searchStart, StringComparison.Ordinal);
+                if (indexOfTitleId > 0)
+                {
+                    // found Title
+                    int titleValueIndexStart = indexOfTitleId + TitleIdSearchPattern.Length + JitterBetween;
+                    int titleValueIndexEnd = cumulativeString.IndexOf((char) 0x0, titleValueIndexStart);
+                    string title = cumulativeString.Substring(titleValueIndexStart, titleValueIndexEnd - titleValueIndexStart);
+                    return title;
+                }
+                
+                // Simplify next search by setting new searchStart
+                searchStart = cumulativeString.Length - TitleIdSearchPattern.Length;
+            }
 
-            int titleIdIndex = contentsFirstN.IndexOf(TitleIdSearchPattern, StringComparison.Ordinal);
-            int titleValueIndexStart = titleIdIndex + TitleIdSearchPattern.Length + JitterBetween;
-            int titleValueIndexEnd = contentsFirstN.IndexOf((char) 0x0, titleValueIndexStart);
-
-            string title = contentsFirstN.Substring(titleValueIndexStart, titleValueIndexEnd - titleValueIndexStart);
-            return title;
+            // Title not found 
+            return string.Empty;
         }
     }
 }
