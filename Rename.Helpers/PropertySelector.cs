@@ -12,13 +12,10 @@ namespace Rename.Helpers
     {
         public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {
-            CommandsWithHelp = new Dictionary<string, string>(new []
-            {
-                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.PropertySelector_AddHelp), 
-            });
+            CommandsForJson = new[] {nameof(Add)};
         }
-        
-        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
+
+        public IEnumerable<string> CommandsForJson { get; }
 
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []

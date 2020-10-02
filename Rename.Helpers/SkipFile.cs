@@ -11,15 +11,12 @@ namespace Rename.Helpers
     {
         private readonly IConsole _console;
 
-        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
+        public IEnumerable<string> CommandsForJson { get; }
 
         public SkipFile(IConsole console)
         {
             _console = console;
-            CommandsWithHelp = new Dictionary<string, string>(new []
-            {
-                new KeyValuePair<string, string>(nameof(Select), Rename_Helpers_Commands.SkipFile_SelectHelp), 
-            });
+            CommandsForJson = new[] {nameof(Select)};
         }
 
         public string SelectedPath { get; private set; } = "skip.txt";

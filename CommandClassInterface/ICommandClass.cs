@@ -4,6 +4,6 @@ namespace CommandClassInterface
 {
     public interface ICommandClass
     {
-        IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
+        IEnumerable<string> CommandsForJson { get; }
     }
 }

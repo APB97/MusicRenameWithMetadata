@@ -9,15 +9,15 @@ namespace Console
     {
         private bool Silent { get; set; }
 
-        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
+        public IEnumerable<string> CommandsForJson { get; }
 
         public ConsoleWrapper()
         {
-            CommandsWithHelp = new Dictionary<string, string>(new []
+            CommandsForJson = new []
             {
-                new KeyValuePair<string, string>(nameof(BeSilent), Console.BeSilentHelp), 
-                new KeyValuePair<string, string>(nameof(DontBeSilent), Console.DontBeSilentHelp), 
-            });
+                nameof(BeSilent),
+                nameof(DontBeSilent)
+            };
         }
         
         public void WriteLine()

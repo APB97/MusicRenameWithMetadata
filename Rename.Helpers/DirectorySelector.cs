@@ -11,14 +11,11 @@ namespace Rename.Helpers
     {
         public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {
-            CommandsWithHelp = new Dictionary<string, string>(new []
-            {
-                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.DirectorySelector_AddHelp), 
-            });
+            CommandsForJson = new[] {nameof(Add)};
         }
 
-        public IReadOnlyDictionary<string, string> CommandsWithHelp { get; }
-        
+        public IEnumerable<string> CommandsForJson { get; }
+
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
         {
