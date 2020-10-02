@@ -8,7 +8,7 @@ There is default file _skip.txt_ for words user want to remove from final filena
 Renaming is done automatically after specifying all required settings. 
 
 ## Who is it for?
-This project is for __Windows__ users wanting to rename many files at once with their files' metadata.
+This project is for users wanting to rename many files at once with their files' metadata.
 
 ## Why is it different?
 This tool features two modes used for renaming files: __Interactive__ and __Batch__.

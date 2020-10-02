@@ -105,4 +105,10 @@
     <data name="PropertySelector__0__is_already_on_the_list" xml:space="preserve">
         <value>{0} is already on the list so it wasn't added.</value>
     </data>
+    <data name="DirectorySelector_BeSilentHelp" xml:space="preserve">
+        <value>Causes Console output to be disabled. Usage:  BeSilent</value>
+    </data>
+    <data name="DirectorySelector_DontBeSilentHelp" xml:space="preserve">
+        <value>Causes Console output to be enabled. Usage: DontBeSilent</value>
+    </data>
 </root>

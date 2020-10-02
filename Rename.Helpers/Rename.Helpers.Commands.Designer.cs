@@ -70,6 +70,15 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Causes Console output to be disabled. Usage:  BeSilent.
+        /// </summary>
+        internal static string DirectorySelector_BeSilentHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_BeSilentHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear list of directories to process. Usage: Clear.
         /// </summary>
         internal static string DirectorySelector_ClearHelp {
@@ -93,6 +102,15 @@ namespace Rename.Helpers {
         internal static string DirectorySelector_CompleteHelp {
             get {
                 return ResourceManager.GetString("DirectorySelector_CompleteHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Causes Console output to be enabled. Usage: DontBeSilent.
+        /// </summary>
+        internal static string DirectorySelector_DontBeSilentHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_DontBeSilentHelp", resourceCulture);
             }
         }
         

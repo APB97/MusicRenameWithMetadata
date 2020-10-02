@@ -7,7 +7,7 @@ using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class DirectorySelector : SelectorBase, IDirectorySet
+    public class DirectorySelector : SelectorBase, IDirectorySet, ISilenceAble
     {
         public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {
@@ -20,9 +20,11 @@ namespace Rename.Helpers
         new []
         {
             nameof(Add),
+            nameof(BeSilent),
             nameof(Clear),
             nameof(Complete),
             nameof(ClearScreen),
+            nameof(DontBeSilent),
             nameof(Help),
             nameof(List),
             nameof(Remove)
@@ -117,6 +119,16 @@ namespace Rename.Helpers
         public override string ToString()
         {
             return nameof(DirectorySelector);
+        }
+
+        public void BeSilent()
+        {
+            ConsoleWrapper.BeSilent();
+        }
+
+        public void DontBeSilent()
+        {
+            ConsoleWrapper.DontBeSilent();
         }
     }
 }
