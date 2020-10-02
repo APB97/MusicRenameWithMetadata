@@ -26,7 +26,15 @@ namespace FileMetadata.Dynamic
         {
             foreach (string filePath in filePaths)
             {
-                RenameSingle(filePath, processor);
+                try
+                {
+                    RenameSingle(filePath, processor);
+                }
+                catch (Exception e)
+                {
+                    _console.WriteLine(e);
+                    throw;
+                }
             }
         }
         
