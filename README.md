@@ -32,13 +32,15 @@ That's all! Application will rename files at given path(s).
 ### Batch mode
 Second mode is triggered when application is launched with single argument - path to a `JSON` file containing action definitions.
 Example of such a file is included in `Actions.json`.
-For list of possible definitions see [How do I use it?](#how-do-i-use-it)
+For list of possible definitions and commands, see [How do I use it?](#how-do-i-use-it)
 
 ## How do I use it?
 
 ### Console
 
 - Enable __Silent__ mode - no console output
+
+Enter `BeSilent` Command in Interactive Mode during Console step
 
 ```json
 {
@@ -52,9 +54,22 @@ For list of possible definitions see [How do I use it?](#how-do-i-use-it)
 }
 ```
 
+- Disable __Silent__ mode - re-enables console output
+
+Enter `DontBeSilent` Command in Interactive Mode
+
 ### Directory Selector
 
 - Add directories to processing list
+
+Enter `Add <directory-without-spaces> [<another-one>] [...]`, for example:
+
+`Add C:\Music D:\Music`
+
+or with spaces:
+
+`Add "C:\Music\Example - 1" "C:\Music\Example - 2"`
+
 ```json
 {
   "Actions": [
@@ -69,6 +84,26 @@ For list of possible definitions see [How do I use it?](#how-do-i-use-it)
   ]
 }
 ```
+
+- Clear directories to process list
+
+Enter `Clear`
+
+- Complete directory selection step
+
+Enter `Complete`
+
+- Clear console screen
+
+Enter `ClearScreen`
+
+- Display help for all or selected commands
+
+Enter `Help` to display help for all commands
+
+Enter `Help command1 [command2] [...]` to display help for given commands, for example:
+
+Enter `Help Add Remove Clear` to display help for Add, Remove and Clear commands
 
 ## How does it work?
 
