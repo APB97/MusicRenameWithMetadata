@@ -36,7 +36,7 @@ namespace Rename.Helpers
 
         public List<string> Properties { get; } = new List<string>();
 
-        public virtual void StartInteractive()
+        public void StartInteractive()
         {
             while (true)
             {
@@ -59,7 +59,7 @@ namespace Rename.Helpers
             }
         }
 
-        public virtual void Add(params string[] properties)
+        public void Add(params string[] properties)
         {
             foreach (string property in properties)
             {
@@ -88,12 +88,12 @@ namespace Rename.Helpers
             HelpProperties();
         }
 
-        public virtual void HelpCommands()
+        public void HelpCommands()
         {
             HelpInternal(Commands);
         }
 
-        public virtual void HelpProperties()
+        public void HelpProperties()
         {
             System.Console.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
             foreach (FieldInfo field in typeof(PropertyNames).GetFields())
@@ -102,7 +102,7 @@ namespace Rename.Helpers
             }
         }
 
-        public virtual void List()
+        public void List()
         {
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
             foreach (string property in Properties)
