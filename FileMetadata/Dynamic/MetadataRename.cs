@@ -35,9 +35,10 @@ namespace FileMetadata.Dynamic
             string extension = Path.GetExtension(filePath);
             string unprocessed = Mp3InfoReader.TitleOf(filePath);
             string withNoInvalid = new[] {unprocessed}.JoinForFilePath();
-            File.Move(filePath,
-                Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("path is not correct."),
-                    $"{processor.Process(withNoInvalid)}{extension}"));
+            string destFileName = Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("path is not correct."),
+                $"{processor.Process(withNoInvalid)}{extension}");
+            if (!File.Exists(destFileName))
+                File.Move(filePath, destFileName);
         }
     }
 }
