@@ -31,18 +31,6 @@ namespace Rename.Helpers
             nameof(Remove)
         });
 
-        protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
-            new []
-            {
-                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.DirectorySelector_AddHelp),
-                new KeyValuePair<string, string>(nameof(Clear), Rename_Helpers_Commands.DirectorySelector_ClearHelp),
-                new KeyValuePair<string, string>(nameof(Complete), Rename_Helpers_Commands.DirectorySelector_CompleteHelp), 
-                new KeyValuePair<string, string>(nameof(ClearScreen), Rename_Helpers_Commands.DirectorySelector_ClearScreenHelp),
-                new KeyValuePair<string, string>(nameof(Help), Rename_Helpers_Commands.DirectorySelector_HelpHelp),
-                new KeyValuePair<string, string>(nameof(List), Rename_Helpers_Commands.DirectorySelector_ListHelp), 
-                new KeyValuePair<string, string>(nameof(Remove), Rename_Helpers_Commands.DirectorySelector_RemoveHelp), 
-            });
-
         public override void Clear()
         {
             Directories.Clear();

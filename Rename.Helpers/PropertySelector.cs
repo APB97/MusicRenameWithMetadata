@@ -34,20 +34,6 @@ namespace Rename.Helpers
             nameof(Remove)
         });
 
-        protected override Dictionary<string, string> HelpDictionary { get; } = new Dictionary<string, string>(
-            new []
-            {
-                new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.PropertySelector_AddHelp),
-                new KeyValuePair<string, string>(nameof(Clear), Rename_Helpers_Commands.PropertySelector_ClearHelp),
-                new KeyValuePair<string, string>(nameof(Complete), Rename_Helpers_Commands.PropertySelector_CompleteHelp),
-                new KeyValuePair<string, string>(nameof(ClearScreen), Rename_Helpers_Commands.PropertySelector_ClearScreenHelp),
-                new KeyValuePair<string, string>(nameof(Help), Rename_Helpers_Commands.PropertySelector_HelpHelp),
-                new KeyValuePair<string, string>(nameof(HelpCommands), Rename_Helpers_Commands.PropertySelector_HelpCommandsHelp),
-                new KeyValuePair<string, string>(nameof(HelpProperties), Rename_Helpers_Commands.PropertySelector_HelpPropertiesHelp),
-                new KeyValuePair<string, string>(nameof(List), Rename_Helpers_Commands.PropertySelector_ListHelp), 
-                new KeyValuePair<string, string>(nameof(Remove), Rename_Helpers_Commands.PropertySelector_RemoveHelp), 
-            });
-
         public List<string> Properties { get; } = new List<string>();
 
         public virtual void StartInteractive()

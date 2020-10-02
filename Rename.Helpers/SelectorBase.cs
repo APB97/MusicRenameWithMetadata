@@ -13,9 +13,7 @@ namespace Rename.Helpers
         }
 
         protected abstract HashSet<string> Commands { get; }
-        
-        protected abstract Dictionary<string, string> HelpDictionary { get; }
-        
+
         public abstract void Clear();
         
         public virtual void Help(string[] forCommands)
