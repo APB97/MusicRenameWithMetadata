@@ -32,7 +32,7 @@ That's all! Application will rename files at given path(s).
 ### Batch mode
 Second mode is triggered when application is launched with single argument - path to a `JSON` file containing action definitions.
 Example of such a file is included in `Actions.json`.
-For list of possible definitions see [How do I use it](#how-do-i-use-it)
+For list of possible definitions see [How do I use it?](#how-do-i-use-it)
 
 ## How do I use it?
 
