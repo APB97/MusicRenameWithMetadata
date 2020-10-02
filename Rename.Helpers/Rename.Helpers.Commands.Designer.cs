@@ -308,7 +308,7 @@ namespace Rename.Helpers {
         /// </summary>
         internal static string SkipFile_SelectHelp {
             get {
-                return ResourceManager.GetString("SkipFile.SelectHelp", resourceCulture);
+                return ResourceManager.GetString("SkipFile_SelectHelp", resourceCulture);
             }
         }
         

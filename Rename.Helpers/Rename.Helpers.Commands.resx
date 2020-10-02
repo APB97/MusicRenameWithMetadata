@@ -18,7 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="SkipFile.SelectHelp" xml:space="preserve">
+    <data name="SkipFile_SelectHelp" xml:space="preserve">
         <value>Select which file to use for skipping certain words. Usage: Select &lt;path&gt;</value>
     </data>
     <data name="Type_Help_for_help" xml:space="preserve">

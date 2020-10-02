@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using CommandClassInterface;
 using Console;
 
 namespace Rename.Helpers
 {
-    public abstract class SelectorBase
+    public abstract class SelectorBase : ICommandClass
     {
         protected readonly IConsole ConsoleWrapper;
 
@@ -47,6 +48,13 @@ namespace Rename.Helpers
         public bool Complete()
         {
             return true;
+        }
+
+        public abstract IEnumerable<string> CommandsForJson { get; }
+        
+        public string GetHelpFor(string command)
+        {
+            return Rename_Helpers_Commands.ResourceManager.GetString($"{GetType().Name}_{command}Help");
         }
     }
 }

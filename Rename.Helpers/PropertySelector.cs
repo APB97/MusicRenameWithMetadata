@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CommandClassInterface;
 using Console;
 using FileMetadata.Dynamic;
 using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class PropertySelector : SelectorBase, IPropertyList, ICommandClass
+    public class PropertySelector : SelectorBase, IPropertyList
     {
         public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {
             CommandsForJson = new[] {nameof(Add)};
         }
 
-        public IEnumerable<string> CommandsForJson { get; }
+        public override IEnumerable<string> CommandsForJson { get; }
 
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []

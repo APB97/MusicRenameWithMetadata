@@ -10,6 +10,10 @@ namespace Console
         private bool Silent { get; set; }
 
         public IEnumerable<string> CommandsForJson { get; }
+        public string GetHelpFor(string command)
+        {
+            return Console.ResourceManager.GetString($"{nameof(ConsoleWrapper)}_{command}Help");
+        }
 
         public ConsoleWrapper()
         {

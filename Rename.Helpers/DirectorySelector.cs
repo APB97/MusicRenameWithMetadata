@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CommandClassInterface;
 using Console;
 using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class DirectorySelector : SelectorBase, IDirectorySet, ICommandClass
+    public class DirectorySelector : SelectorBase, IDirectorySet
     {
         public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {
             CommandsForJson = new[] {nameof(Add)};
         }
 
-        public IEnumerable<string> CommandsForJson { get; }
+        public override IEnumerable<string> CommandsForJson { get; }
 
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []

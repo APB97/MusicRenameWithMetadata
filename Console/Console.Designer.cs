@@ -63,18 +63,18 @@ namespace Console {
         /// <summary>
         ///   Looks up a localized string similar to Causes Console output to be disabled. Usage:  BeSilent.
         /// </summary>
-        internal static string BeSilentHelp {
+        internal static string ConsoleWrapper_BeSilentHelp {
             get {
-                return ResourceManager.GetString("BeSilentHelp", resourceCulture);
+                return ResourceManager.GetString("ConsoleWrapper_BeSilentHelp", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Causes Console output to be enabled. Usage: DontBeSilent.
         /// </summary>
-        internal static string DontBeSilentHelp {
+        internal static string ConsoleWrapper_DontBeSilentHelp {
             get {
-                return ResourceManager.GetString("DontBeSilentHelp", resourceCulture);
+                return ResourceManager.GetString("ConsoleWrapper_DontBeSilentHelp", resourceCulture);
             }
         }
     }

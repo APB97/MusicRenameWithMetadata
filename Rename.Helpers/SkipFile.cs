@@ -12,6 +12,11 @@ namespace Rename.Helpers
         private readonly IConsole _console;
 
         public IEnumerable<string> CommandsForJson { get; }
+        
+        public string GetHelpFor(string command)
+        {
+            return Rename_Helpers_Commands.ResourceManager.GetString($"{nameof(SkipFile)}_{command}Help");
+        }
 
         public SkipFile(IConsole console)
         {
