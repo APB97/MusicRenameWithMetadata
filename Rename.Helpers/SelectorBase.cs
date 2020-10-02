@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CommandClassInterface;
 using Console;
 
@@ -10,14 +11,12 @@ namespace Rename.Helpers
 
         protected SelectorBase(IConsole consoleWrapper)
         {
-            ConsoleWrapper = consoleWrapper;
+            ConsoleWrapper = consoleWrapper ?? throw new ArgumentNullException(nameof(consoleWrapper));
         }
 
         protected abstract HashSet<string> Commands { get; }
 
-        public abstract void Clear();
-        
-        public virtual void Help(string[] forCommands)
+        public void Help(string[] forCommands)
         {
             if (forCommands.Length != 0)
             {

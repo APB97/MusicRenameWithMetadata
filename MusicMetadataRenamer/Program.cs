@@ -24,7 +24,7 @@ namespace MusicMetadataRenamer
                 case 0:
                 {
                     directorySelector.StartInteractive();
-                
+                    propertySelector.StartInteractive();
                     skipFile.Prompt();
                     processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     

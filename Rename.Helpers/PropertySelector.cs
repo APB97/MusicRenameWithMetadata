@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Console;
+using FileMetadata.Mp3;
 using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
@@ -71,7 +72,7 @@ namespace Rename.Helpers
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
         }
 
-        public override void Clear()
+        public void Clear()
         {
             Properties.Clear();
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
@@ -85,6 +86,11 @@ namespace Rename.Helpers
         public void HelpProperties()
         {
             System.Console.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
+            const BindingFlags bindingFlags = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static;
+            foreach (MethodInfo method in typeof(Mp3InfoReader).GetMethods(bindingFlags))
+            {
+                System.Console.WriteLine(method.Name);
+            }
         }
 
         public void List()

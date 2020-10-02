@@ -20,7 +20,7 @@ namespace Rename.Helpers
         {
             Parallel.ForEach(directorySelector.Directories, dirName =>
             {
-                metadataRename.RenameMultiple(Directory.GetFiles(dirName, "*.*", SearchOption.AllDirectories), wordProcessor);
+                metadataRename.RenameMultiple(Directory.GetFiles(dirName, "*.*", SearchOption.AllDirectories), wordProcessor, propertySelector.Properties);
                 _console.WriteLine($"Renaming in '{dirName}' complete.");
             });
             _console.WriteLine("Renaming finished.");

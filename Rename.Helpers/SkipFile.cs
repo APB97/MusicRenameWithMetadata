@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Rename.Helpers
 
         public SkipFile(IConsole console)
         {
-            _console = console;
+            _console = console ?? throw new ArgumentNullException(nameof(console));
             CommandsForJson = new[] {nameof(Select)};
         }
 

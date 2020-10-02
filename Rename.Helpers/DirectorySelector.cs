@@ -30,7 +30,7 @@ namespace Rename.Helpers
             nameof(Remove)
         });
 
-        public override void Clear()
+        public virtual void Clear()
         {
             Directories.Clear();
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directory_list_cleared);
