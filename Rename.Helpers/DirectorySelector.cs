@@ -62,7 +62,7 @@ namespace Rename.Helpers
             }
         }
 
-        public virtual void Add(params string[] dirs)
+        public void Add(params string[] dirs)
         {
             foreach (string dir in dirs)
             {
@@ -72,7 +72,7 @@ namespace Rename.Helpers
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directories_added);
         }
 
-        public virtual void List()
+        public void List()
         {
             foreach (string directory in Directories)
             {
