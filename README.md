@@ -1,5 +1,5 @@
-# MusicRenameWithMetadata
-Rename files using their metadata with this tool.
+# Rename Music with Metadata
+Rename music files using their metadata with this tool.
 
 ## What does it do?
 It allows users to specify properties to use for renaming and directories with files they want to rename.
