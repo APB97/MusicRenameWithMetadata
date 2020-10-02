@@ -35,18 +35,18 @@ namespace Rename.Helpers
             new []
             {
                 new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.DirectorySelector_AddHelp),
-                new KeyValuePair<string, string>(nameof(Clear), "Clear list of directories to process. Usage: Clear"),
-                new KeyValuePair<string, string>(nameof(Complete), "Complete directory selection step. Usage: Complete"), 
-                new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
-                new KeyValuePair<string, string>(nameof(Help), "Display list of Commands and their usage or chosen commands' help. Usage: Help [<cmd1>] [<cmd2>] [...]"),
-                new KeyValuePair<string, string>(nameof(List), "Display list of directories to process. Usage: List"), 
-                new KeyValuePair<string, string>(nameof(Remove), "Remove directories from the list. Usage: Remove <dir1> [<dir2>] [...]"), 
+                new KeyValuePair<string, string>(nameof(Clear), Rename_Helpers_Commands.DirectorySelector_ClearHelp),
+                new KeyValuePair<string, string>(nameof(Complete), Rename_Helpers_Commands.DirectorySelector_CompleteHelp), 
+                new KeyValuePair<string, string>(nameof(ClearScreen), Rename_Helpers_Commands.DirectorySelector_ClearScreenHelp),
+                new KeyValuePair<string, string>(nameof(Help), Rename_Helpers_Commands.DirectorySelector_HelpHelp),
+                new KeyValuePair<string, string>(nameof(List), Rename_Helpers_Commands.DirectorySelector_ListHelp), 
+                new KeyValuePair<string, string>(nameof(Remove), Rename_Helpers_Commands.DirectorySelector_RemoveHelp), 
             });
 
         public override void Clear()
         {
             Directories.Clear();
-            ConsoleWrapper.WriteLine("Directory list cleared.");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directory_list_cleared);
         }
 
         public HashSet<string> Directories { get; } = new HashSet<string>();
@@ -81,7 +81,7 @@ namespace Rename.Helpers
                 Directories.Add(dir);
             }
 
-            ConsoleWrapper.WriteLine("Directories added to list.");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directories_added);
         }
 
         public virtual void List()
@@ -99,7 +99,7 @@ namespace Rename.Helpers
                 Directories.Remove(directory);
             }
             
-            ConsoleWrapper.WriteLine("Directories removed from the list.");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directories_removed);
         }
 
         public override string ToString()

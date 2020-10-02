@@ -27,7 +27,7 @@
     <data name="PropertySelector.AddHelp" xml:space="preserve">
         <value>Add properties to list. Usage: Add &lt;p1&gt; [&lt;p2&gt;] [...]</value>
     </data>
-    <data name="DirectorySelector.AddHelp" xml:space="preserve">
+    <data name="DirectorySelector_AddHelp" xml:space="preserve">
         <value>Add directories to processing list. Usage: Add &lt;dir1&gt; [&lt;dir2&gt;] [...]</value>
     </data>
     <data name="SkipFile_Prompt_Enter_the_skip_file" xml:space="preserve">
@@ -35,5 +35,32 @@
     </data>
     <data name="SkipFile_Prompt_Press_Enter_once_more" xml:space="preserve">
         <value>Press Enter once more to confirm or enter different path:</value>
+    </data>
+    <data name="Messages.Directories_added" xml:space="preserve">
+        <value>Directories added to list.</value>
+    </data>
+    <data name="Messages.Directories_removed" xml:space="preserve">
+        <value>Directories removed from the list.</value>
+    </data>
+    <data name="Messages.Directory_list_cleared" xml:space="preserve">
+        <value>Directory list cleared.</value>
+    </data>
+    <data name="DirectorySelector_ClearHelp" xml:space="preserve">
+        <value>Clear list of directories to process. Usage: Clear</value>
+    </data>
+    <data name="DirectorySelector_CompleteHelp" xml:space="preserve">
+        <value>Complete directory selection step. Usage: Complete</value>
+    </data>
+    <data name="DirectorySelector_ClearScreenHelp" xml:space="preserve">
+        <value>Clear current console's screen. Usage: ClearScreen</value>
+    </data>
+    <data name="DirectorySelector_HelpHelp" xml:space="preserve">
+        <value>Display list of Commands and their usage or chosen commands' help. Usage: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...]</value>
+    </data>
+    <data name="DirectorySelector_ListHelp" xml:space="preserve">
+        <value>Display list of directories to process. Usage: List</value>
+    </data>
+    <data name="DirectorySelector_RemoveHelp" xml:space="preserve">
+        <value>Remove directories from the list. Usage: Remove &lt;dir1&gt; [&lt;dir2&gt;] [...]</value>
     </data>
 </root>

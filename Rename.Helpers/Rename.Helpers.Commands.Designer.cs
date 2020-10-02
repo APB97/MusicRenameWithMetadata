@@ -65,7 +65,88 @@ namespace Rename.Helpers {
         /// </summary>
         internal static string DirectorySelector_AddHelp {
             get {
-                return ResourceManager.GetString("DirectorySelector.AddHelp", resourceCulture);
+                return ResourceManager.GetString("DirectorySelector_AddHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear list of directories to process. Usage: Clear.
+        /// </summary>
+        internal static string DirectorySelector_ClearHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_ClearHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear current console&apos;s screen. Usage: ClearScreen.
+        /// </summary>
+        internal static string DirectorySelector_ClearScreenHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_ClearScreenHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete directory selection step. Usage: Complete.
+        /// </summary>
+        internal static string DirectorySelector_CompleteHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_CompleteHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display list of Commands and their usage or chosen commands&apos; help. Usage: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...].
+        /// </summary>
+        internal static string DirectorySelector_HelpHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_HelpHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display list of directories to process. Usage: List.
+        /// </summary>
+        internal static string DirectorySelector_ListHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_ListHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove directories from the list. Usage: Remove &lt;dir1&gt; [&lt;dir2&gt;] [...].
+        /// </summary>
+        internal static string DirectorySelector_RemoveHelp {
+            get {
+                return ResourceManager.GetString("DirectorySelector_RemoveHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directories added to list..
+        /// </summary>
+        internal static string Messages_Directories_added {
+            get {
+                return ResourceManager.GetString("Messages.Directories_added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directories removed from the list..
+        /// </summary>
+        internal static string Messages_Directories_removed {
+            get {
+                return ResourceManager.GetString("Messages.Directories_removed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directory list cleared..
+        /// </summary>
+        internal static string Messages_Directory_list_cleared {
+            get {
+                return ResourceManager.GetString("Messages.Directory_list_cleared", resourceCulture);
             }
         }
         
