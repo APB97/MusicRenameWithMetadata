@@ -75,8 +75,8 @@ For list of possible definitions see [How do I use it](#how-do-i-use-it)
       "ActionClass": "DirectorySelector",
       "ActionName": "Add",
       "ActionParameters": [
-        "C:\\\\Music\\\\Example - 1",
-        "C:\\\\Music\\\\Example - 2"
+        "C:\\Music\\Example - 1",
+        "C:\\Music\\Example - 2"
       ]
     }
   ]
