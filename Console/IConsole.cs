@@ -1,6 +1,6 @@
 ﻿namespace Console
 {
-    public interface IConsole
+    public interface IConsole : ISilenceAble
     {
         void WriteLine();
         void WriteLine(string text);
