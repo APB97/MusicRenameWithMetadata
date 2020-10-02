@@ -151,11 +151,137 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is already on the list so it wasn&apos;t added..
+        /// </summary>
+        internal static string PropertySelector__0__is_already_on_the_list {
+            get {
+                return ResourceManager.GetString("PropertySelector__0__is_already_on_the_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add properties to list. Usage: Add &lt;p1&gt; [&lt;p2&gt;] [...].
         /// </summary>
         internal static string PropertySelector_AddHelp {
             get {
-                return ResourceManager.GetString("PropertySelector.AddHelp", resourceCulture);
+                return ResourceManager.GetString("PropertySelector_AddHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Properties:.
+        /// </summary>
+        internal static string PropertySelector_Available_Properties {
+            get {
+                return ResourceManager.GetString("PropertySelector_Available_Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear properties list. Usage: Clear.
+        /// </summary>
+        internal static string PropertySelector_ClearHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_ClearHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear current console&apos;s screen. Usage: ClearScreen.
+        /// </summary>
+        internal static string PropertySelector_ClearScreenHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_ClearScreenHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete property selection step. Usage: Complete.
+        /// </summary>
+        internal static string PropertySelector_CompleteHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_CompleteHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display list of commands. Usage: HelpCommands.
+        /// </summary>
+        internal static string PropertySelector_HelpCommandsHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_HelpCommandsHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display list of commands with their help and available properties. Usage: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...].
+        /// </summary>
+        internal static string PropertySelector_HelpHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_HelpHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display list of available properties. Usage: HelpProperties.
+        /// </summary>
+        internal static string PropertySelector_HelpPropertiesHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_HelpPropertiesHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display list of selected properties. Usage: List.
+        /// </summary>
+        internal static string PropertySelector_ListHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_ListHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties added to list..
+        /// </summary>
+        internal static string PropertySelector_Properties_added {
+            get {
+                return ResourceManager.GetString("PropertySelector_Properties_added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties removed from the list..
+        /// </summary>
+        internal static string PropertySelector_Properties_removed {
+            get {
+                return ResourceManager.GetString("PropertySelector_Properties_removed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property list cleared..
+        /// </summary>
+        internal static string PropertySelector_Property_list_cleared {
+            get {
+                return ResourceManager.GetString("PropertySelector_Property_list_cleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove properties from the list. Usage: Remove &lt;p1&gt; [&lt;p2&gt;] [...].
+        /// </summary>
+        internal static string PropertySelector_RemoveHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_RemoveHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Properties:.
+        /// </summary>
+        internal static string PropertySelector_Selected_Properties {
+            get {
+                return ResourceManager.GetString("PropertySelector_Selected_Properties", resourceCulture);
             }
         }
         

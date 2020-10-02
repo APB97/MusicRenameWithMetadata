@@ -32,11 +32,12 @@ namespace Rename.Helpers
 
         protected void HelpInternal(IEnumerable<string> forCommands)
         {
+            var typeName = GetType().Name;
             foreach (string command in forCommands)
             {
-                System.Console.WriteLine(HelpDictionary.TryGetValue(command, out string helpText)
-                    ? $"{command}\t{helpText}"
-                    : command);
+                string helpForCommand = Rename_Helpers_Commands.ResourceManager.GetString($"{typeName}_{command}Help");
+                // ReSharper disable once LocalizableElement
+                System.Console.WriteLine("{0, 16}\t{1}", command, helpForCommand);
             }
         }
 

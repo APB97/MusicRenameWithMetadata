@@ -38,14 +38,14 @@ namespace Rename.Helpers
             new []
             {
                 new KeyValuePair<string, string>(nameof(Add), Rename_Helpers_Commands.PropertySelector_AddHelp),
-                new KeyValuePair<string, string>(nameof(Clear), "Clear properties list. Usage: Clear"),
-                new KeyValuePair<string, string>(nameof(Complete), "Complete property selection step. Usage: Complete"),
-                new KeyValuePair<string, string>(nameof(ClearScreen), "Clear current console's screen. Usage: ClearScreen"),
-                new KeyValuePair<string, string>(nameof(Help), "Display list of commands with their help and available properties. Usage: Help [<cmd1>] [<cmd2>] [...]"),
-                new KeyValuePair<string, string>(nameof(HelpCommands), "Display list of commands. Usage: HelpCommands"),
-                new KeyValuePair<string, string>(nameof(HelpProperties), "Display list of available properties. Usage: HelpProperties"),
-                new KeyValuePair<string, string>(nameof(List), "Display list of selected properties. Usage: List"), 
-                new KeyValuePair<string, string>(nameof(Remove), "Remove properties from the list. Usage: Remove <p1> [<p2>] [...]"), 
+                new KeyValuePair<string, string>(nameof(Clear), Rename_Helpers_Commands.PropertySelector_ClearHelp),
+                new KeyValuePair<string, string>(nameof(Complete), Rename_Helpers_Commands.PropertySelector_CompleteHelp),
+                new KeyValuePair<string, string>(nameof(ClearScreen), Rename_Helpers_Commands.PropertySelector_ClearScreenHelp),
+                new KeyValuePair<string, string>(nameof(Help), Rename_Helpers_Commands.PropertySelector_HelpHelp),
+                new KeyValuePair<string, string>(nameof(HelpCommands), Rename_Helpers_Commands.PropertySelector_HelpCommandsHelp),
+                new KeyValuePair<string, string>(nameof(HelpProperties), Rename_Helpers_Commands.PropertySelector_HelpPropertiesHelp),
+                new KeyValuePair<string, string>(nameof(List), Rename_Helpers_Commands.PropertySelector_ListHelp), 
+                new KeyValuePair<string, string>(nameof(Remove), Rename_Helpers_Commands.PropertySelector_RemoveHelp), 
             });
 
         public List<string> Properties { get; } = new List<string>();
@@ -79,7 +79,7 @@ namespace Rename.Helpers
             {
                 if (Properties.Contains(property))
                 {
-                    ConsoleWrapper.WriteLine($"{property} is already on the list so it wasn't added.");
+                    ConsoleWrapper.WriteLine(string.Format(Rename_Helpers_Commands.PropertySelector__0__is_already_on_the_list, property));
                 }
                 else
                 {
@@ -87,13 +87,13 @@ namespace Rename.Helpers
                 }
             }
 
-            ConsoleWrapper.WriteLine("Properties added to list.");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
         }
 
         public override void Clear()
         {
             Properties.Clear();
-            ConsoleWrapper.WriteLine("Property list cleared.");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
         }
 
         public override void Help(string[] forCommands)
@@ -109,7 +109,7 @@ namespace Rename.Helpers
 
         public virtual void HelpProperties()
         {
-            System.Console.WriteLine("Available Properties:");
+            System.Console.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
             foreach (FieldInfo field in typeof(PropertyNames).GetFields())
             {
                 System.Console.WriteLine(field.GetValue(null));
@@ -118,7 +118,7 @@ namespace Rename.Helpers
 
         public virtual void List()
         {
-            ConsoleWrapper.WriteLine("Selected Properties:");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
             foreach (string property in Properties)
             {
                 ConsoleWrapper.WriteLine(property);
@@ -131,7 +131,7 @@ namespace Rename.Helpers
             {
                 Properties.Remove(property);
             }
-            ConsoleWrapper.WriteLine("Properties removed from the list.");
+            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_removed);
         }
 
         public override string ToString()
