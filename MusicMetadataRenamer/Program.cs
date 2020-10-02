@@ -23,7 +23,6 @@ namespace MusicMetadataRenamer
             {
                 case 0:
                 {
-                    propertySelector.StartInteractive();
                     directorySelector.StartInteractive();
                 
                     skipFile.Prompt();
