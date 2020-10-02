@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Console;
@@ -60,9 +61,36 @@ namespace Rename.Helpers
 
         public void Add(params string[] dirs)
         {
-            foreach (string dir in dirs)
+            if (!dirs.All(Directory.Exists))
             {
-                Directories.Add(dir);
+                string joined = string.Join(' ', dirs);
+                int index = 0;
+                while (index >= 0 && index < joined.Length)
+                {
+                    // Find next 2 quotation marks 
+                    index = joined.IndexOf('\"', index);
+                    int nextIndex = joined.IndexOf('\"', index + 1);
+                    // Grab directory within quotation marks
+                    string dirBetween = joined.Substring(index + 1, nextIndex - index - 1);
+                    // Remove directory and quotation marks from string
+                    joined = joined.Remove(index, nextIndex - index + 1);
+                    // Set index to last found quotation mark
+                    index = nextIndex;
+                    // Add Directory to list if it exists
+                    if (Directory.Exists(dirBetween))                    
+                        Directories.Add(dirBetween);
+                }
+
+                foreach (string dirPath in joined.Split(' '))
+                    if (Directory.Exists(dirPath))
+                        Directories.Add(dirPath);
+                
+            }
+            else
+            {
+                foreach (string dir in dirs)
+                    if (Directory.Exists(dir))
+                        Directories.Add(dir);
             }
 
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directories_added);
