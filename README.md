@@ -52,19 +52,6 @@ For list of possible definitions see [How do I use it?](#how-do-i-use-it)
 }
 ```
 
-- Disable __Silent__ mode - further actions will include console output
-```json
-{
-  "Actions": [
-    {
-      "ActionClass": "Console",
-      "ActionName": "DontBeSilent",
-      "ActionParameters": []
-    }
-  ]
-}
-```
-
 ### Directory Selector
 
 - Add directories to processing list
