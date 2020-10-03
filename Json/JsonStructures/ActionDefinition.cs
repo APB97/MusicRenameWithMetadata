@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Rename.Helpers
+namespace JsonStructures
 {
     [Serializable]
     [SuppressMessage("ReSharper", "UnassignedField.Global")]

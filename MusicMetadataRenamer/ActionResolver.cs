@@ -2,8 +2,8 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using JsonStructures;
 using Newtonsoft.Json;
-using Rename.Helpers;
 
 namespace MusicMetadataRenamer
 {
