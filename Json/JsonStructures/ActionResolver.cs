@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace JsonStructures
 {
+    /// <summary>
+    /// Allows execution of commands from a JSON file
+    /// </summary>
     public class ActionResolver
     {
         private readonly Dictionary<string, object> _classDefaultObjects;
@@ -26,7 +29,6 @@ namespace JsonStructures
         /// Executes Action(s) from given file.
         /// </summary>
         /// <param name="actionsFile">path to JSON file with commands.</param>
-        /// <returns>awaitable Task</returns>
         public void Execute(string actionsFile)
         {
             if (!File.Exists(actionsFile))
