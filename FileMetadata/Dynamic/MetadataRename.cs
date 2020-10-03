@@ -42,7 +42,7 @@ namespace FileMetadata.Dynamic
             }
         }
         
-        public void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
+        public static void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
         {
             string extension = Path.GetExtension(filePath);
 
