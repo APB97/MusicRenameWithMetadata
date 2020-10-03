@@ -25,7 +25,11 @@ namespace MusicMetadataRenamer
                 {
                     directorySelector.StartInteractive();
                     propertySelector.StartInteractive();
+
+                    string defaultPath = skipFile.SelectedPath;
                     skipFile.Prompt();
+                    if (skipFile.SelectedPath != defaultPath)
+                        await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
                     processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
                     break;

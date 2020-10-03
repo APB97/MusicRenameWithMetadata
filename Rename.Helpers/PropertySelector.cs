@@ -3,11 +3,10 @@ using System.Linq;
 using System.Reflection;
 using Console;
 using FileMetadata.Mp3;
-using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class PropertySelector : SelectorBase, IPropertyList
+    public class PropertySelector : SelectorBase
     {
         public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {

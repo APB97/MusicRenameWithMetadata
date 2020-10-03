@@ -3,11 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Console;
-using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class DirectorySelector : SelectorBase, IDirectorySet, ISilenceAble
+    public class DirectorySelector : SelectorBase, ISilenceAble
     {
         public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper)
         {
@@ -30,7 +29,7 @@ namespace Rename.Helpers
             nameof(Remove)
         });
 
-        public virtual void Clear()
+        public void Clear()
         {
             Directories.Clear();
             ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directory_list_cleared);
