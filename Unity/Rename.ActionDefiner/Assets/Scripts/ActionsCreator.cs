@@ -12,7 +12,7 @@ public class ActionsCreator
         _definitionsToSerialize = definitionsToSerialize;
     }
 
-    public int Add(string defaultCommandObject, string actionName, params string[] parameters)
+    public void Add(string defaultCommandObject, string actionName, params string[] parameters)
     {
         ActionDefinition definition = new ActionDefinition()
         {
@@ -24,7 +24,6 @@ public class ActionsCreator
             definition.ActionParameters = parameters;
         
         _definitionsToSerialize.Add(definition);
-        return _definitionsToSerialize.Count - 1;
     }
 
     public void CreateFile(string pathText)
@@ -41,5 +40,15 @@ public class ActionsCreator
             ActionName = actionNameText,
             ActionParameters = parameters
         };
+    }
+
+    public void RemoveAt(int? selectedIndex)
+    {
+        if (selectedIndex.HasValue) _definitionsToSerialize.RemoveAt(selectedIndex.Value);
+    }
+
+    public ActionDefinition ElementAt(int index)
+    {
+        return _definitionsToSerialize[index];
     }
 }

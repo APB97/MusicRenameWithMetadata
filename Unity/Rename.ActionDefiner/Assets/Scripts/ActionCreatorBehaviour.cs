@@ -14,27 +14,36 @@ public class ActionCreatorBehaviour : MonoBehaviour
     [SerializeField] private Transform actionsListingParent;
     [SerializeField] private Button buttonTemplate;
     [SerializeField] private Button buttonUpdate;
+    [SerializeField] private Button buttonRemove;
+    
     private ActionsCreator _creator;
     private int? _selectedIndex;
     private Button _button;
+    private ParametersCreatorBehaviour _parametersCreator;
 
     private void Awake()
     {
         _creator = new ActionsCreator(new List<ActionDefinition>());
+        _parametersCreator = GetComponent<ParametersCreatorBehaviour>();
     }
 
     public void Add()
     {
         var parameters = PopAllParameters();
 
-        int indexOfAdded = _creator.Add(actionClass.text, actionName.text, parameters.ToArray());
+        _creator.Add(actionClass.text, actionName.text, parameters.ToArray());
 
         var btn = Instantiate(buttonTemplate, actionsListingParent);
         btn.GetComponentInChildren<Text>().text = StringifyActionWithParams(parameters);
         btn.gameObject.SetActive(true);
         btn.onClick.AddListener(() =>
         {
-            SelectForUpdate(indexOfAdded, btn);
+            for (int index = 1; index < actionsListingParent.childCount; index++)
+            {
+                if (actionsListingParent.GetChild(index) != btn.transform) continue;
+                SelectForUpdate(index - 1, btn);
+                return;
+            }
         });
     }
 
@@ -65,7 +74,22 @@ public class ActionCreatorBehaviour : MonoBehaviour
     {
         _selectedIndex = indexOfAdded;
         _button = button;
-        buttonUpdate.gameObject.SetActive(true);
+
+        var definition = _creator.ElementAt(indexOfAdded);
+        actionClass.text = definition.ActionClass;
+        Dropdown dropdownClass = actionClass.GetComponentInParent<Dropdown>();
+        dropdownClass.onValueChanged.Invoke(dropdownClass.options.FindIndex(data => data.text == definition.ActionClass));
+        
+        actionName.text = definition.ActionName;
+        Dropdown dropdownName = actionName.GetComponentInParent<Dropdown>();
+        dropdownName.onValueChanged.Invoke(dropdownName.options.FindIndex(data => data.text == definition.ActionName));
+        
+        _parametersCreator.ClearParams();
+        if (definition.ActionParameters != null)
+            foreach (string parameter in definition.ActionParameters)
+                _parametersCreator.AddParam(parameter);
+        
+        ShowButtonsForSelection();
     }
 
     public void CreateFile()
@@ -73,11 +97,26 @@ public class ActionCreatorBehaviour : MonoBehaviour
         _creator.CreateFile(path.text);
     }
 
-    public void UpdateElement()
+    public void UpdateCurrentElement()
     {
         var parameters = PopAllParameters();
         _creator.UpdateAt(_selectedIndex, actionClass.text, actionName.text, parameters.ToArray());
         _button.GetComponentInChildren<Text>().text = StringifyActionWithParams(parameters);
-        buttonUpdate.gameObject.SetActive(false);
+        ShowButtonsForSelection(false);
+        _parametersCreator.ClearParams();
+    }
+
+    private void ShowButtonsForSelection(bool show = true)
+    {
+        buttonUpdate.gameObject.SetActive(show);
+        buttonRemove.gameObject.SetActive(show);
+    }
+
+    public void RemoveCurrentElement()
+    {
+        _creator.RemoveAt(_selectedIndex);
+        Destroy(_button.gameObject);
+        ShowButtonsForSelection(false);
+        _parametersCreator.ClearParams();
     }
 }
