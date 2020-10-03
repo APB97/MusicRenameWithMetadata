@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Console;
+using JsonStructures;
 using Rename.Helpers;
 using StringProcessor;
 using StringProcessor.SkipCommonWords;

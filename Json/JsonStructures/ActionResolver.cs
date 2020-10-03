@@ -2,10 +2,9 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using JsonStructures;
 using Newtonsoft.Json;
 
-namespace MusicMetadataRenamer
+namespace JsonStructures
 {
     public class ActionResolver
     {
