@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Console</name>
+    </assembly>
+    <members>
+        <member name="T:Console.Console">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Console.Console.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Console.Console.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Console.Console.ConsoleWrapper_BeSilentHelp">
+            <summary>
+              Looks up a localized string similar to Causes Console output to be disabled. Usage: BeSilent.
+            </summary>
+        </member>
+        <member name="P:Console.Console.ConsoleWrapper_DontBeSilentHelp">
+            <summary>
+              Looks up a localized string similar to Causes Console output to be enabled. Usage: DontBeSilent.
+            </summary>
+        </member>
+        <member name="T:Console.IConsole">
+            <summary>
+            Interface wrapping most basic Console functionality
+            </summary>
+        </member>
+        <member name="M:Console.IConsole.WriteLine">
+            <summary>
+            Write current line terminator to Console
+            </summary>
+        </member>
+        <member name="M:Console.IConsole.WriteLine(System.String)">
+            <summary>
+            Write contents of string to Console, followed by current line terminator
+            </summary>
+            <param name="text">Text to display on Console</param>
+        </member>
+        <member name="M:Console.IConsole.Clear">
+            <summary>
+            Clear Console's screen
+            </summary>
+        </member>
+        <member name="M:Console.IConsole.WriteLine(System.Object)">
+            <summary>
+            Write string representation of an object followed by current line terminator
+            </summary>
+            <param name="value">Object to display on Console</param>
+        </member>
+        <member name="T:Console.ISilenceAble">
+            <summary>
+            Interface for suppressing output
+            </summary>
+        </member>
+        <member name="M:Console.ISilenceAble.BeSilent">
+            <summary>
+            Implement in class to disable output when called
+            </summary>
+        </member>
+        <member name="M:Console.ISilenceAble.DontBeSilent">
+            <summary>
+            Implement in class to enable output when called
+            </summary>
+        </member>
+        <member name="T:Console.ISilenceAbleConsole">
+            <inheritdoc cref="T:Console.IConsole" />
+            in addition, it allows to silence the Console
+        </member>
+        <member name="T:Console.SilenceAbleConsole">
+            <inheritdoc cref="T:Console.ISilenceAbleConsole"/>
+        </member>
+        <member name="P:Console.SilenceAbleConsole.CommandsForJson">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.GetHelpFor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.#ctor">
+            <summary>
+            Create new instance of SilenceAbleConsole class
+            </summary>
+        </member>
+        <member name="M:Console.SilenceAbleConsole.WriteLine">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.WriteLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.WriteLine(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.BeSilent">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.DontBeSilent">
+            <inheritdoc />
+        </member>
+        <member name="M:Console.SilenceAbleConsole.ToString">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

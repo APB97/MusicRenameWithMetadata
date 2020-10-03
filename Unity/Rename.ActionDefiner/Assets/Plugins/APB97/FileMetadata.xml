@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FileMetadata</name>
+    </assembly>
+    <members>
+        <member name="T:FileMetadata.Dynamic.MetadataRename">
+            <summary>
+            Class used to rename Single or Multiple files using file's property values.
+            </summary>
+        </member>
+        <member name="M:FileMetadata.Dynamic.MetadataRename.#ctor(Console.IConsole,System.String)">
+            <summary>
+            Create new instance of MetadataRename for use when renaming files
+            </summary>
+            <param name="silenceAbleConsole">Console instance</param>
+            <param name="separator">Separator used when joining multiple properties</param>
+        </member>
+        <member name="M:FileMetadata.Dynamic.MetadataRename.RenameMultiple(System.Collections.Generic.IEnumerable{System.String},StringProcessor.IStringProcessor,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Renames multiple files
+            </summary>
+            <param name="filePaths">Collection of file paths</param>
+            <param name="processor">String processor instance</param>
+            <param name="propertyNames"></param>
+        </member>
+        <member name="T:FileMetadata.Extensions.StringExtensions">
+            <summary>
+            Static class containing Extension method(s) for string(s).
+            </summary>
+        </member>
+        <member name="M:FileMetadata.Extensions.StringExtensions.JoinForFilePath(System.String[],System.String)">
+            <summary>
+            Extension method to join strings with separator but skipping invalid filename chars.
+            </summary>
+            <param name="joinThese">Array of strings to join.</param>
+            <param name="separator">Separator to be inserted between strings.</param>
+            <returns>Joined strings for usage as a filename.</returns>
+        </member>
+        <member name="T:FileMetadata.Mp3.Mp3InfoReader">
+            <summary>
+            Static class for reading Properties of *.mp3 file
+            </summary>
+        </member>
+        <member name="M:FileMetadata.Mp3.Mp3InfoReader.Title(System.String)">
+            <summary>
+            Get Title of given file, if any. 
+            </summary>
+            <param name="fileAtPath">Path to file we want to get title from</param>
+            <returns>Returns Title from file properties or string.Empty</returns>
+        </member>
+        <member name="M:FileMetadata.Mp3.Mp3InfoReader.Artists(System.String)">
+            <summary>
+            Get Artists of given file, if any.
+            </summary>
+            <param name="fileAtPath">Path to file we want to get artists from</param>
+            <returns>Returns Artists from file properties or string.Empty</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JsonStructures</name>
+    </assembly>
+    <members>
+        <member name="T:JsonStructures.ActionDefinition">
+            <summary>
+            Singular Action Definition for JSON
+            </summary>
+        </member>
+        <member name="F:JsonStructures.ActionDefinition.ActionClass">
+            <summary>
+            Name of the class containing Action
+            </summary>
+        </member>
+        <member name="F:JsonStructures.ActionDefinition.ActionName">
+            <summary>
+            Name of the Action
+            </summary>
+        </member>
+        <member name="F:JsonStructures.ActionDefinition.ActionParameters">
+            <summary>
+            Action's parameters, if any
+            </summary>
+        </member>
+        <member name="T:JsonStructures.ActionDefinitions">
+            <summary>
+            Possibly multiple Action Definitions are stored in JSON using this structure.
+            </summary>
+        </member>
+        <member name="F:JsonStructures.ActionDefinitions.Actions">
+            <summary>
+            All setup actions to perform
+            </summary>
+        </member>
+        <member name="M:JsonStructures.ActionResolver.#ctor(System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Create new instance of resolver
+            </summary>
+            <param name="keyObjectPairs">Pairs (key, object) to use when resolving Actions</param>
+        </member>
+        <member name="M:JsonStructures.ActionResolver.Execute(System.String)">
+            <summary>
+            Executes Action(s) from given file.
+            </summary>
+            <param name="actionsFile">path to JSON file with commands.</param>
+            <returns>awaitable Task</returns>
+        </member>
+    </members>
+</doc>
