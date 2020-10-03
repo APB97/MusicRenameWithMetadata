@@ -13,11 +13,11 @@ namespace ActionsCreator
         public CreateActionsWindow()
         {
             InitializeComponent();
-            ConsoleWrapper consoleWrapper = new ConsoleWrapper();
-            ComboBoxActionClass.Items.Add(consoleWrapper);
-            ComboBoxActionClass.Items.Add(new PropertySelector(consoleWrapper));
-            ComboBoxActionClass.Items.Add(new DirectorySelector(consoleWrapper));
-            ComboBoxActionClass.Items.Add(new SkipFile(consoleWrapper));
+            SilenceAbleConsole silenceAbleConsole = new SilenceAbleConsole();
+            ComboBoxActionClass.Items.Add(silenceAbleConsole);
+            ComboBoxActionClass.Items.Add(new PropertySelector(silenceAbleConsole));
+            ComboBoxActionClass.Items.Add(new DirectorySelector(silenceAbleConsole));
+            ComboBoxActionClass.Items.Add(new SkipFile(silenceAbleConsole));
         }
 
         private void ComboBoxActionClass_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

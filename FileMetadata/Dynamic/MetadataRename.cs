@@ -12,12 +12,12 @@ namespace FileMetadata.Dynamic
 {
     public class MetadataRename
     {
-        private readonly IConsole _console;
+        private readonly ISilenceAbleConsole _silenceAbleConsole;
         private readonly string _separator;
         
-        public MetadataRename(IConsole console, string separator = null)
+        public MetadataRename(ISilenceAbleConsole silenceAbleConsole, string separator = null)
         {
-            _console = console ?? throw new ArgumentNullException(nameof(console));
+            _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
             _separator = separator ?? " - ";
         }
 
@@ -39,7 +39,7 @@ namespace FileMetadata.Dynamic
                 }
                 catch (Exception e)
                 {
-                    _console.WriteLine(e);
+                    _silenceAbleConsole.WriteLine(e);
                 }
             }
         }

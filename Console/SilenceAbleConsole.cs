@@ -4,18 +4,25 @@ using CommandClassInterface;
 
 namespace Console
 {
+    /// <inheritdoc cref="ISilenceAbleConsole"/>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public class ConsoleWrapper : IConsole, ICommandClass
+    public class SilenceAbleConsole : ISilenceAbleConsole, ICommandClass
     {
         private bool Silent { get; set; }
 
+        /// <inheritdoc />
         public IEnumerable<string> CommandsForJson { get; }
+
+        /// <inheritdoc />
         public string GetHelpFor(string command)
         {
-            return Console.ResourceManager.GetString($"{nameof(ConsoleWrapper)}_{command}Help");
+            return Console.ResourceManager.GetString($"{nameof(SilenceAbleConsole)}_{command}Help");
         }
 
-        public ConsoleWrapper()
+        /// <summary>
+        /// Create new instance of SilenceAbleConsole class
+        /// </summary>
+        public SilenceAbleConsole()
         {
             CommandsForJson = new []
             {
@@ -23,41 +30,48 @@ namespace Console
                 nameof(DontBeSilent)
             };
         }
-        
+
+        /// <inheritdoc />
         public void WriteLine()
         {
             if (Silent) return;
             System.Console.WriteLine();
         }
 
+        /// <inheritdoc />
         public void WriteLine(string text)
         {
             if (Silent) return;
             System.Console.WriteLine(text);
         }
 
+        /// <inheritdoc />
         public void Clear()
         {
             if (Silent) return;
             System.Console.Clear();
         }
 
+        /// <inheritdoc />
         public void WriteLine(object value)
         {
             if (Silent) return;
             System.Console.WriteLine(value);
         }
-        
+
+        /// <inheritdoc />
         public void BeSilent()
         {
             Silent = true;
         }
 
+        /// <inheritdoc />
         public void DontBeSilent()
         {
             Silent = false;
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return nameof(Console);

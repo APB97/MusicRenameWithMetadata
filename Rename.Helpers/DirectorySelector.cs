@@ -8,7 +8,7 @@ namespace Rename.Helpers
 {
     public class DirectorySelector : SelectorBase, ISilenceAble
     {
-        public DirectorySelector(IConsole consoleWrapper) : base(consoleWrapper)
+        public DirectorySelector(ISilenceAbleConsole silenceAbleConsole) : base(silenceAbleConsole)
         {
             CommandsForJson = new[] {nameof(Add)};
         }
@@ -32,7 +32,7 @@ namespace Rename.Helpers
         public void Clear()
         {
             Directories.Clear();
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directory_list_cleared);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.Messages_Directory_list_cleared);
         }
 
         public HashSet<string> Directories { get; } = new HashSet<string>();
@@ -94,14 +94,14 @@ namespace Rename.Helpers
                         Directories.Add(dir);
             }
 
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directories_added);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.Messages_Directories_added);
         }
 
         public void List()
         {
             foreach (string directory in Directories)
             {
-                ConsoleWrapper.WriteLine(directory);
+                SilenceAbleConsole.WriteLine(directory);
             }
         }
 
@@ -112,7 +112,7 @@ namespace Rename.Helpers
                 Directories.Remove(directory);
             }
             
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.Messages_Directories_removed);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.Messages_Directories_removed);
         }
 
         public override string ToString()
@@ -122,12 +122,12 @@ namespace Rename.Helpers
 
         public void BeSilent()
         {
-            ConsoleWrapper.BeSilent();
+            SilenceAbleConsole.BeSilent();
         }
 
         public void DontBeSilent()
         {
-            ConsoleWrapper.DontBeSilent();
+            SilenceAbleConsole.DontBeSilent();
         }
     }
 }

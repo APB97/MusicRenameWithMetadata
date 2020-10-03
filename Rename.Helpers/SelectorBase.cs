@@ -7,11 +7,11 @@ namespace Rename.Helpers
 {
     public abstract class SelectorBase : ICommandClass
     {
-        protected readonly IConsole ConsoleWrapper;
+        protected readonly ISilenceAbleConsole SilenceAbleConsole;
 
-        protected SelectorBase(IConsole consoleWrapper)
+        protected SelectorBase(ISilenceAbleConsole silenceAbleConsole)
         {
-            ConsoleWrapper = consoleWrapper ?? throw new ArgumentNullException(nameof(consoleWrapper));
+            SilenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
         }
 
         protected abstract HashSet<string> Commands { get; }
@@ -41,7 +41,7 @@ namespace Rename.Helpers
 
         public void ClearScreen()
         {
-            ConsoleWrapper.Clear();
+            SilenceAbleConsole.Clear();
         }
 
         public bool Complete()
