@@ -18,7 +18,7 @@ namespace MusicMetadataRenamer
             DirectorySelector directorySelector = new DirectorySelector(silenceAbleConsole);
             SkipFile skipFile = new SkipFile(silenceAbleConsole);
             WordSkipping skippingThese = new WordSkipping();
-            await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
+            skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
             IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
 
             switch (args.Length)
@@ -31,7 +31,7 @@ namespace MusicMetadataRenamer
                     string defaultPath = skipFile.SelectedPath;
                     skipFile.Prompt();
                     if (skipFile.SelectedPath != defaultPath)
-                        await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
+                        skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
                     processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
                     break;
@@ -45,7 +45,7 @@ namespace MusicMetadataRenamer
                         new KeyValuePair<string, object>("Console", silenceAbleConsole),
                         new KeyValuePair<string, object>(nameof(SkipFile), skipFile)
                     });
-                    await resolver.Execute(args[0]);
+                    resolver.Execute(args[0]);
                     break;
                 }
             }

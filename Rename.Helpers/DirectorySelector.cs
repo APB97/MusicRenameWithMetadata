@@ -64,7 +64,7 @@ namespace Rename.Helpers
         {
             if (!dirs.All(Directory.Exists))
             {
-                string joined = string.Join(' ', dirs);
+                string joined = string.Join(" ", dirs);
                 int index = 0;
                 while (index >= 0 && index < joined.Length)
                 {

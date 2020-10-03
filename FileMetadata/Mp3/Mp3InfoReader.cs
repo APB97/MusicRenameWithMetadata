@@ -18,13 +18,17 @@ namespace FileMetadata.Mp3
         /// </summary>
         /// <param name="fileAtPath">Path to file we want to get title from</param>
         /// <returns>Returns Title from file properties or string.Empty</returns>
+        [SuppressMessage("ReSharper", "ConvertToUsingDeclaration")]
         public static string Title(string fileAtPath)
         {
             // using declarations
-            using FileStream stream = File.OpenRead(fileAtPath);
-            using StreamReader reader = new StreamReader(stream);
-
-            return ReadInfoByPattern(reader, TitleIdSearchPattern);
+            using (FileStream stream = File.OpenRead(fileAtPath))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return ReadInfoByPattern(reader, TitleIdSearchPattern);
+                }
+            }
         }
 
         /// <summary>
@@ -35,10 +39,13 @@ namespace FileMetadata.Mp3
         public static string Artists(string fileAtPath)
         {
             // using declarations
-            using FileStream stream = File.OpenRead(fileAtPath);
-            using StreamReader reader = new StreamReader(stream);
-
-            return ReadInfoByPattern(reader, ArtistsIdSearchPattern);
+            using (FileStream stream = File.OpenRead(fileAtPath))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return ReadInfoByPattern(reader, ArtistsIdSearchPattern);
+                }
+            }
         }
 
         private static string ReadInfoByPattern(StreamReader reader, string idSearchPattern)

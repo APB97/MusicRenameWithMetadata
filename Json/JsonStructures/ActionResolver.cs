@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace JsonStructures
@@ -16,7 +15,11 @@ namespace JsonStructures
         /// <param name="keyObjectPairs">Pairs (key, object) to use when resolving Actions</param>
         public ActionResolver(KeyValuePair<string, object>[] keyObjectPairs)
         {
-            _classDefaultObjects = new Dictionary<string, object>(keyObjectPairs);
+            _classDefaultObjects = new Dictionary<string, object>();
+            foreach (KeyValuePair<string,object> pair in keyObjectPairs)
+            {
+                _classDefaultObjects.Add(pair.Key, pair.Value);
+            }
         }
 
         /// <summary>
@@ -24,21 +27,21 @@ namespace JsonStructures
         /// </summary>
         /// <param name="actionsFile">path to JSON file with commands.</param>
         /// <returns>awaitable Task</returns>
-        public async Task Execute(string actionsFile)
+        public void Execute(string actionsFile)
         {
             if (!File.Exists(actionsFile))
                 return;
 
-            var definitions = await GetActionsFromFile(actionsFile);
+            var definitions = GetActionsFromFile(actionsFile);
             if (definitions.Actions == null)
                 return;
             
             InvokeActions(definitions);
         }
 
-        private static async Task<ActionDefinitions> GetActionsFromFile(string actionsFile)
+        private static ActionDefinitions GetActionsFromFile(string actionsFile)
         {
-            string actionsFileContents = await File.ReadAllTextAsync(actionsFile);
+            string actionsFileContents = File.ReadAllText(actionsFile);
             return JsonConvert.DeserializeObject<ActionDefinitions>(actionsFileContents);
         }
 
