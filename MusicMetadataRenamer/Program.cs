@@ -44,7 +44,7 @@ namespace MusicMetadataRenamer
                 }
             }
             
-            new RenameOperation().ExecuteRenameOperation(console, directorySelector, propertySelector, processor);
+            new RenameOperation().ExecuteRenameOperation(console, directorySelector.Directories, propertySelector.Properties, processor);
         }
     }
 }

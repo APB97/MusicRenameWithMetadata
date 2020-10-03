@@ -51,7 +51,7 @@ namespace FileMetadata.Dynamic
             string[] propertyValues = new string[names.Count()];
             for (int i = 0; i < names.Count(); i++)
             {
-                propertyValues[i] = typeof(Mp3InfoReader).GetMethod(names.ElementAt(i), BindingFlags.Static| BindingFlags.Public)
+                propertyValues[i] = typeof(Mp3InfoReader).GetMethod(names.ElementAt(i), BindingFlags.Static | BindingFlags.Public)
                     ?.Invoke(null, new object[] {filePath})?.ToString();
             }
             string withNoInvalid = propertyValues.JoinForFilePath();

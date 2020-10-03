@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Console;
 using FileMetadata.Dynamic;
-using Rename.Helpers.Interfaces;
 using StringProcessor;
 
 namespace Rename.Helpers
@@ -16,11 +16,11 @@ namespace Rename.Helpers
             _console = console;
         }
 
-        public void Execute(IDirectorySet directorySelector, IPropertyList propertySelector, IStringProcessor wordProcessor, MetadataRename metadataRename)
+        public void Execute(IEnumerable<string> directories, IEnumerable<string> properties, IStringProcessor wordProcessor, MetadataRename metadataRename)
         {
-            Parallel.ForEach(directorySelector.Directories, dirName =>
+            Parallel.ForEach(directories, dirName =>
             {
-                metadataRename.RenameMultiple(Directory.GetFiles(dirName, "*.*", SearchOption.AllDirectories), wordProcessor, propertySelector.Properties);
+                metadataRename.RenameMultiple(Directory.GetFiles(dirName, "*.*", SearchOption.AllDirectories), wordProcessor, properties);
                 _console.WriteLine($"Renaming in '{dirName}' complete.");
             });
             _console.WriteLine("Renaming finished.");
