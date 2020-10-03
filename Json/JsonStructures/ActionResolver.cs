@@ -10,11 +10,20 @@ namespace JsonStructures
     {
         private readonly Dictionary<string, object> _classDefaultObjects;
 
+        /// <summary>
+        /// Create new instance of resolver
+        /// </summary>
+        /// <param name="keyObjectPairs">Pairs (key, object) to use when resolving Actions</param>
         public ActionResolver(KeyValuePair<string, object>[] keyObjectPairs)
         {
             _classDefaultObjects = new Dictionary<string, object>(keyObjectPairs);
         }
 
+        /// <summary>
+        /// Executes Action(s) from given file.
+        /// </summary>
+        /// <param name="actionsFile">path to JSON file with commands.</param>
+        /// <returns>awaitable Task</returns>
         public async Task Execute(string actionsFile)
         {
             if (!File.Exists(actionsFile))
