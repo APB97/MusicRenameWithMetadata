@@ -4,12 +4,20 @@ using System.IO;
 
 namespace FileMetadata.Mp3
 {
+    /// <summary>
+    /// Static class for reading Properties of *.mp3 file
+    /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Used via Reflection")]
     public static class Mp3InfoReader
     {
         private const string TitleIdSearchPattern = "\0TIT2\0\0\0";
         private const string ArtistsIdSearchPattern = "\0TPE1\0\0\0";
 
+        /// <summary>
+        /// Get Title of given file, if any. 
+        /// </summary>
+        /// <param name="fileAtPath">Path to file we want to get title from</param>
+        /// <returns>Returns Title from file properties or string.Empty</returns>
         public static string Title(string fileAtPath)
         {
             // using declarations
@@ -19,6 +27,11 @@ namespace FileMetadata.Mp3
             return ReadInfoByPattern(reader, TitleIdSearchPattern);
         }
 
+        /// <summary>
+        /// Get Artists of given file, if any.
+        /// </summary>
+        /// <param name="fileAtPath">Path to file we want to get artists from</param>
+        /// <returns>Returns Artists from file properties or string.Empty</returns>
         public static string Artists(string fileAtPath)
         {
             // using declarations

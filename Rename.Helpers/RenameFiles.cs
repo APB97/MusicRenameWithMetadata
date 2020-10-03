@@ -11,11 +11,11 @@ namespace Rename.Helpers
 {
     public class RenameFiles
     {
-        private readonly ISilenceAbleConsole _silenceAbleConsole;
+        private readonly IConsole _silenceAbleConsole;
         private readonly IStringProcessor _wordProcessor;
         private readonly MetadataRename _metadataRename;
 
-        public RenameFiles(ISilenceAbleConsole silenceAbleConsole, IStringProcessor wordProcessor, MetadataRename metadataRename)
+        public RenameFiles(IConsole silenceAbleConsole, IStringProcessor wordProcessor, MetadataRename metadataRename)
         {
             _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
             _wordProcessor = wordProcessor ?? new DefaultNoProcessor();

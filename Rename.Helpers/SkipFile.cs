@@ -10,7 +10,7 @@ namespace Rename.Helpers
 {
     public class SkipFile : ICommandClass
     {
-        private readonly ISilenceAbleConsole _silenceAbleConsole;
+        private readonly IConsole _silenceAbleConsole;
 
         public IEnumerable<string> CommandsForJson { get; }
         
@@ -19,7 +19,7 @@ namespace Rename.Helpers
             return Rename_Helpers_Commands.ResourceManager.GetString($"{nameof(SkipFile)}_{command}Help");
         }
 
-        public SkipFile(ISilenceAbleConsole silenceAbleConsole)
+        public SkipFile(IConsole silenceAbleConsole)
         {
             _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
             CommandsForJson = new[] {nameof(Select)};
