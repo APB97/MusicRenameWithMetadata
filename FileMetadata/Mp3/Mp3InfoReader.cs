@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace FileMetadata.Mp3
 {
+    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Used via Reflection")]
     public static class Mp3InfoReader
     {
         private const string TitleIdSearchPattern = "\0TIT2\0\0\0";
