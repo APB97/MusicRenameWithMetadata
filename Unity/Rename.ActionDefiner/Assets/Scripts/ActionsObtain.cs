@@ -11,15 +11,24 @@ public class ActionsObtain : MonoBehaviour
     [SerializeField] private Dropdown dropdownActionClasses;
     [SerializeField] private Dropdown dropdownActions;
 
-    private readonly Dictionary<string, object> _commandObjects = new Dictionary<string, object>();
+    [SerializeField] private Text helpDisplay;
     
+    private readonly Dictionary<string, object> _commandObjects = new Dictionary<string, object>();
+    private ICommandClass _currentClass;
+
     private void Awake()
     {
         SilenceAbleConsole console = new SilenceAbleConsole();
         _commandObjects[console.ToString()] = console;
         
+        PropertySelector propertySelector = new PropertySelector(console);
+        _commandObjects[propertySelector.ToString()] = propertySelector;
+        
         DirectorySelector dirSelector  = new DirectorySelector(console);
         _commandObjects[dirSelector.ToString()] = dirSelector;
+        
+        SkipFile skipFile = new SkipFile(console);
+        _commandObjects[skipFile.ToString()] = skipFile;
         
         List<string> options = new List<string>();
         options.AddRange(_commandObjects.Keys);
@@ -27,15 +36,23 @@ public class ActionsObtain : MonoBehaviour
         dropdownActionClasses.ClearOptions();
         
         dropdownActionClasses.AddOptions(options);
-        dropdownActionClasses.onValueChanged.AddListener(OnSelectedIndex);
-        OnSelectedIndex(default);
+        dropdownActionClasses.onValueChanged.AddListener(OnSelectedClass);
+        dropdownActions.onValueChanged.AddListener(OnSelectedAction);
+        OnSelectedClass(default);
     }
 
-    public void OnSelectedIndex(int index)
+    public void OnSelectedClass(int index)
     {
         dropdownActions.ClearOptions();
-        
-        if (_commandObjects[dropdownActionClasses.options[index].text] is ICommandClass commandObject)
-            dropdownActions.AddOptions(commandObject.CommandsForJson.ToList());
+
+        if (!(_commandObjects[dropdownActionClasses.options[index].text] is ICommandClass commandObject)) return;
+        _currentClass = commandObject;
+        dropdownActions.AddOptions(commandObject.CommandsForJson.ToList());
+        OnSelectedAction(default);
+    }
+
+    public void OnSelectedAction(int index)
+    {
+        helpDisplay.text = _currentClass.GetHelpFor(dropdownActions.options[index].text);
     }
 }

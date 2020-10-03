@@ -12,7 +12,7 @@ public class ActionsCreator
         _definitionsToSerialize = definitionsToSerialize;
     }
 
-    public void Add(string defaultCommandObject, string actionName, params string[] parameters)
+    public int Add(string defaultCommandObject, string actionName, params string[] parameters)
     {
         ActionDefinition definition = new ActionDefinition()
         {
@@ -24,11 +24,22 @@ public class ActionsCreator
             definition.ActionParameters = parameters;
         
         _definitionsToSerialize.Add(definition);
+        return _definitionsToSerialize.Count - 1;
     }
 
     public void CreateFile(string pathText)
     {
         string json = JsonConvert.SerializeObject(new ActionDefinitions() {Actions = _definitionsToSerialize.ToArray()}, Formatting.Indented);
         File.WriteAllText(pathText, json);
+    }
+
+    public void UpdateAt(int? selectedIndex, string actionClassText, string actionNameText, params string[] parameters)
+    {
+        if (selectedIndex.HasValue) _definitionsToSerialize[selectedIndex.Value] = new ActionDefinition
+        {
+            ActionClass = actionClassText,
+            ActionName = actionNameText,
+            ActionParameters = parameters
+        };
     }
 }

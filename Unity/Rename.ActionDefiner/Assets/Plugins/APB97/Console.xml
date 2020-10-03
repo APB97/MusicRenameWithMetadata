@@ -20,12 +20,12 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
-        <member name="P:Console.Console.ConsoleWrapper_BeSilentHelp">
+        <member name="P:Console.Console.SilenceAbleConsole_BeSilentHelp">
             <summary>
               Looks up a localized string similar to Causes Console output to be disabled. Usage: BeSilent.
             </summary>
         </member>
-        <member name="P:Console.Console.ConsoleWrapper_DontBeSilentHelp">
+        <member name="P:Console.Console.SilenceAbleConsole_DontBeSilentHelp">
             <summary>
               Looks up a localized string similar to Causes Console output to be enabled. Usage: DontBeSilent.
             </summary>
