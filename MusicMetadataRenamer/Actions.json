@@ -2,8 +2,15 @@
   "Actions": [
     {
       "ActionClass": "Console",
-      "ActionName": "BeSilent",
-      "ActionParameters": []
+      "ActionName": "BeSilent"
+    },
+    {
+      "ActionClass": "PropertySelector",
+      "ActionName": "Add",
+      "ActionParameters": [
+        "Artists",
+        "Title"
+      ]
     },
     {
       "ActionClass": "DirectorySelector",
