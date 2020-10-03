@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FileMetadata\FileMetadata.csproj" />
+      <ProjectReference Include="..\StringProcessor.DefaultNone\StringProcessor.DefaultNone.csproj" />
     </ItemGroup>
 
     <ItemGroup>

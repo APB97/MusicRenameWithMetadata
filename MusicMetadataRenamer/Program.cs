@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Console;
+using FileMetadata.Dynamic;
 using JsonStructures;
 using Rename.Helpers;
 using StringProcessor;
@@ -48,8 +50,9 @@ namespace MusicMetadataRenamer
                     break;
                 }
             }
-            
-            new RenameOperation().ExecuteRenameOperation(console, directorySelector.Directories, propertySelector.Properties, processor);
+
+            RenameFiles renameFiles = new RenameFiles(console, processor, new MetadataRename(console));
+            renameFiles.RenameMultiple(directorySelector.Directories, propertySelector.Properties, SearchOption.AllDirectories);
         }
     }
 }
