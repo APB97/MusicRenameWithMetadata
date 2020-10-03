@@ -70,7 +70,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Causes Console output to be disabled. Usage:  BeSilent.
+        ///   Looks up a localized string similar to Causes Console output to be disabled. Usage: BeSilent.
         /// </summary>
         internal static string DirectorySelector_BeSilentHelp {
             get {
