@@ -5,6 +5,14 @@
         <TargetFrameworks>netstandard2.1;netcoreapp3.1</TargetFrameworks>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Console.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Console.xml</DocumentationFile>
+    </PropertyGroup>
+
     <ItemGroup>
       <EmbeddedResource Update="Console.resx">
         <Generator>ResXFileCodeGenerator</Generator>
