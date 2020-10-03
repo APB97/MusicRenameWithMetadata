@@ -1,6 +1,18 @@
 # Rename Music with Metadata
 Rename music files using their metadata with this tool.
 
+## Contents
+
+1. [What does it do?](#what-does-it-do)
+2. [Who is it for?](#who-is-it-for)
+3. [Why is it different?](#why-is-it-different)
+    1. [Interactive mode](#interactive-mode)
+    2. [Batch mode](#batch-mode)
+4. [How do I use it?](#how-do-i-use-it)
+    1. [Console](#console)
+    2. [Directory Selector](#directory-selector)
+5. [How does it work?](#how-does-it-work)
+
 ## What does it do?
 It allows users to specify properties to use for renaming and directories with files they want to rename.
 Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.
@@ -47,8 +59,7 @@ Enter `BeSilent` Command in Interactive Mode during Console step
   "Actions": [
     {
       "ActionClass": "Console",
-      "ActionName": "BeSilent",
-      "ActionParameters": []
+      "ActionName": "BeSilent"
     }
   ]
 }
@@ -85,7 +96,7 @@ or with spaces:
 }
 ```
 
-- Clear directories to process list
+- Clear directories-to-process list
 
 Enter `Clear`
 
@@ -107,3 +118,6 @@ Enter `Help Add Remove Clear` to display help for Add, Remove and Clear commands
 
 ## How does it work?
 
+It works by reading properties from *.mp3 files using their ID3v2 metadata containers, currently only `Artists` (TPE1) and `Title` (TIT2) are supported.
+These values are used for renaming music files in given directories, however they are additionally processed to skip invalid path characters and words included in a skip file.
+Default skip file is supplied in `skipfile.txt`.
