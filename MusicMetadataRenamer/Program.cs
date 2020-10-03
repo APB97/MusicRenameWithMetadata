@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using Console;
 using FileMetadata.Dynamic;
@@ -52,7 +51,7 @@ namespace MusicMetadataRenamer
             }
 
             RenameFiles renameFiles = new RenameFiles(console, processor, new MetadataRename(console));
-            renameFiles.RenameMultiple(directorySelector.Directories, propertySelector.Properties, SearchOption.AllDirectories);
+            renameFiles.RenameMultiple(directorySelector.Directories, propertySelector.Properties);
         }
     }
 }

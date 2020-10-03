@@ -13,10 +13,12 @@ namespace FileMetadata.Dynamic
     public class MetadataRename
     {
         private readonly IConsole _console;
-
-        public MetadataRename(IConsole console)
+        private readonly string _separator;
+        
+        public MetadataRename(IConsole console, string separator = null)
         {
             _console = console ?? throw new ArgumentNullException(nameof(console));
+            _separator = separator ?? " - ";
         }
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace FileMetadata.Dynamic
             }
         }
         
-        public static void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
+        public void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
         {
             string extension = Path.GetExtension(filePath);
 
@@ -53,8 +55,8 @@ namespace FileMetadata.Dynamic
                 propertyValues[i] = typeof(Mp3InfoReader).GetMethod(names.ElementAt(i), BindingFlags.Static | BindingFlags.Public)
                     ?.Invoke(null, new object[] {filePath})?.ToString();
             }
-            string withNoInvalid = propertyValues.JoinForFilePath();
-            string destFileName = Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("path is not correct."),
+            string withNoInvalid = propertyValues.JoinForFilePath(_separator);
+            string destFileName = Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("Path is not correct."),
                 $"{processor.Process(withNoInvalid)}{extension}");
             if (!File.Exists(destFileName))
                 File.Move(filePath, destFileName);

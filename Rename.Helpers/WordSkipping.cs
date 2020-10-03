@@ -2,15 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Rename.Helpers.Interfaces;
 
 namespace Rename.Helpers
 {
-    public class WordSkipping : ICommonWords
+    public class WordSkipping
     {
-        private HashSet<string> _commonWords;
-
-        public HashSet<string> CommonWords => _commonWords;
+        public HashSet<string> CommonWords { get; private set; }
 
         public async Task GetCommonWordsFrom(string file)
         {
@@ -25,7 +22,7 @@ namespace Rename.Helpers
             });
             
             var combined = lowercaseWords.Concat(pascalCase);
-            _commonWords = new HashSet<string>(combined);
+            CommonWords = new HashSet<string>(combined);
         }
     }
 }

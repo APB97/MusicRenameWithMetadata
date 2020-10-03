@@ -35,7 +35,7 @@ namespace Rename.Helpers
             {
                 string helpForCommand = Rename_Helpers_Commands.ResourceManager.GetString($"{typeName}_{command}Help");
                 // ReSharper disable once LocalizableElement
-                System.Console.WriteLine("{0, 16}\t{1}", command, helpForCommand);
+                System.Console.WriteLine("{0, -16}\t{1}", command, helpForCommand);
             }
         }
 
