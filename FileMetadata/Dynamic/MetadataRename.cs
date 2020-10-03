@@ -38,7 +38,6 @@ namespace FileMetadata.Dynamic
                 catch (Exception e)
                 {
                     _console.WriteLine(e);
-                    throw;
                 }
             }
         }
