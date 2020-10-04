@@ -1,6 +1,10 @@
 # Rename Music with Metadata
 Rename music files using their metadata with this tool.
 
+## Important note regarding Unity part of the project
+
+See [this](Unity/Rename.ActionDefiner/README.md) to see instructions of first-time setup of Unity project.
+
 ## Contents
 
 1. [What does it do?](#what-does-it-do)
