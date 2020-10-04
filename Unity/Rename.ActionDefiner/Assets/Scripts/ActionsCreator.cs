@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using JsonStructures;
 using Newtonsoft.Json;
 
 public class ActionsCreator
 {
-    private readonly List<ActionDefinition> _definitionsToSerialize;
+    private List<ActionDefinition> _definitionsToSerialize;
     
     public ActionsCreator(List<ActionDefinition> definitionsToSerialize)
     {
         _definitionsToSerialize = definitionsToSerialize;
     }
 
-    public void Add(string defaultCommandObject, string actionName, params string[] parameters)
+    public ActionDefinition Add(string defaultCommandObject, string actionName, params string[] parameters)
     {
         ActionDefinition definition = new ActionDefinition()
         {
@@ -24,6 +25,7 @@ public class ActionsCreator
             definition.ActionParameters = parameters;
         
         _definitionsToSerialize.Add(definition);
+        return definition;
     }
 
     public void CreateFile(string pathText)
@@ -50,5 +52,11 @@ public class ActionsCreator
     public ActionDefinition ElementAt(int index)
     {
         return _definitionsToSerialize[index];
+    }
+
+    public IEnumerable<ActionDefinition> LoadFile(string filePath)
+    {
+        string json = File.ReadAllText(filePath);
+        return _definitionsToSerialize = JsonConvert.DeserializeObject<ActionDefinitions>(json).Actions.ToList();
     }
 }

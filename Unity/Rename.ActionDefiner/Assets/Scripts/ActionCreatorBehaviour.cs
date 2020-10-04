@@ -11,8 +11,6 @@ public class ActionCreatorBehaviour : MonoBehaviour
     [SerializeField] private InputField path;
 
     [SerializeField] private Transform paramsParent;
-    [SerializeField] private Transform actionsListingParent;
-    [SerializeField] private Button buttonTemplate;
     [SerializeField] private Button buttonUpdate;
     [SerializeField] private Button buttonRemove;
     
@@ -20,36 +18,30 @@ public class ActionCreatorBehaviour : MonoBehaviour
     private int? _selectedIndex;
     private Button _button;
     private ParametersCreatorBehaviour _parametersCreator;
+    private ActionVisualizer _visualizer;
+    
+    public ActionVisualizer Visualizer => _visualizer;
 
     private void Awake()
     {
         _creator = new ActionsCreator(new List<ActionDefinition>());
         _parametersCreator = GetComponent<ParametersCreatorBehaviour>();
+        _visualizer = GetComponent<ActionVisualizer>();
     }
 
+    public void Load(string filePath)
+    {
+        foreach (ActionDefinition definition in _creator.LoadFile(filePath))
+        {
+            Visualizer.AddVisualFor(definition);
+        }
+    }
+    
     public void Add()
     {
         var parameters = PopAllParameters();
-
-        _creator.Add(actionClass.text, actionName.text, parameters.ToArray());
-
-        var btn = Instantiate(buttonTemplate, actionsListingParent);
-        btn.GetComponentInChildren<Text>().text = StringifyActionWithParams(parameters);
-        btn.gameObject.SetActive(true);
-        btn.onClick.AddListener(() =>
-        {
-            for (int index = 1; index < actionsListingParent.childCount; index++)
-            {
-                if (actionsListingParent.GetChild(index) != btn.transform) continue;
-                SelectForUpdate(index - 1, btn);
-                return;
-            }
-        });
-    }
-
-    private string StringifyActionWithParams(List<string> parameters)
-    {
-        return $"{actionClass.text}.{actionName.text} {string.Join(" ", parameters)}";
+        ActionDefinition definition = _creator.Add(actionClass.text, actionName.text, parameters.ToArray());
+        Visualizer.AddVisualFor(definition);
     }
 
     private List<string> PopAllParameters()
@@ -70,7 +62,7 @@ public class ActionCreatorBehaviour : MonoBehaviour
         return parameters;
     }
 
-    private void SelectForUpdate(int indexOfAdded, Button button)
+    public void SelectForUpdate(int indexOfAdded, Button button)
     {
         _selectedIndex = indexOfAdded;
         _button = button;
@@ -101,7 +93,7 @@ public class ActionCreatorBehaviour : MonoBehaviour
     {
         var parameters = PopAllParameters();
         _creator.UpdateAt(_selectedIndex, actionClass.text, actionName.text, parameters.ToArray());
-        _button.GetComponentInChildren<Text>().text = StringifyActionWithParams(parameters);
+        _button.GetComponentInChildren<Text>().text = FormatAction.ActionToString(actionClass.text, actionName.text, parameters);
         ShowButtonsForSelection(false);
         _parametersCreator.ClearParams();
     }
