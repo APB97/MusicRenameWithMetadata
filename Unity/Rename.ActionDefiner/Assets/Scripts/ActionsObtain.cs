@@ -41,7 +41,7 @@ public class ActionsObtain : MonoBehaviour
         OnSelectedClass(default);
     }
 
-    public void OnSelectedClass(int index)
+    private void OnSelectedClass(int index)
     {
         dropdownActions.ClearOptions();
 
@@ -51,7 +51,7 @@ public class ActionsObtain : MonoBehaviour
         OnSelectedAction(default);
     }
 
-    public void OnSelectedAction(int index)
+    private void OnSelectedAction(int index)
     {
         helpDisplay.text = _currentClass.GetHelpFor(dropdownActions.options[index].text);
     }

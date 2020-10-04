@@ -78,11 +78,11 @@ public class ActionCreatorBehaviour : MonoBehaviour
         var definition = _creator.ElementAt(indexOfAdded);
         actionClass.text = definition.ActionClass;
         Dropdown dropdownClass = actionClass.GetComponentInParent<Dropdown>();
-        dropdownClass.onValueChanged.Invoke(dropdownClass.options.FindIndex(data => data.text == definition.ActionClass));
+        dropdownClass.value = dropdownClass.options.FindIndex(data => data.text == definition.ActionClass);
         
         actionName.text = definition.ActionName;
         Dropdown dropdownName = actionName.GetComponentInParent<Dropdown>();
-        dropdownName.onValueChanged.Invoke(dropdownName.options.FindIndex(data => data.text == definition.ActionName));
+        dropdownName.value = dropdownName.options.FindIndex(data => data.text == definition.ActionName);
         
         _parametersCreator.ClearParams();
         if (definition.ActionParameters != null)
