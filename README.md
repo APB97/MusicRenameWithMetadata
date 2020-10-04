@@ -137,4 +137,4 @@ For list of possible definitions and commands, see [How do I use it?](#how-do-i-
 
 It works by reading properties from *.mp3 files using their ID3v2 metadata containers, currently only `Artists` (TPE1) and `Title` (TIT2) are supported.
 These values are used for renaming music files in given directories, however they are additionally processed to skip invalid path characters and words included in a skip file.
-Default skip file is supplied in `skipfile.txt`.
+Default skip file is supplied in `skip.txt`.
