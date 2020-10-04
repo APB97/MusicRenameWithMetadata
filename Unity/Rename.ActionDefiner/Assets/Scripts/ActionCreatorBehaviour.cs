@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using JsonStructures;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +9,6 @@ public class ActionCreatorBehaviour : MonoBehaviour
     [SerializeField] private Text actionName;
     [SerializeField] private InputField path;
 
-    [SerializeField] private Transform paramsParent;
     [SerializeField] private Button buttonUpdate;
     [SerializeField] private Button buttonRemove;
     
@@ -39,27 +37,9 @@ public class ActionCreatorBehaviour : MonoBehaviour
     
     public void Add()
     {
-        var parameters = PopAllParameters();
+        var parameters = _parametersCreator.PopAllParameters();
         ActionDefinition definition = _creator.Add(actionClass.text, actionName.text, parameters.ToArray());
         Visualizer.AddVisualFor(definition);
-    }
-
-    private List<string> PopAllParameters()
-    {
-        List<string> parameters = new List<string>();
-
-        for (int i = paramsParent.childCount - 1; i >= 0; i--)
-        {
-            if (paramsParent.GetChild(i).gameObject.activeSelf)
-            {
-                string text = paramsParent.GetChild(i).GetComponentsInChildren<Text>().Last().text;
-                parameters.Add(text);
-                Destroy(paramsParent.GetChild(i).gameObject);
-            }
-        }
-
-        parameters.Reverse();
-        return parameters;
     }
 
     public void SelectForUpdate(int indexOfAdded, Button button)
@@ -91,7 +71,7 @@ public class ActionCreatorBehaviour : MonoBehaviour
 
     public void UpdateCurrentElement()
     {
-        var parameters = PopAllParameters();
+        var parameters = _parametersCreator.PopAllParameters();
         _creator.UpdateAt(_selectedIndex, actionClass.text, actionName.text, parameters.ToArray());
         _button.GetComponentInChildren<Text>().text = FormatAction.ActionToString(actionClass.text, actionName.text, parameters);
         ShowButtonsForSelection(false);
