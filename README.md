@@ -54,71 +54,84 @@ For list of possible definitions and commands, see [How do I use it?](#how-do-i-
 
 ### Console
 
-- Enable __Silent__ mode - no console output
+- To enable __Silent__ mode - no console output
+    - Enter `BeSilent` Command in Interactive Mode during any of first two steps:
 
-Enter `BeSilent` Command in Interactive Mode during Console step
-
-```json
-{
-  "Actions": [
+    - Or use the following JSON object:
+    ```json
     {
-      "ActionClass": "Console",
-      "ActionName": "BeSilent"
-    }
-  ]
-}
-```
-
-- Disable __Silent__ mode - re-enables console output
-
-Enter `DontBeSilent` Command in Interactive Mode
-
-### Directory Selector
-
-- Add directories to processing list
-
-Enter `Add <directory-without-spaces> [<another-one>] [...]`, for example:
-
-`Add C:\Music D:\Music`
-
-or with spaces:
-
-`Add "C:\Music\Example - 1" "C:\Music\Example - 2"`
-
-```json
-{
-  "Actions": [
-    {
-      "ActionClass": "DirectorySelector",
-      "ActionName": "Add",
-      "ActionParameters": [
-        "C:\\Music\\Example - 1",
-        "C:\\Music\\Example - 2"
+      "Actions": [
+        {
+          "ActionClass": "Console",
+          "ActionName": "BeSilent"
+        }
       ]
     }
-  ]
-}
-```
+    ```
 
-- Clear directories-to-process list
+- To disable __Silent__ mode - re-enables console output
 
-Enter `Clear`
+    - Enter `DontBeSilent` Command in Interactive Mode
+    
+    - Or use the following JSON object:
+    ```json
+    {
+      "Actions": [
+        {
+          "ActionClass": "Console",
+          "ActionName": "DontBeSilent"
+        }
+      ]
+    }
+    ```
+### Directory Selector
 
-- Complete directory selection step
+- To add directories to processing list:
 
-Enter `Complete`
+    - Enter `Add <directory-without-spaces> [<another-one>] [...]`, for example:
+      
+      `Add C:\Music D:\Music`
 
-- Clear console screen
+       or with spaces:
 
-Enter `ClearScreen`
+       `Add "C:\Music\Example - 1" "C:\Music\Example - 2"`
 
-- Display help for all or selected commands
+    - Or Use the following JSON object:
+    
+    ```json
+    {
+      "Actions": [
+        {
+          "ActionClass": "DirectorySelector",
+          "ActionName": "Add",
+          "ActionParameters": [
+            "C:\\Music\\Example - 1",
+            "C:\\Music\\Example - 2"
+          ]
+        }
+      ]
+    }
+    ```
 
-Enter `Help` to display help for all commands
+- To clear directories-to-process list:
 
-Enter `Help command1 [command2] [...]` to display help for given commands, for example:
+    - Enter `Clear`
 
-Enter `Help Add Remove Clear` to display help for Add, Remove and Clear commands
+- To complete directory selection step:
+
+    - Enter `Complete`
+
+- To clear console screen
+
+    - Enter `ClearScreen`
+
+- To display help for all or selected commands
+
+    - Enter `Help` to display help for all commands
+    
+    - Enter `Help command1 [command2] [...]` to display help for given commands, for example:
+    
+        - Enter `Help Add Remove Clear` to display help for Add, Remove and Clear commands
 
 ## How does it work?
 
