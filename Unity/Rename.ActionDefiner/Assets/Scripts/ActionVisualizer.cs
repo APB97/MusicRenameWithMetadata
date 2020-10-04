@@ -3,24 +3,26 @@ using JsonStructures;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(IActionsDropdowns), typeof(IParametersManager), typeof(IActionsArray))]
 public class ActionVisualizer : MonoBehaviour, ISelectedAction, IActionVisualizer
 {
     [SerializeField] private Transform actionsListingParent;
     [SerializeField] private Button buttonTemplate;
     [SerializeField] private Button buttonUpdate;
     [SerializeField] private Button buttonRemove;
-    private ActionCreatorBehaviour _actionCreatorBehaviour;
     private IActionsDropdowns _actionsDropdowns;
-    
-    private int _selectedIndex;
+    private IParametersManager _parametersManager;
+    private IActionsArray _actions;
+
     private Button _button;
 
-    public int SelectedIndex => _selectedIndex;
+    public int SelectedIndex { get; private set; }
 
     private void Awake()
     {
-        _actionCreatorBehaviour = GetComponent<ActionCreatorBehaviour>();
         _actionsDropdowns = GetComponent<IActionsDropdowns>();
+        _parametersManager = GetComponent<IParametersManager>();
+        _actions = GetComponent<IActionsArray>();
     }
 
     public void AddVisualFor(ActionDefinition definition)
@@ -38,7 +40,7 @@ public class ActionVisualizer : MonoBehaviour, ISelectedAction, IActionVisualize
             for (int index = 1; index < actionsListingParent.childCount; index++)
             {
                 if (actionsListingParent.GetChild(index) != btn.transform) continue;
-                SelectForUpdate(index - 1, btn, _actionCreatorBehaviour);
+                SelectForUpdate(index - 1, btn);
                 ShowButtonsForSelection();
                 return;
             }
@@ -51,26 +53,26 @@ public class ActionVisualizer : MonoBehaviour, ISelectedAction, IActionVisualize
         buttonRemove.gameObject.SetActive(show);
     }
 
-    public void SelectForUpdate(int indexOfAdded, Button button, ActionCreatorBehaviour actionCreatorBehaviour)
+    public void SelectForUpdate(int indexOfAdded, Button button)
     {
-        _selectedIndex = indexOfAdded;
+        SelectedIndex = indexOfAdded;
         _button = button;
 
-        var definition = actionCreatorBehaviour.Actions[indexOfAdded];
+        var definition = _actions[indexOfAdded];
         _actionsDropdowns.DropdownClass.value = _actionsDropdowns.DropdownClass.options.FindIndex(data => data.text == definition.ActionClass);
         _actionsDropdowns.DropdownAction.value = _actionsDropdowns.DropdownAction.options.FindIndex(data => data.text == definition.ActionName);
 
-        actionCreatorBehaviour.ParametersCreator.ClearParams();
+        _parametersManager.ClearParams();
         if (definition.ActionParameters == null) return;
         foreach (string parameter in definition.ActionParameters)
-            actionCreatorBehaviour.ParametersCreator.AddParam(parameter);
+            _parametersManager.AddParam(parameter);
     }
 
     public void UpdateActionVisual()
     {
         string actionClass = _actionsDropdowns.DropdownClass.options[_actionsDropdowns.DropdownClass.value].text;
         string actionName = _actionsDropdowns.DropdownAction.options[_actionsDropdowns.DropdownAction.value].text;
-        string[] parameters = _actionCreatorBehaviour.Actions[SelectedIndex].ActionParameters;
+        string[] parameters = _actions[SelectedIndex].ActionParameters;
         _button.GetComponentInChildren<Text>().text = FormatAction.ActionToString(actionClass, actionName, parameters);
     }
     

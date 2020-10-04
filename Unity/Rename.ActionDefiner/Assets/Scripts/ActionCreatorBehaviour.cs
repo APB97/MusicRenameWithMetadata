@@ -3,25 +3,23 @@ using JsonStructures;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionCreatorBehaviour : MonoBehaviour
+[RequireComponent(typeof(IActionVisualizer), typeof(ISelectedAction), typeof(IParametersManager))]
+public class ActionCreatorBehaviour : MonoBehaviour, IActionsArray
 {
     [SerializeField] private Text actionClass;
     [SerializeField] private Text actionName;
     [SerializeField] private InputField path;
 
     private ActionsCreator _creator;
-    private ParametersCreatorBehaviour _parametersCreator;
+    
+    private IParametersManager _parametersManager;
     private IActionVisualizer _visualizer;
     private ISelectedAction _selectionInfo;
-
-    public IActionsArray Actions => _creator;
-
-    public ParametersCreatorBehaviour ParametersCreator => _parametersCreator;
 
     private void Awake()
     {
         _creator = new ActionsCreator(new List<ActionDefinition>());
-        _parametersCreator = GetComponent<ParametersCreatorBehaviour>();
+        _parametersManager = GetComponent<IParametersManager>();
         _visualizer = GetComponent<IActionVisualizer>();
         _selectionInfo = GetComponent<ISelectedAction>();
     }
@@ -36,7 +34,7 @@ public class ActionCreatorBehaviour : MonoBehaviour
     
     public void Add()
     {
-        var parameters = _parametersCreator.PopAllParameters();
+        var parameters = _parametersManager.PopAllParameters();
         ActionDefinition definition = _creator.Add(actionClass.text, actionName.text, parameters.ToArray());
         _visualizer.AddVisualFor(definition);
     }
@@ -48,13 +46,15 @@ public class ActionCreatorBehaviour : MonoBehaviour
 
     public void UpdateCurrentElement()
     {
-        var parameters = _parametersCreator.PopAllParameters();
+        var parameters = _parametersManager.PopAllParameters();
         _creator.UpdateAt(_selectionInfo.SelectedIndex, actionClass.text, actionName.text, parameters.ToArray());
     }
 
     public void RemoveCurrentElement()
     {
         _creator.RemoveAt(_selectionInfo.SelectedIndex);
-        _parametersCreator.ClearParams();
+        _parametersManager.ClearParams();
     }
+
+    public ActionDefinition this[int index] => _creator[index];
 }

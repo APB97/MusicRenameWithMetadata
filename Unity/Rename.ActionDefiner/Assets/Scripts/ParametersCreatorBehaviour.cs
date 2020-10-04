@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ParametersCreatorBehaviour : MonoBehaviour
+public class ParametersCreatorBehaviour : MonoBehaviour, IParametersManager
 {
     [SerializeField] private Transform layout;
     [SerializeField] private GameObject template;
