@@ -10,14 +10,22 @@ using StringProcessor;
 
 namespace FileMetadata.Dynamic
 {
+    /// <summary>
+    /// Class used to rename Single or Multiple files using file's property values.
+    /// </summary>
     public class MetadataRename
     {
-        private readonly IConsole _console;
+        private readonly IConsole _silenceAbleConsole;
         private readonly string _separator;
         
-        public MetadataRename(IConsole console, string separator = null)
+        /// <summary>
+        /// Create new instance of MetadataRename for use when renaming files
+        /// </summary>
+        /// <param name="silenceAbleConsole">Console instance</param>
+        /// <param name="separator">Separator used when joining multiple properties</param>
+        public MetadataRename(IConsole silenceAbleConsole, string separator = null)
         {
-            _console = console ?? throw new ArgumentNullException(nameof(console));
+            _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
             _separator = separator ?? " - ";
         }
 
@@ -39,12 +47,12 @@ namespace FileMetadata.Dynamic
                 }
                 catch (Exception e)
                 {
-                    _console.WriteLine(e);
+                    _silenceAbleConsole.WriteLine(e);
                 }
             }
         }
-        
-        public void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
+
+        private void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
         {
             string extension = Path.GetExtension(filePath);
 

@@ -8,7 +8,7 @@ namespace Rename.Helpers
 {
     public class PropertySelector : SelectorBase
     {
-        public PropertySelector(IConsole consoleWrapper) : base(consoleWrapper)
+        public PropertySelector(ISilenceAbleConsole silenceAbleConsole) : base(silenceAbleConsole)
         {
             CommandsForJson = new[] {nameof(Add)};
         }
@@ -60,7 +60,7 @@ namespace Rename.Helpers
             {
                 if (Properties.Contains(property))
                 {
-                    ConsoleWrapper.WriteLine(string.Format(Rename_Helpers_Commands.PropertySelector__0__is_already_on_the_list, property));
+                    SilenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.PropertySelector__0__is_already_on_the_list, property));
                 }
                 else
                 {
@@ -68,13 +68,13 @@ namespace Rename.Helpers
                 }
             }
 
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
         }
 
         public void Clear()
         {
             Properties.Clear();
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
         }
 
         public void HelpCommands()
@@ -94,10 +94,10 @@ namespace Rename.Helpers
 
         public void List()
         {
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
             foreach (string property in Properties)
             {
-                ConsoleWrapper.WriteLine(property);
+                SilenceAbleConsole.WriteLine(property);
             }
         }
 
@@ -107,7 +107,7 @@ namespace Rename.Helpers
             {
                 Properties.Remove(property);
             }
-            ConsoleWrapper.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_removed);
+            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_removed);
         }
 
         public override string ToString()

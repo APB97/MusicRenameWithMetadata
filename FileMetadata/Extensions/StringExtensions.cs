@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace FileMetadata.Extensions
 {
+    /// <summary>
+    /// Static class containing Extension method(s) for string(s).
+    /// </summary>
     public static class StringExtensions
     {
         private static readonly char[] InvalidChars = Path.GetInvalidFileNameChars();

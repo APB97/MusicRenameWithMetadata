@@ -9,9 +9,9 @@ namespace Rename.Helpers
     {
         public HashSet<string> CommonWords { get; private set; }
 
-        public async Task GetCommonWordsFrom(string file)
+        public void GetCommonWordsFrom(string file)
         {
-            var words = await File.ReadAllLinesAsync(file);
+            var words = File.ReadAllLines(file);
             
             var lowercaseWords = words.Select(word => new string(word.Select(char.ToLower).ToArray())).ToArray();
             var pascalCase = lowercaseWords.Select(word =>

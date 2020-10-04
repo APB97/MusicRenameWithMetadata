@@ -13,12 +13,12 @@ namespace MusicMetadataRenamer
     {
         private static async Task Main(string[] args)
         {
-            IConsole console = new ConsoleWrapper();
-            PropertySelector propertySelector = new PropertySelector(console);
-            DirectorySelector directorySelector = new DirectorySelector(console);
-            SkipFile skipFile = new SkipFile(console);
+            ISilenceAbleConsole silenceAbleConsole = new SilenceAbleConsole();
+            PropertySelector propertySelector = new PropertySelector(silenceAbleConsole);
+            DirectorySelector directorySelector = new DirectorySelector(silenceAbleConsole);
+            SkipFile skipFile = new SkipFile(silenceAbleConsole);
             WordSkipping skippingThese = new WordSkipping();
-            await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
+            skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
             IStringProcessor processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
 
             switch (args.Length)
@@ -31,7 +31,7 @@ namespace MusicMetadataRenamer
                     string defaultPath = skipFile.SelectedPath;
                     skipFile.Prompt();
                     if (skipFile.SelectedPath != defaultPath)
-                        await skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
+                        skippingThese.GetCommonWordsFrom(skipFile.SelectedPath);
                     processor = new SkipCommonWordsProcessor{ CommonWords = skippingThese.CommonWords };
                     
                     break;
@@ -42,15 +42,15 @@ namespace MusicMetadataRenamer
                     {
                         new KeyValuePair<string, object>(nameof(PropertySelector), propertySelector),
                         new KeyValuePair<string, object>(nameof(DirectorySelector), directorySelector),
-                        new KeyValuePair<string, object>("Console", console),
+                        new KeyValuePair<string, object>("Console", silenceAbleConsole),
                         new KeyValuePair<string, object>(nameof(SkipFile), skipFile)
                     });
-                    await resolver.Execute(args[0]);
+                    resolver.Execute(args[0]);
                     break;
                 }
             }
 
-            RenameFiles renameFiles = new RenameFiles(console, processor, new MetadataRename(console));
+            RenameFiles renameFiles = new RenameFiles(silenceAbleConsole, processor, new MetadataRename(silenceAbleConsole));
             renameFiles.RenameMultiple(directorySelector.Directories, propertySelector.Properties);
         }
     }
