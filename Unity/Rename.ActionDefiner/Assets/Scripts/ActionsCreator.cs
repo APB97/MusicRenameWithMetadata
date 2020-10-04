@@ -4,7 +4,7 @@ using System.Linq;
 using JsonStructures;
 using Newtonsoft.Json;
 
-public class ActionsCreator
+public class ActionsCreator : IActionsArray
 {
     private List<ActionDefinition> _definitionsToSerialize;
     
@@ -49,10 +49,7 @@ public class ActionsCreator
         if (selectedIndex.HasValue) _definitionsToSerialize.RemoveAt(selectedIndex.Value);
     }
 
-    public ActionDefinition ElementAt(int index)
-    {
-        return _definitionsToSerialize[index];
-    }
+    public ActionDefinition this[int index] => _definitionsToSerialize[index];
 
     public IEnumerable<ActionDefinition> LoadFile(string filePath)
     {

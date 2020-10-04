@@ -6,7 +6,7 @@ using Rename.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionsObtain : MonoBehaviour
+public class ActionsObtain : MonoBehaviour, IActionsDropdowns
 {
     [SerializeField] private Dropdown dropdownActionClasses;
     [SerializeField] private Dropdown dropdownActions;
@@ -15,6 +15,9 @@ public class ActionsObtain : MonoBehaviour
     
     private readonly Dictionary<string, object> _commandObjects = new Dictionary<string, object>();
     private ICommandClass _currentClass;
+    
+    public Dropdown DropdownClass => dropdownActionClasses;
+    public Dropdown DropdownAction => dropdownActions;
 
     private void Awake()
     {
