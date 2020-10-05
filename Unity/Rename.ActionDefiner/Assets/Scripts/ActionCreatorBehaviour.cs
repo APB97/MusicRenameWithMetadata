@@ -39,6 +39,11 @@ public class ActionCreatorBehaviour : MonoBehaviour, IActionsArray
         _visualizer.AddVisualFor(definition);
     }
 
+    public void CreateFile(string filepath)
+    {
+        _creator.CreateFile(filepath);
+    }
+    
     public void CreateFile()
     {
         _creator.CreateFile(path.text);
