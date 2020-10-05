@@ -3,41 +3,22 @@
 public class ApplicationManager : MonoBehaviour
 {
     [SerializeField] private GameObject confirmPanel;
-    private bool _wantsToQuit = false;
+    private static GameObject _confirmPanelInstance;
 
-    public static ApplicationManager Instance { get; private set; }
-    
-    public void ExitApplication()
+    private void Awake()
     {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.ExitPlaymode();
-        #else
-        Application.Quit();
-        #endif
+        _confirmPanelInstance = confirmPanel;
     }
 
-    private void OnEnable()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    static void RunOnStart()
     {
-        Application.wantsToQuit += OnWantsToQuit;
-        Instance = this;
-    }
-
-    private void OnDisable()
-    {
-        Application.wantsToQuit -= OnWantsToQuit;
-        Instance = null;
-    }
-
-    private bool OnWantsToQuit()
-    {
-        if (!confirmPanel) return true;
-        confirmPanel.SetActive(true);
-        return _wantsToQuit;
-    }
-
-    public void SetThatWantsToQuit()
-    {
-        _wantsToQuit = true;
+        Application.wantsToQuit += () =>
+        {
+            if (_confirmPanelInstance)
+                _confirmPanelInstance.SetActive(true);
+            return AppExit.WantsToExit;
+        };
     }
 
     public void ShowConfirmQuit()

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-public class AppManagerHelper : MonoBehaviour
+public static class AppManagerHelper
 {
-    public void ShowConfirmQuit()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    static void RunOnStart()
     {
-        ApplicationManager.Instance.ShowConfirmQuit();
+        Application.wantsToQuit += () => AppExit.WantsToExit;
     }
 }
