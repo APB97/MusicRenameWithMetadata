@@ -3,22 +3,26 @@
 public class ApplicationManager : MonoBehaviour
 {
     [SerializeField] private GameObject confirmPanel;
-    private static GameObject _confirmPanelInstance;
 
+    public static ApplicationManager Instance { get; private set; }
+    
     private void Awake()
-    {
-        _confirmPanelInstance = confirmPanel;
-    }
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
-    static void RunOnStart()
     {
         Application.wantsToQuit += () =>
         {
-            if (!_confirmPanelInstance) return true;
-            _confirmPanelInstance.SetActive(true);
+            if (!confirmPanel) return true;
+            confirmPanel.SetActive(true);
             return AppExit.WantsToExit;
         };
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    private static void RunOnStart()
+    {
+        GameObject managerPrefab = Resources.Load<GameObject>(nameof(ApplicationManager));
+        var managerInstance = Instantiate(managerPrefab);
+        DontDestroyOnLoad(managerInstance);
+        Instance = managerInstance.GetComponent<ApplicationManager>();
     }
 
     public void ShowConfirmQuit()

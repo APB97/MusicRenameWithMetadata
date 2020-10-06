@@ -16,4 +16,10 @@ public class AppExit : MonoBehaviour
     public void SetThatWantsToExit() => WantsToExit = true;
     
     public static bool WantsToExit { get; private set; }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    private static void RunOnStart()
+    {
+        Application.wantsToQuit += () => WantsToExit;
+    }
 }

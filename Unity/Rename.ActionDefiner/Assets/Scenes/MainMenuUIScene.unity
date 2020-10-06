@@ -196,13 +196,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142829326}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.20784315, g: 0.21568629, b: 0.24705884, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -293,8 +293,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280229663
-  m_fontColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -361,74 +361,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249671069}
   m_CullTransparentMesh: 0
---- !u!1001 &305818392
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8937962246239270494, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_Name
-      value: ApplicationManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 470.31427
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 358.28204
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -84.5018
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937962246239270495, guid: c737a0831cf91c7439a5288571384327, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c737a0831cf91c7439a5288571384327, type: 3}
---- !u!114 &305818393 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8937962246239270464, guid: c737a0831cf91c7439a5288571384327, type: 3}
-  m_PrefabInstance: {fileID: 305818392}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a4b57ace1d4c83a61e465a0e1ba721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &484094325
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,11 +493,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
+    m_HighlightedColor: {r: 0.16665184, g: 0.29884413, b: 0.3301887, a: 1}
+    m_PressedColor: {r: 0.25663045, g: 0.65131146, b: 0.745283, a: 1}
+    m_SelectedColor: {r: 0.16665184, g: 0.29884413, b: 0.3301887, a: 1}
+    m_DisabledColor: {r: 0.06, g: 0.109756075, b: 0.12, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -596,8 +528,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 0
-      - m_Target: {fileID: 305818393}
-        m_TargetAssemblyTypeName: ApplicationManager, Scripts
+      - m_Target: {fileID: 3008366532044224391, guid: baba9cd9e8cff404484401dc76c017c6, type: 3}
+        m_TargetAssemblyTypeName: AppManagerReferencer, Scripts
         m_MethodName: ShowConfirmQuit
         m_Mode: 1
         m_Arguments:
@@ -628,7 +560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -703,7 +635,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Create New ...
+  m_text: 'Creator
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -712,8 +646,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280229663
-  m_fontColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -793,7 +727,7 @@ GameObject:
   - component: {fileID: 1768079961}
   - component: {fileID: 1768079960}
   m_Layer: 5
-  m_Name: Button Create New
+  m_Name: Button Creator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -839,11 +773,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
+    m_HighlightedColor: {r: 0.16665184, g: 0.29884413, b: 0.3301887, a: 1}
+    m_PressedColor: {r: 0.25663045, g: 0.65131146, b: 0.745283, a: 1}
+    m_SelectedColor: {r: 0.16665184, g: 0.29884413, b: 0.3301887, a: 1}
+    m_DisabledColor: {r: 0.06, g: 0.109756075, b: 0.12, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -873,7 +807,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
@@ -885,7 +819,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 484094327}
         m_TargetAssemblyTypeName: SceneLoader, Scripts
         m_MethodName: StartLoadOf
@@ -918,7 +852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
