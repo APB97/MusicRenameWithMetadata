@@ -6,10 +6,6 @@
     public interface IConsole
     {
         /// <summary>
-        /// Write current line terminator to Console
-        /// </summary>
-        void WriteLine();
-        /// <summary>
         /// Write contents of string to Console, followed by current line terminator
         /// </summary>
         /// <param name="text">Text to display on Console</param>

@@ -32,13 +32,6 @@ namespace Console
         }
 
         /// <inheritdoc />
-        public void WriteLine()
-        {
-            if (Silent) return;
-            System.Console.WriteLine();
-        }
-
-        /// <inheritdoc />
         public void WriteLine(string text)
         {
             if (Silent) return;
