@@ -15,8 +15,8 @@ public class ApplicationManager : MonoBehaviour
     {
         Application.wantsToQuit += () =>
         {
-            if (_confirmPanelInstance)
-                _confirmPanelInstance.SetActive(true);
+            if (!_confirmPanelInstance) return true;
+            _confirmPanelInstance.SetActive(true);
             return AppExit.WantsToExit;
         };
     }
