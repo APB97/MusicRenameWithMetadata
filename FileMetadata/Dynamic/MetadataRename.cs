@@ -40,32 +40,55 @@ namespace FileMetadata.Dynamic
         {
             IEnumerable<string> names = propertyNames as string[] ?? propertyNames?.ToArray() ?? new []{"Title"};
             foreach (string filePath in filePaths)
+                TryRenaming(filePath, processor, names);
+        }
+
+        private void TryRenaming(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
+        {
+            try
             {
-                try
-                {
-                    RenameSingle(filePath, processor, names);
-                }
-                catch (Exception e)
-                {
-                    _silenceAbleConsole.WriteLine(e);
-                }
+                RenameSingle(filePath, processor, propertyNames);
+            }
+            catch (Exception e)
+            {
+                _silenceAbleConsole.WriteLine(e);
             }
         }
 
         private void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
         {
-            string extension = Path.GetExtension(filePath);
+            string[] propertyValues = GetPropertyValuesOf(filePath, propertyNames);
+            var destFileName = GetDestinationFileName(filePath, processor, propertyValues);
+            MoveToDestinationIfDoesNotExist(filePath, destFileName);
+        }
 
+        private static string[] GetPropertyValuesOf(string filePath, IEnumerable<string> propertyNames)
+        {
             IEnumerable<string> names = propertyNames as string[] ?? propertyNames.ToArray();
             string[] propertyValues = new string[names.Count()];
             for (int i = 0; i < names.Count(); i++)
             {
-                propertyValues[i] = typeof(Mp3InfoReader).GetMethod(names.ElementAt(i), BindingFlags.Static | BindingFlags.Public)
+                propertyValues[i] = typeof(Mp3InfoReader)
+                    .GetMethod(names.ElementAt(i), BindingFlags.Static | BindingFlags.Public)
                     ?.Invoke(null, new object[] {filePath})?.ToString();
             }
+
+            return propertyValues;
+        }
+
+        private string GetDestinationFileName(string filePath, IStringProcessor processor, string[] propertyValues)
+        {
+            string directoryName = Path.GetDirectoryName(filePath);
+            if (directoryName == null)
+                throw new InvalidOperationException($"Directory of {filePath} is incorrect.");
+            
+            string extension = Path.GetExtension(filePath);
             string withNoInvalid = propertyValues.JoinForFilePath(_separator);
-            string destFileName = Path.Combine(Path.GetDirectoryName(filePath) ?? throw new Exception("Path is not correct."),
-                $"{processor.Process(withNoInvalid)}{extension}");
+            return Path.Combine(directoryName, $"{processor.Process(withNoInvalid)}{extension}");
+        }
+
+        private static void MoveToDestinationIfDoesNotExist(string filePath, string destFileName)
+        {
             if (!File.Exists(destFileName))
                 File.Move(filePath, destFileName);
         }
