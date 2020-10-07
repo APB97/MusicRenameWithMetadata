@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -57,23 +58,23 @@ namespace FileMetadata.Dynamic
 
         private void RenameSingle(string filePath, IStringProcessor processor, IEnumerable<string> propertyNames)
         {
-            string[] propertyValues = GetPropertyValuesOf(filePath, propertyNames);
+            string[] propertyValues = GetPropertyValuesOf(filePath, propertyNames as string[] ?? propertyNames.ToArray());
             var destFileName = GetDestinationFileName(filePath, processor, propertyValues);
             MoveToDestinationIfDoesNotExist(filePath, destFileName);
         }
 
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         private static string[] GetPropertyValuesOf(string filePath, IEnumerable<string> propertyNames)
         {
-            IEnumerable<string> names = propertyNames as string[] ?? propertyNames.ToArray();
-            string[] propertyValues = new string[names.Count()];
-            for (int i = 0; i < names.Count(); i++)
-            {
-                propertyValues[i] = typeof(Mp3InfoReader)
-                    .GetMethod(names.ElementAt(i), BindingFlags.Static | BindingFlags.Public)
-                    ?.Invoke(null, new object[] {filePath})?.ToString();
-            }
+            return propertyNames.Select(name => GetPropertyValueOf(filePath, name)).ToArray();
+        }
 
-            return propertyValues;
+        private static string GetPropertyValueOf(string filePath, string propertyName)
+        {
+            MethodInfo method =
+                typeof(Mp3InfoReader).GetMethod(propertyName, BindingFlags.Static | BindingFlags.Public);
+            object[] parameters = {filePath};
+            return method?.Invoke(null, parameters)?.ToString();
         }
 
         private string GetDestinationFileName(string filePath, IStringProcessor processor, string[] propertyValues)
