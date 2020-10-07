@@ -52,7 +52,7 @@ namespace JsonStructures
         {
             foreach (ActionDefinition action in definitions.Actions)
             {
-                object defaultObject = _classDefaultObjects[action.ActionClass];
+                ICommandClass defaultObject = _classDefaultObjects[action.ActionClass];
                 MethodInfo method = defaultObject.GetType().GetMethod(action.ActionName);
                 method?.Invoke(defaultObject,
                     method.GetParameters().Length == 0 ? new object[0] : new object[] {action.ActionParameters});

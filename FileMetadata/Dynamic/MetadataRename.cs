@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -63,7 +62,6 @@ namespace FileMetadata.Dynamic
             MoveToDestinationIfDoesNotExist(filePath, destFileName);
         }
 
-        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         private static string[] GetPropertyValuesOf(string filePath, IEnumerable<string> propertyNames)
         {
             return propertyNames.Select(name => GetPropertyValueOf(filePath, name)).ToArray();
