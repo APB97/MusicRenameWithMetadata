@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandClassInterface", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonStructures", "Json\JsonStructures\JsonStructures.csproj", "{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMetadata.Tests", "Tests\FileMetadata.Tests\FileMetadata.Tests.csproj", "{8B61E19F-3D6B-4F71-9B2F-629C7615020C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
