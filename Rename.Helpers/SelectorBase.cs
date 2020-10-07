@@ -121,5 +121,11 @@ namespace Rename.Helpers
             
             return true;
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return GetType().Name;
+        }
     }
 }

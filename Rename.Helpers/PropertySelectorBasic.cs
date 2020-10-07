@@ -104,11 +104,5 @@ namespace Rename.Helpers
                 Properties.Remove(property);
             }
         }
-
-        /// <inheritdoc />
-        public override string ToString()
-        {
-            return nameof(PropertySelectorBasic);
-        }
     }
 }

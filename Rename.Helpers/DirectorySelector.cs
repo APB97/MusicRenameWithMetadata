@@ -116,12 +116,6 @@ namespace Rename.Helpers
         }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return nameof(DirectorySelector);
-        }
-
-        /// <inheritdoc />
         public void BeSilent()
         {
             SilenceAbleConsole.BeSilent();
