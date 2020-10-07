@@ -10,8 +10,9 @@ namespace FileMetadata.Mp3
     [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Used via Reflection")]
     public static class Mp3InfoReader
     {
-        private const string TitleIdSearchPattern = "\0TIT2\0\0\0";
-        private const string ArtistsIdSearchPattern = "\0TPE1\0\0\0";
+        private const string IdFormat = "{1}{0}{1}{1}{1}";
+        private static readonly string TitleIdSearchPattern = string.Format(IdFormat, "TIT2", SpecialChars.NullChar);
+        private static readonly string ArtistsIdSearchPattern = string.Format(IdFormat, "TPE1", SpecialChars.NullChar);
 
         /// <summary>
         /// Get Title of given file, if any. 
@@ -70,26 +71,30 @@ namespace FileMetadata.Mp3
             // found Id
             if (indexOfId > 0)
             {
-                string valueRead = TryReadValue(idSearchPattern, cumulativeString, indexOfId);
+                string valueRead = TryReadValue(cumulativeString, indexOfId + idSearchPattern.Length);
                 if (valueRead != null)
                     return (valueRead, searchBegin);
             }
-            // Simplify next search by setting new searchBegin
+            // ID not found. Simplify next search by setting new searchBegin
             else
                 return (null, cumulativeString.Length - idSearchPattern.Length);
 
+            // Id found but index would be out of range
             return (null, searchBegin);
         }
 
-        private static string TryReadValue(string idSearchPattern, string cumulativeString, int indexOfId)
+        private static string TryReadValue(string cumulativeString, int searchStart)
         {
-            // char ETX = 0x03
-            int valueIndexBegin = cumulativeString.IndexOf((char) 0x03, indexOfId + idSearchPattern.Length);
+            var valueIndexBegin = GetValueIndexBegin(cumulativeString, searchStart);
             if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin < 0)
                 return null;
-            int valueIndexEnd = cumulativeString.IndexOf((char) 0x0, valueIndexBegin);
-            string valueRead = cumulativeString.Substring(valueIndexBegin + 1, valueIndexEnd - valueIndexBegin);
-            return valueRead;
+            return cumulativeString.Substring(valueIndexBegin,
+                cumulativeString.IndexOf(SpecialChars.NullChar, valueIndexBegin) - valueIndexBegin - 1);
+        }
+
+        private static int GetValueIndexBegin(string cumulativeString, int startIndex)
+        {
+            return cumulativeString.IndexOf(SpecialChars.ETX, startIndex) + 1;
         }
     }
 }
