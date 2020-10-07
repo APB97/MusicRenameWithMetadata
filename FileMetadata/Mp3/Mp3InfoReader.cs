@@ -86,10 +86,10 @@ namespace FileMetadata.Mp3
         private static string TryReadValue(string cumulativeString, int searchStart)
         {
             var valueIndexBegin = GetValueIndexBegin(cumulativeString, searchStart);
-            if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin < 0)
+            if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin <= 0)
                 return null;
             return cumulativeString.Substring(valueIndexBegin,
-                cumulativeString.IndexOf(SpecialChars.NullChar, valueIndexBegin) - valueIndexBegin - 1);
+                cumulativeString.IndexOf(SpecialChars.NullChar, valueIndexBegin) - valueIndexBegin);
         }
 
         private static int GetValueIndexBegin(string cumulativeString, int startIndex)
