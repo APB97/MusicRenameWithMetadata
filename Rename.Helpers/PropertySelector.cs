@@ -6,15 +6,22 @@ using FileMetadata.Mp3;
 
 namespace Rename.Helpers
 {
+    /// <summary>
+    /// SelectorBase implementation for selecting properties.
+    /// </summary>
     public class PropertySelector : SelectorBase
     {
+        /// <inheritdoc />
+        /// Additionally assigns value to CommandsForJson
         public PropertySelector(ISilenceAbleConsole silenceAbleConsole) : base(silenceAbleConsole)
         {
             CommandsForJson = new[] {nameof(Add)};
         }
 
+        /// <inheritdoc />
         public override IEnumerable<string> CommandsForJson { get; }
 
+        /// <inheritdoc />
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
         {
@@ -23,14 +30,19 @@ namespace Rename.Helpers
             nameof(Complete),
             nameof(ClearScreen),
             nameof(Help),
-            nameof(HelpCommands),
             nameof(HelpProperties),
             nameof(List),
             nameof(Remove)
         });
 
+        /// <summary>
+        /// List of selected properties.
+        /// </summary>
         public List<string> Properties { get; } = new List<string>();
 
+        /// <summary>
+        /// Launches Interactive mode for current class.
+        /// </summary>
         public void StartInteractive()
         {
             while (true)
@@ -54,6 +66,10 @@ namespace Rename.Helpers
             }
         }
 
+        /// <summary>
+        /// Add properties to selected list.
+        /// </summary>
+        /// <param name="properties">Properties to select.</param>
         public void Add(params string[] properties)
         {
             foreach (string property in properties)
@@ -71,17 +87,18 @@ namespace Rename.Helpers
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
         }
 
+        /// <summary>
+        /// Clears list of selected properties.
+        /// </summary>
         public void Clear()
         {
             Properties.Clear();
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
         }
 
-        public void HelpCommands()
-        {
-            HelpInternal(Commands);
-        }
-
+        /// <summary>
+        /// Displays list of all available properties.
+        /// </summary>
         public void HelpProperties()
         {
             System.Console.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
@@ -92,6 +109,9 @@ namespace Rename.Helpers
             }
         }
 
+        /// <summary>
+        /// Displays current list of selected properties.
+        /// </summary>
         public void List()
         {
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
@@ -101,6 +121,10 @@ namespace Rename.Helpers
             }
         }
 
+        /// <summary>
+        /// Removes given properties from the list.
+        /// </summary>
+        /// <param name="properties">Properties to remove.</param>
         public void Remove(string[] properties)
         {
             foreach (string property in properties)
@@ -110,6 +134,7 @@ namespace Rename.Helpers
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_removed);
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return nameof(PropertySelector);
