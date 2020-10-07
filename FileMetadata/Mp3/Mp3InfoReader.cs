@@ -58,23 +58,31 @@ namespace FileMetadata.Mp3
             {
                 cumulativeString += reader.ReadLine();
                 int indexOfId = cumulativeString.IndexOf(idSearchPattern, searchBegin, StringComparison.Ordinal);
+                // found Id
                 if (indexOfId > 0)
                 {
-                    // found Id // ETX char = 0x03
-                    int valueIndexBegin = cumulativeString.IndexOf((char)0x03, indexOfId + idSearchPattern.Length);
-                    if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin < 0)
-                        continue;
-                    int valueIndexEnd = cumulativeString.IndexOf((char) 0x0, valueIndexBegin);
-                    string valueRead = cumulativeString.Substring(valueIndexBegin + 1, valueIndexEnd - valueIndexBegin);
-                    return valueRead;
+                    string valueRead = TryReadValue(idSearchPattern, cumulativeString, indexOfId);
+                    if (valueRead != null)
+                        return valueRead;
                 }
-
                 // Simplify next search by setting new searchBegin
-                searchBegin = cumulativeString.Length - idSearchPattern.Length;
+                else
+                    searchBegin = cumulativeString.Length - idSearchPattern.Length;
             }
 
             // Not found
             return string.Empty;
+        }
+
+        private static string TryReadValue(string idSearchPattern, string cumulativeString, int indexOfId)
+        {
+            // ETX char = 0x03
+            int valueIndexBegin = cumulativeString.IndexOf((char) 0x03, indexOfId + idSearchPattern.Length);
+            if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin < 0)
+                return null;
+            int valueIndexEnd = cumulativeString.IndexOf((char) 0x0, valueIndexBegin);
+            string valueRead = cumulativeString.Substring(valueIndexBegin + 1, valueIndexEnd - valueIndexBegin);
+            return valueRead;
         }
     }
 }
