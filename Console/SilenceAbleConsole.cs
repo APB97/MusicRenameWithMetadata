@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using CommandClassInterface;
 
 namespace Console
 {
     /// <inheritdoc cref="ISilenceAbleConsole"/>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public class SilenceAbleConsole : ISilenceAbleConsole, ICommandClass
+    public class SilenceAbleConsole : ISilenceAbleConsole
     {
         private bool Silent { get; set; }
 

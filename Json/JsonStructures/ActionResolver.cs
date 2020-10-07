@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using CommandClassInterface;
 using Newtonsoft.Json;
 
 namespace JsonStructures
@@ -10,16 +11,16 @@ namespace JsonStructures
     /// </summary>
     public class ActionResolver
     {
-        private readonly Dictionary<string, object> _classDefaultObjects;
+        private readonly Dictionary<string, ICommandClass> _classDefaultObjects;
 
         /// <summary>
         /// Create new instance of resolver
         /// </summary>
         /// <param name="keyObjectPairs">Pairs (key, object) to use when resolving Actions</param>
-        public ActionResolver(KeyValuePair<string, object>[] keyObjectPairs)
+        public ActionResolver(KeyValuePair<string, ICommandClass>[] keyObjectPairs)
         {
-            _classDefaultObjects = new Dictionary<string, object>();
-            foreach (KeyValuePair<string,object> pair in keyObjectPairs)
+            _classDefaultObjects = new Dictionary<string, ICommandClass>();
+            foreach (KeyValuePair<string, ICommandClass> pair in keyObjectPairs)
             {
                 _classDefaultObjects.Add(pair.Key, pair.Value);
             }

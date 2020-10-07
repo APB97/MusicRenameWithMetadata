@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CommandClassInterface;
 using Console;
 using FileMetadata.Dynamic;
 using JsonStructures;
@@ -37,12 +38,12 @@ namespace MusicMetadataRenamer
                 }
                 case 1:
                 {
-                    var resolver = new ActionResolver(new []
+                    var resolver = new ActionResolver(new[]
                     {
-                        new KeyValuePair<string, object>(nameof(PropertySelector), propertySelector),
-                        new KeyValuePair<string, object>(nameof(DirectorySelector), directorySelector),
-                        new KeyValuePair<string, object>(silenceAbleConsole.ToString(), silenceAbleConsole),
-                        new KeyValuePair<string, object>(nameof(SkipFile), skipFile)
+                        new KeyValuePair<string, ICommandClass>(nameof(PropertySelector), propertySelector),
+                        new KeyValuePair<string, ICommandClass>(nameof(DirectorySelector), directorySelector),
+                        new KeyValuePair<string, ICommandClass>(silenceAbleConsole.ToString(), silenceAbleConsole),
+                        new KeyValuePair<string, ICommandClass>(nameof(SkipFile), skipFile)
                     });
                     resolver.Execute(args[0]);
                     break;
