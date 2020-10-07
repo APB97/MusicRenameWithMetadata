@@ -1,116 +1,52 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using Console;
-using FileMetadata.Mp3;
+﻿using Console;
 
 namespace Rename.Helpers
 {
-    /// <summary>
-    /// SelectorBase implementation for selecting properties.
-    /// </summary>
-    public class PropertySelector : SelectorBase
+    /// <inheritdoc />
+    public class PropertySelector : PropertySelectorBasic
     {
-        /// <inheritdoc />
-        /// Additionally assigns value to CommandsForJson
-        public PropertySelector(ISilenceAbleConsole silenceAbleConsole) : base(silenceAbleConsole)
-        {
-            CommandsForJson = new[] {nameof(Add)};
-        }
+        private readonly ISilenceAbleConsole _commandResultsConsole;
 
         /// <inheritdoc />
-        public override IEnumerable<string> CommandsForJson { get; }
-
-        /// <inheritdoc />
-        protected override HashSet<string> Commands { get; } = new HashSet<string>(
-        new []
+        public PropertySelector(ISilenceAbleConsole silenceAbleConsole, ISilenceAbleConsole commandResultsConsole) : base(silenceAbleConsole)
         {
-            nameof(Add),
-            nameof(Clear),
-            nameof(Complete),
-            nameof(ClearScreen),
-            nameof(Help),
-            nameof(HelpProperties),
-            nameof(List),
-            nameof(Remove)
-        });
-
-        /// <summary>
-        /// List of selected properties.
-        /// </summary>
-        public List<string> Properties { get; } = new List<string>();
-
-        /// <summary>
-        /// Add properties to selected list.
-        /// </summary>
-        /// <param name="properties">Properties to select.</param>
-        public void Add(params string[] properties)
-        {
-            foreach (string property in properties)
-            {
-                if (Properties.Contains(property))
-                {
-                    SilenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.PropertySelector__0__is_already_on_the_list, property));
-                }
-                else
-                {
-                    Properties.Add(property);
-                }
-            }
-
-            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
-        }
-
-        /// <summary>
-        /// Clears list of selected properties.
-        /// </summary>
-        public void Clear()
-        {
-            Properties.Clear();
-            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
-        }
-
-        /// <summary>
-        /// Displays list of all available properties.
-        /// </summary>
-        public void HelpProperties()
-        {
-            System.Console.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
-            const BindingFlags bindingFlags = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static;
-            foreach (MethodInfo method in typeof(Mp3InfoReader).GetMethods(bindingFlags))
-            {
-                System.Console.WriteLine(method.Name);
-            }
-        }
-
-        /// <summary>
-        /// Displays current list of selected properties.
-        /// </summary>
-        public void List()
-        {
-            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
-            foreach (string property in Properties)
-            {
-                SilenceAbleConsole.WriteLine(property);
-            }
-        }
-
-        /// <summary>
-        /// Removes given properties from the list.
-        /// </summary>
-        /// <param name="properties">Properties to remove.</param>
-        public void Remove(string[] properties)
-        {
-            foreach (string property in properties)
-            {
-                Properties.Remove(property);
-            }
-            SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_removed);
+            _commandResultsConsole = commandResultsConsole;
         }
 
         /// <inheritdoc />
-        public override string ToString()
+        public override void Add(params string[] properties)
         {
-            return nameof(PropertySelector);
+            base.Add(properties);
+            _commandResultsConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_added);
+        }
+
+        /// <inheritdoc />
+        protected override void AddProperty(string property)
+        {
+            if (Properties.Contains(property))
+                _commandResultsConsole.WriteLine(string.Format(Rename_Helpers_Commands.PropertySelector__0__is_already_on_the_list, property));
+            base.AddProperty(property);
+        }
+
+        /// <inheritdoc />
+        public override void Clear()
+        {
+            base.Clear();
+            _commandResultsConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Property_list_cleared);
+        }
+
+        /// <inheritdoc />
+        public override void List()
+        {
+            _commandResultsConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Selected_Properties);
+            base.List();
+        }
+
+        /// <inheritdoc />
+        public override void Remove(string[] properties)
+        {
+            base.Remove(properties);
+            _commandResultsConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Properties_removed);
         }
     }
 }

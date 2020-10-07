@@ -15,7 +15,7 @@ namespace MusicMetadataRenamer
         private static async Task Main(string[] args)
         {
             ISilenceAbleConsole silenceAbleConsole = new SilenceAbleConsole();
-            PropertySelector propertySelector = new PropertySelector(silenceAbleConsole);
+            PropertySelector propertySelector = new PropertySelector(silenceAbleConsole, silenceAbleConsole);
             DirectorySelector directorySelector = new DirectorySelector(silenceAbleConsole);
             ISupportsInteractiveMode[] selectors = { directorySelector, propertySelector };
             SkipFile skipFile = new SkipFile(silenceAbleConsole);

@@ -55,7 +55,7 @@ namespace Rename.Helpers
             {
                 string helpForCommand = Rename_Helpers_Commands.ResourceManager.GetString($"{typeName}_{command}Help");
                 // ReSharper disable once LocalizableElement
-                System.Console.WriteLine("{0, -16}\t{1}", command, helpForCommand);
+                SilenceAbleConsole.WriteLine($"{command,-16}\t{helpForCommand}");
             }
         }
 
@@ -66,7 +66,6 @@ namespace Rename.Helpers
         {
             SilenceAbleConsole.Clear();
         }
-
 
         /// <summary>
         /// Complete this step of interactive mode.
@@ -103,7 +102,7 @@ namespace Rename.Helpers
         /// <returns>If user decided to Complete the step, returns false. Returns true otherwise.</returns>
         private bool ProcessInputs()
         {
-            System.Console.WriteLine(Rename_Helpers_Commands.Type_Help_for_help, nameof(DirectorySelector));
+            SilenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.Type_Help_for_help, nameof(DirectorySelector)));
 
             string line = System.Console.ReadLine();
             string[] inputs = line?.Split(' ');
