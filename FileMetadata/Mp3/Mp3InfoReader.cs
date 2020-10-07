@@ -21,14 +21,7 @@ namespace FileMetadata.Mp3
         [SuppressMessage("ReSharper", "ConvertToUsingDeclaration")]
         public static string Title(string fileAtPath)
         {
-            // using declarations
-            using (FileStream stream = File.OpenRead(fileAtPath))
-            {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    return ReadInfoByPattern(reader, TitleIdSearchPattern);
-                }
-            }
+            return ReadPropertyFromFile(fileAtPath, TitleIdSearchPattern);
         }
 
         /// <summary>
@@ -38,12 +31,17 @@ namespace FileMetadata.Mp3
         /// <returns>Returns Artists from file properties or string.Empty</returns>
         public static string Artists(string fileAtPath)
         {
+            return ReadPropertyFromFile(fileAtPath, ArtistsIdSearchPattern);
+        }
+
+        private static string ReadPropertyFromFile(string fileAtPath, string propertyIdPattern)
+        {
             // using declarations
             using (FileStream stream = File.OpenRead(fileAtPath))
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    return ReadInfoByPattern(reader, ArtistsIdSearchPattern);
+                    return ReadInfoByPattern(reader, propertyIdPattern);
                 }
             }
         }
@@ -57,26 +55,35 @@ namespace FileMetadata.Mp3
             while (!reader.EndOfStream)
             {
                 cumulativeString += reader.ReadLine();
-                int indexOfId = cumulativeString.IndexOf(idSearchPattern, searchBegin, StringComparison.Ordinal);
-                // found Id
-                if (indexOfId > 0)
-                {
-                    string valueRead = TryReadValue(idSearchPattern, cumulativeString, indexOfId);
-                    if (valueRead != null)
-                        return valueRead;
-                }
-                // Simplify next search by setting new searchBegin
-                else
-                    searchBegin = cumulativeString.Length - idSearchPattern.Length;
+                var (valueRead, newSearchBegin) = SearchForValue(idSearchPattern, cumulativeString, searchBegin);
+                if (valueRead != null) return valueRead;
+                searchBegin = newSearchBegin;
             }
 
             // Not found
             return string.Empty;
         }
 
+        private static (string valueRead, int newSearchBegin) SearchForValue(string idSearchPattern, string cumulativeString, int searchBegin)
+        {
+            int indexOfId = cumulativeString.IndexOf(idSearchPattern, searchBegin, StringComparison.Ordinal);
+            // found Id
+            if (indexOfId > 0)
+            {
+                string valueRead = TryReadValue(idSearchPattern, cumulativeString, indexOfId);
+                if (valueRead != null)
+                    return (valueRead, searchBegin);
+            }
+            // Simplify next search by setting new searchBegin
+            else
+                return (null, cumulativeString.Length - idSearchPattern.Length);
+
+            return (null, searchBegin);
+        }
+
         private static string TryReadValue(string idSearchPattern, string cumulativeString, int indexOfId)
         {
-            // ETX char = 0x03
+            // char ETX = 0x03
             int valueIndexBegin = cumulativeString.IndexOf((char) 0x03, indexOfId + idSearchPattern.Length);
             if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin < 0)
                 return null;
