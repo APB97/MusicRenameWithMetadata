@@ -1,14 +1,3 @@
 ﻿/.idea/
-*/obj/
-/bin/
-/*/bin/
-/Json/JsonStructures/obj/
-/Json/JsonStructures/bin/
-/Unity/Rename.ActionDefiner/Library/
-/Unity/Rename.ActionDefiner/obj/Debug/
-/Unity/Rename.ActionDefiner/Logs/
-/Unity/Rename.ActionDefiner/.idea/.idea.Rename.ActionDefiner/
-/Unity/Rename.ActionDefiner/Assets/TextMesh Pro/
-/Unity/Rename.ActionDefiner/Assets/TextMesh Pro.meta
-/Unity/Rename.ActionDefiner/Assets/Plugins/SimpleFileBrowser/
-/Unity/Rename.ActionDefiner/Assets/Plugins/SimpleFileBrowser.meta
+obj/
+bin/
