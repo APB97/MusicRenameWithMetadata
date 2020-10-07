@@ -5,17 +5,35 @@ using Console;
 
 namespace Rename.Helpers
 {
+    /// <summary>
+    /// Abstract base class for selector classes.
+    /// </summary>
     public abstract class SelectorBase : ICommandClass
     {
+        /// <summary>
+        /// Target of commands' output
+        /// </summary>
         protected readonly ISilenceAbleConsole SilenceAbleConsole;
 
+        /// <summary>
+        /// Called in inherited classes during creation of new instance to set up Silence Able Console
+        /// or throw exception if null.
+        /// </summary>
+        /// <param name="silenceAbleConsole">Silence Able Console used as output target. Cannot be null.</param>
         protected SelectorBase(ISilenceAbleConsole silenceAbleConsole)
         {
             SilenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
         }
 
+        /// <summary>
+        /// Set of all unique Commands.
+        /// </summary>
         protected abstract HashSet<string> Commands { get; }
 
+        /// <summary>
+        /// Display help for all commands or given command(s), if any.
+        /// </summary>
+        /// <param name="forCommands">Commands we want to get help for.</param>
         public void Help(string[] forCommands)
         {
             if (forCommands.Length != 0)
@@ -28,7 +46,7 @@ namespace Rename.Helpers
             }
         }
 
-        protected void HelpInternal(IEnumerable<string> forCommands)
+        private void HelpInternal(IEnumerable<string> forCommands)
         {
             var typeName = GetType().Name;
             foreach (string command in forCommands)
@@ -39,18 +57,33 @@ namespace Rename.Helpers
             }
         }
 
+        /// <summary>
+        /// Clear Console screen.
+        /// </summary>
         public void ClearScreen()
         {
             SilenceAbleConsole.Clear();
         }
 
+        /// <summary>
+        /// Complete this step of interactive mode.
+        /// </summary>
+        /// <returns>Value used to check if mode is completed by user.</returns>
         public bool Complete()
         {
             return true;
         }
 
+        /// <summary>
+        /// Collection of commands exposed for use through a JSON file.
+        /// </summary>
         public abstract IEnumerable<string> CommandsForJson { get; }
         
+        /// <summary>
+        /// Get help text for command of current class.
+        /// </summary>
+        /// <param name="command">Command to get help for.</param>
+        /// <returns>Text with command's help.</returns>
         public string GetHelpFor(string command)
         {
             return Rename_Helpers_Commands.ResourceManager.GetString($"{GetType().Name}_{command}Help");
