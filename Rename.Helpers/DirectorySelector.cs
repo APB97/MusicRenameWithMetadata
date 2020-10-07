@@ -1,20 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Console;
 
 namespace Rename.Helpers
 {
+    /// <summary>
+    /// SelectorBase implementation for selecting directories.
+    /// </summary>
     public class DirectorySelector : SelectorBase, ISilenceAble
     {
+        /// <inheritdoc />
+        /// Additionally assigns value to CommandsForJson
         public DirectorySelector(ISilenceAbleConsole silenceAbleConsole) : base(silenceAbleConsole)
         {
             CommandsForJson = new[] {nameof(Add)};
         }
 
+        /// <inheritdoc />
         public override IEnumerable<string> CommandsForJson { get; }
 
+        /// <inheritdoc />
         protected override HashSet<string> Commands { get; } = new HashSet<string>(
         new []
         {
@@ -29,37 +35,24 @@ namespace Rename.Helpers
             nameof(Remove)
         });
 
+        /// <summary>
+        /// Clear set of selected directories.
+        /// </summary>
         public void Clear()
         {
             Directories.Clear();
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.Messages_Directory_list_cleared);
         }
 
+        /// <summary>
+        /// Set of selected directories.
+        /// </summary>
         public HashSet<string> Directories { get; } = new HashSet<string>();
 
-        public void StartInteractive()
-        {
-            while (true)
-            {
-                System.Console.WriteLine(Rename_Helpers_Commands.Type_Help_for_help, nameof(DirectorySelector));
-                
-                string line = System.Console.ReadLine();
-                string[] inputs = line?.Split(' ');
-                string command = inputs?[0];
-
-                if (string.IsNullOrWhiteSpace(command) || !Commands.Contains(command))
-                    continue;
-
-                MethodInfo methodInfo = GetType().GetMethod(command);
-                object callResult = methodInfo?.Invoke(this,
-                    methodInfo.GetParameters().Length == 1
-                        ? new object[] {inputs.Skip(1).ToArray()}
-                        : new object[] { });
-                
-                if (callResult is bool shouldComplete && shouldComplete) return;
-            }
-        }
-
+        /// <summary>
+        /// Add directories to the set.
+        /// </summary>
+        /// <param name="dirs">Directories to add.</param>
         public void Add(params string[] dirs)
         {
             if (!dirs.All(Directory.Exists))
@@ -97,6 +90,9 @@ namespace Rename.Helpers
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.Messages_Directories_added);
         }
 
+        /// <summary>
+        /// Displays set of selected directories.
+        /// </summary>
         public void List()
         {
             foreach (string directory in Directories)
@@ -105,6 +101,10 @@ namespace Rename.Helpers
             }
         }
 
+        /// <summary>
+        /// Removes given directories from selection.
+        /// </summary>
+        /// <param name="dirs"></param>
         public void Remove(params string[] dirs)
         {
             foreach (string directory in dirs)
@@ -115,16 +115,19 @@ namespace Rename.Helpers
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.Messages_Directories_removed);
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return nameof(DirectorySelector);
         }
 
+        /// <inheritdoc />
         public void BeSilent()
         {
             SilenceAbleConsole.BeSilent();
         }
 
+        /// <inheritdoc />
         public void DontBeSilent()
         {
             SilenceAbleConsole.DontBeSilent();

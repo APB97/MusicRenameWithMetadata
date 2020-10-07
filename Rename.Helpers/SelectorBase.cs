@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using CommandClassInterface;
 using Console;
 
@@ -8,7 +10,7 @@ namespace Rename.Helpers
     /// <summary>
     /// Abstract base class for selector classes.
     /// </summary>
-    public abstract class SelectorBase : ICommandClass
+    public abstract class SelectorBase : ICommandClass, ISupportsInteractiveMode
     {
         /// <summary>
         /// Target of commands' output
@@ -65,14 +67,11 @@ namespace Rename.Helpers
             SilenceAbleConsole.Clear();
         }
 
+
         /// <summary>
         /// Complete this step of interactive mode.
         /// </summary>
-        /// <returns>Value used to check if mode is completed by user.</returns>
-        public bool Complete()
-        {
-            return true;
-        }
+        public void Complete() { }
 
         /// <summary>
         /// Collection of commands exposed for use through a JSON file.
@@ -87,6 +86,41 @@ namespace Rename.Helpers
         public string GetHelpFor(string command)
         {
             return Rename_Helpers_Commands.ResourceManager.GetString($"{GetType().Name}_{command}Help");
+        }
+
+        /// <inheritdoc />
+        public void StartInteractive()
+        {
+            while (true)
+            {
+                if (!ProcessInputs()) return;
+            }
+        }
+
+        /// <summary>
+        /// Processes user inputs.
+        /// </summary>
+        /// <returns>If user decided to Complete the step, returns false. Returns true otherwise.</returns>
+        private bool ProcessInputs()
+        {
+            System.Console.WriteLine(Rename_Helpers_Commands.Type_Help_for_help, nameof(DirectorySelector));
+
+            string line = System.Console.ReadLine();
+            string[] inputs = line?.Split(' ');
+            string command = inputs?[0];
+
+            if (string.IsNullOrWhiteSpace(command) || !Commands.Contains(command))
+                return true;
+            if (command.Equals(nameof(Complete)))
+                return false;
+
+            MethodInfo methodInfo = GetType().GetMethod(command);
+            methodInfo?.Invoke(this,
+                methodInfo.GetParameters().Length == 1
+                    ? new object[] {inputs.Skip(1).ToArray()}
+                    : new object[] { });
+            
+            return true;
         }
     }
 }

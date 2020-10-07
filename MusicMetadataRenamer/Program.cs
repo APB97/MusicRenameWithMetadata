@@ -17,6 +17,7 @@ namespace MusicMetadataRenamer
             ISilenceAbleConsole silenceAbleConsole = new SilenceAbleConsole();
             PropertySelector propertySelector = new PropertySelector(silenceAbleConsole);
             DirectorySelector directorySelector = new DirectorySelector(silenceAbleConsole);
+            ISupportsInteractiveMode[] selectors = { directorySelector, propertySelector };
             SkipFile skipFile = new SkipFile(silenceAbleConsole);
             WordSkipping skippingThese = new WordSkipping();
             
@@ -26,8 +27,8 @@ namespace MusicMetadataRenamer
             {
                 case 0:
                 {
-                    directorySelector.StartInteractive();
-                    propertySelector.StartInteractive();
+                    foreach (ISupportsInteractiveMode selector in selectors)
+                        selector.StartInteractive();
 
                     string defaultPath = skipFile.SelectedPath;
                     skipFile.Prompt();

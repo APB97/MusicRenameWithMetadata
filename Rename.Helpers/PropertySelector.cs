@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Console;
 using FileMetadata.Mp3;
@@ -39,32 +38,6 @@ namespace Rename.Helpers
         /// List of selected properties.
         /// </summary>
         public List<string> Properties { get; } = new List<string>();
-
-        /// <summary>
-        /// Launches Interactive mode for current class.
-        /// </summary>
-        public void StartInteractive()
-        {
-            while (true)
-            {
-                System.Console.WriteLine(Rename_Helpers_Commands.Type_Help_for_help, nameof(PropertySelector));
-
-                string line = System.Console.ReadLine();
-                string[] inputs = line?.Split(' ');
-                string command = inputs?[0];
-
-                if (string.IsNullOrWhiteSpace(command) || !Commands.Contains(command))
-                    continue;
-
-                MethodInfo methodInfo = GetType().GetMethod(command);
-                object callResult = methodInfo?.Invoke(this,
-                    methodInfo.GetParameters().Length == 1
-                        ? new object[] {inputs.Skip(1).ToArray()}
-                        : new object[] { });
-
-                if (callResult is bool shouldComplete && shouldComplete) return;
-            }
-        }
 
         /// <summary>
         /// Add properties to selected list.
