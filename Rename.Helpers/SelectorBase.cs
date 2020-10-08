@@ -102,7 +102,7 @@ namespace Rename.Helpers
         /// <returns>If user decided to Complete the step, returns false. Returns true otherwise.</returns>
         private bool ProcessInputs()
         {
-            SilenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.Type_Help_for_help, nameof(DirectorySelector)));
+            SilenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.Type_Help_for_help, GetType().Name));
 
             string line = System.Console.ReadLine();
             string[] inputs = line?.Split(' ');
