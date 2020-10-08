@@ -18,7 +18,7 @@ namespace FileMetadata.Tests
                 var reader = new StringReader(FileBeginning +
                                               $"{Mp3InfoReader.TitleIdSearchPattern}" +
                                               "      " +
-                                              $"{SpecialChars.ETX}{testTitle}{SpecialChars.NullChar}" + 
+                                              $"{SpecialChars.Etx}{testTitle}{SpecialChars.NullChar}" + 
                                               RestOfTheContents);
 
 
@@ -33,7 +33,7 @@ namespace FileMetadata.Tests
                                               SpecialChars.NullChar +
                                               SpecialChars.NullChar +
                                               SpecialChars.NullChar +
-                                              SpecialChars.ETX +
+                                              SpecialChars.Etx +
                                               RestOfTheContents);
 
                 string valueRead = Id3InfoReader.ReadInfoByPattern(reader, Mp3InfoReader.TitleIdSearchPattern);

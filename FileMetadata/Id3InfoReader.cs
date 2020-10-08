@@ -3,8 +3,17 @@ using System.IO;
 
 namespace FileMetadata
 {
+    /// <summary>
+    /// Static class used to read property info from text reader.
+    /// </summary>
     public static class Id3InfoReader
     {
+        /// <summary>
+        /// Attempts to read value of a property from id3 container.
+        /// </summary>
+        /// <param name="reader">Reader to get text from.</param>
+        /// <param name="idSearchPattern">pattern used to search id and its value.</param>
+        /// <returns>Returns property value if found, string.Empty otherwise.</returns>
         public static string ReadInfoByPattern(TextReader reader, string idSearchPattern)
         {
             if (reader == null)
@@ -57,7 +66,7 @@ namespace FileMetadata
 
         private static int GetValueIndexBegin(string cumulativeString, int startIndex)
         {
-            return cumulativeString.IndexOf(SpecialChars.ETX, startIndex) + 1;
+            return cumulativeString.IndexOf(SpecialChars.Etx, startIndex) + 1;
         }
     }
 }
