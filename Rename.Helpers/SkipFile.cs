@@ -8,23 +8,35 @@ using Console;
 
 namespace Rename.Helpers
 {
+    /// <summary>
+    /// Class allowing to select a SkipFile
+    /// </summary>
     public class SkipFile : ICommandClass
     {
         private readonly IConsole _silenceAbleConsole;
 
+        /// <inheritdoc />
         public IEnumerable<string> CommandsForJson { get; }
-        
+
+        /// <inheritdoc />
         public string GetHelpFor(string command)
         {
             return Rename_Helpers_Commands.ResourceManager.GetString($"{nameof(SkipFile)}_{command}Help");
         }
 
+        /// <summary>
+        /// Create instance of SkipFile with IConsole dependency for output.
+        /// </summary>
+        /// <param name="silenceAbleConsole">Console to use for output.</param>
         public SkipFile(IConsole silenceAbleConsole)
         {
             _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
             CommandsForJson = new[] {nameof(Select)};
         }
 
+        /// <summary>
+        /// Path to selected SkipFile
+        /// </summary>
         public string SelectedPath { get; private set; } = "skip.txt";
 
         /// <summary>
@@ -62,6 +74,7 @@ namespace Rename.Helpers
             }
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return nameof(SkipFile);
