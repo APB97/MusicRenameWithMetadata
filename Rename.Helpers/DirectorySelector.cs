@@ -59,11 +59,13 @@ namespace Rename.Helpers
             {
                 string joined = string.Join(" ", dirs);
                 int index = 0;
-                while (index >= 0 && index < joined.Length)
+                while (index < joined.Length)
                 {
                     // Find next 2 quotation marks 
                     index = joined.IndexOf('\"', index);
                     int nextIndex = joined.IndexOf('\"', index + 1);
+                    if (index < 0 || nextIndex < 0)
+                        break;
                     // Grab directory within quotation marks
                     string dirBetween = joined.Substring(index + 1, nextIndex - index - 1);
                     // Remove directory and quotation marks from string
