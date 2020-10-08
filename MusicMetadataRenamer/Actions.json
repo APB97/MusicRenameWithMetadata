@@ -8,7 +8,6 @@
       "ActionClass": "PropertySelector",
       "ActionName": "Add",
       "ActionParameters": [
-        "Artists",
         "Title"
       ]
     },
@@ -16,9 +15,12 @@
       "ActionClass": "DirectorySelector",
       "ActionName": "Add",
       "ActionParameters": [
-        "C:\\Users\\Adrian\\Music\\test-1",
-        "C:\\Users\\Adrian\\Music\\test-2"
+        "C:\\Users\\Adrian\\Music\\to-process kopia (2)"
       ]
+    },
+    {
+      "ActionClass": "Console",
+      "ActionName": "DontBeSilent"
     }
   ]
 }

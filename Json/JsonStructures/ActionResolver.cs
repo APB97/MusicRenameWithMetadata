@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using CommandClassInterface;
 using Newtonsoft.Json;
 
@@ -30,7 +31,7 @@ namespace JsonStructures
         /// Executes Action(s) from given file.
         /// </summary>
         /// <param name="actionsFile">path to JSON file with commands.</param>
-        public void Execute(string actionsFile)
+        public async Task Execute(string actionsFile)
         {
             if (!File.Exists(actionsFile))
                 return;
@@ -39,7 +40,7 @@ namespace JsonStructures
             if (definitions.Actions == null)
                 return;
             
-            InvokeActions(definitions);
+            await InvokeActions(definitions);
         }
 
         private static ActionDefinitions GetActionsFromFile(string actionsFile)
@@ -48,14 +49,14 @@ namespace JsonStructures
             return JsonConvert.DeserializeObject<ActionDefinitions>(actionsFileContents);
         }
 
-        private void InvokeActions(ActionDefinitions definitions)
+        private async Task InvokeActions(ActionDefinitions definitions)
         {
             foreach (ActionDefinition action in definitions.Actions)
             {
                 ICommandClass defaultObject = _classDefaultObjects[action.ActionClass];
                 MethodInfo method = defaultObject.GetType().GetMethod(action.ActionName);
-                method?.Invoke(defaultObject,
-                    method.GetParameters().Length == 0 ? new object[0] : new object[] {action.ActionParameters});
+                await Task.Run(() => method?.Invoke(defaultObject,
+                    method.GetParameters().Length == 0 ? new object[0] : new object[] {action.ActionParameters}));
             }
         }
     }

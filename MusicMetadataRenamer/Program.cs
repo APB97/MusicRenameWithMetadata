@@ -40,12 +40,12 @@ namespace MusicMetadataRenamer
                 {
                     var resolver = new ActionResolver(new[]
                     {
-                        new KeyValuePair<string, ICommandClass>(nameof(PropertySelector), propertySelector),
-                        new KeyValuePair<string, ICommandClass>(nameof(DirectorySelector), directorySelector),
+                        new KeyValuePair<string, ICommandClass>(propertySelector.ToString(), propertySelector),
+                        new KeyValuePair<string, ICommandClass>(directorySelector.ToString(), directorySelector),
                         new KeyValuePair<string, ICommandClass>(silenceAbleConsole.ToString(), silenceAbleConsole),
-                        new KeyValuePair<string, ICommandClass>(nameof(SkipFile), skipFile)
+                        new KeyValuePair<string, ICommandClass>(skipFile.ToString(), skipFile)
                     });
-                    resolver.Execute(args[0]);
+                    await resolver.Execute(args[0]);
                     break;
                 }
             }
