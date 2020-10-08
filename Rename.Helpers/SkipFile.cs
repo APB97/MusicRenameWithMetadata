@@ -51,9 +51,9 @@ namespace Rename.Helpers
                 return;
             
             // Perform desired change
-            _silenceAbleConsole.WriteLine($"Old skip file: {SelectedPath}");
+            _silenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.SkipFile_Old_skip_file_format, SelectedPath));
             SelectedPath = selectedPath.First();
-            _silenceAbleConsole.WriteLine($"New skip file: {SelectedPath}");
+            _silenceAbleConsole.WriteLine(string.Format(Rename_Helpers_Commands.SkipFile_New_skip_file_format, SelectedPath));
         }
 
         /// <summary>

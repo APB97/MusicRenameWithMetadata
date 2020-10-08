@@ -19,7 +19,7 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="SkipFile_SelectHelp" xml:space="preserve">
-        <value>Select which file to use for skipping certain words. Usage: Select &lt;path&gt;</value>
+        <value>Select which file to use for skipping certain words. Note: If more than one path is entered, only the first one will be used. Usage: Select &lt;path&gt;</value>
     </data>
     <data name="Type_Help_for_help" xml:space="preserve">
         <value>{0} - Type 'Help' for help:</value>
@@ -110,5 +110,11 @@
     </data>
     <data name="DirectorySelector_DontBeSilentHelp" xml:space="preserve">
         <value>Causes Console output to be enabled. Usage: DontBeSilent</value>
+    </data>
+    <data name="SkipFile_Old_skip_file_format" xml:space="preserve">
+        <value>Old skip file: {0}</value>
+    </data>
+    <data name="SkipFile_New_skip_file_format" xml:space="preserve">
+        <value>New skip file: {0}</value>
     </data>
 </root>

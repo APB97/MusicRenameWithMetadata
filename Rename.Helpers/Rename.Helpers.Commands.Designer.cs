@@ -304,6 +304,24 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New skip file: {0}.
+        /// </summary>
+        internal static string SkipFile_New_skip_file_format {
+            get {
+                return ResourceManager.GetString("SkipFile_New_skip_file_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old skip file: {0}.
+        /// </summary>
+        internal static string SkipFile_Old_skip_file_format {
+            get {
+                return ResourceManager.GetString("SkipFile_Old_skip_file_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the skip file path to use or press Enter to use the default:.
         /// </summary>
         internal static string SkipFile_Prompt_Enter_the_skip_file {
@@ -322,7 +340,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select which file to use for skipping certain words. Usage: Select &lt;path&gt;.
+        ///   Looks up a localized string similar to Select which file to use for skipping certain words. Note: If more than one path is entered, only the first one will be used. Usage: Select &lt;path&gt;.
         /// </summary>
         internal static string SkipFile_SelectHelp {
             get {
