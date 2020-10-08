@@ -4,9 +4,17 @@ using System.Threading.Tasks;
 
 namespace Rename.Helpers
 {
-    public class WordSkipping
+    /// <summary>
+    /// Static class for reading CommonWords from file.
+    /// </summary>
+    public static class WordSkipping
     {
-        public async Task<HashSet<string>> GetCommonWordsFrom(string file)
+        /// <summary>
+        /// Get Set of common words from file using IgnoreCaseComparer.
+        /// </summary>
+        /// <param name="file">File to read words from.</param>
+        /// <returns>Set of words compared using IgnoreCaseComparer.</returns>
+        public static async Task<HashSet<string>> GetCommonWordsFrom(string file)
         {
             return await Task.Run(() => new HashSet<string>(File.ReadAllLines(file), new IgnoreCaseComparer()));
         }
