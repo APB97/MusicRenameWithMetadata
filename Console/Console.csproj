@@ -26,6 +26,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>Console.resx</DependentUpon>
       </Compile>
+      <Compile Update="Console.pl.Designer.cs">
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Console.pl-PL.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -33,7 +38,8 @@
     </ItemGroup>
 
     <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)Console.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-        <Copy SourceFiles="$(OutputPath)Console.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
+        <Copy SourceFiles="$(OutputPath)Console.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
+        <Copy SourceFiles="$(OutputPath)Console.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
+        <Copy SourceFiles="$(OutputPath)pl\Console.resources.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97\pl" ContinueOnError="false" />
     </Target>
 </Project>
