@@ -18,13 +18,22 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Update="Rename.Helpers.Commands.pl.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Rename.Helpers.Commands.pl.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Rename.Helpers.Commands.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Rename.Helpers.Commands.Designer.cs</LastGenOutput>
+        <LastGenOutput>Rename.Helpers.Commands.pl.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Rename.Helpers.Commands.pl.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Rename.Helpers.Commands.pl.resx</DependentUpon>
+      </Compile>
       <Compile Update="Rename.Helpers.Commands.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -33,7 +42,8 @@
     </ItemGroup>
     
     <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)Rename.Helpers.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-        <Copy SourceFiles="$(OutputPath)Rename.Helpers.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
+        <Copy SourceFiles="$(OutputPath)Rename.Helpers.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
+        <Copy SourceFiles="$(OutputPath)Rename.Helpers.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
+        <Copy SourceFiles="$(OutputPath)pl\Rename.Helpers.resources.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97\pl" ContinueOnError="false" />
     </Target>
 </Project>
