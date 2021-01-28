@@ -106,7 +106,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Causes Console output to be enabled. Usage: DontBeSilent.
+        ///   Looks up a localized string similar to Powoduje włączenie wyświetlania rezultatów w konsoli. Użycie: DontBeSilent.
         /// </summary>
         internal static string DirectorySelector_DontBeSilentHelp {
             get {
@@ -115,7 +115,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display list of Commands and their usage or chosen commands&apos; help. Usage: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...].
+        ///   Looks up a localized string similar to Wyświetla listę poleceń oraz ich użycie lub pomoc dla wybrancyh komend. Usage: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...].
         /// </summary>
         internal static string DirectorySelector_HelpHelp {
             get {
@@ -124,7 +124,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display list of directories to process. Usage: List.
+        ///   Looks up a localized string similar to Wyświetla listę katalogów do przetworzenia. Użycie: List.
         /// </summary>
         internal static string DirectorySelector_ListHelp {
             get {
@@ -133,7 +133,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove directories from the list. Usage: Remove &lt;dir1&gt; [&lt;dir2&gt;] [...].
+        ///   Looks up a localized string similar to Usuwa katalogi z listy. Użycie: Remove &lt;kat1&gt; [&lt;kat2&gt;] [...].
         /// </summary>
         internal static string DirectorySelector_RemoveHelp {
             get {
@@ -142,7 +142,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Directories added to list..
+        ///   Looks up a localized string similar to Katalogi zostały dodane do listy..
         /// </summary>
         internal static string Messages_Directories_added {
             get {
@@ -151,7 +151,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Directories removed from the list..
+        ///   Looks up a localized string similar to Katalogi zostały usunięte z listy..
         /// </summary>
         internal static string Messages_Directories_removed {
             get {
@@ -160,7 +160,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Directory list cleared..
+        ///   Looks up a localized string similar to Lista katalogów opróżniona..
         /// </summary>
         internal static string Messages_Directory_list_cleared {
             get {
@@ -169,7 +169,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is already on the list so it wasn&apos;t added..
+        ///   Looks up a localized string similar to Właściwośc {0} już znajduje się na liście przez co nie została dodana..
         /// </summary>
         internal static string PropertySelector__0__is_already_on_the_list {
             get {
@@ -187,7 +187,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available Properties:.
+        ///   Looks up a localized string similar to Dostępne właściwości:.
         /// </summary>
         internal static string PropertySelector_Available_Properties {
             get {
@@ -196,7 +196,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clear properties list. Usage: Clear.
+        ///   Looks up a localized string similar to Opróżnia listę właściwiości. Użycie: Clear.
         /// </summary>
         internal static string PropertySelector_ClearHelp {
             get {
@@ -205,7 +205,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clear current console&apos;s screen. Usage: ClearScreen.
+        ///   Looks up a localized string similar to Czyści okno konsoli. Użycie: ClearScreen.
         /// </summary>
         internal static string PropertySelector_ClearScreenHelp {
             get {
@@ -214,7 +214,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Complete property selection step. Usage: Complete.
+        ///   Looks up a localized string similar to Zakończ krok wyboru właściwości. Użycie: Complete.
         /// </summary>
         internal static string PropertySelector_CompleteHelp {
             get {
@@ -223,7 +223,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display list of commands. Usage: HelpCommands.
+        ///   Looks up a localized string similar to Wyświetla listę poleceń. Użycie: HelpCommands.
         /// </summary>
         internal static string PropertySelector_HelpCommandsHelp {
             get {
@@ -232,7 +232,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display list of commands with their help and available properties. Usage: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...].
+        ///   Looks up a localized string similar to Wyświetla listę poleceń wraz z pomocą i dostępnymi właściwościami. Użycie: Help [&lt;cmd1&gt;] [&lt;cmd2&gt;] [...].
         /// </summary>
         internal static string PropertySelector_HelpHelp {
             get {
@@ -241,7 +241,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display list of available properties. Usage: HelpProperties.
+        ///   Looks up a localized string similar to Wyświetla listę dostępnych właściwości. Użycie: HelpProperties.
         /// </summary>
         internal static string PropertySelector_HelpPropertiesHelp {
             get {
@@ -250,7 +250,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display list of selected properties. Usage: List.
+        ///   Looks up a localized string similar to Wyświetla listę wybranych właściwości. Użycie: List.
         /// </summary>
         internal static string PropertySelector_ListHelp {
             get {
@@ -259,7 +259,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties added to list..
+        ///   Looks up a localized string similar to Właściwości zostały dodane do listy..
         /// </summary>
         internal static string PropertySelector_Properties_added {
             get {
@@ -268,7 +268,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties removed from the list..
+        ///   Looks up a localized string similar to Właściwości zostały usunięte z listy..
         /// </summary>
         internal static string PropertySelector_Properties_removed {
             get {
@@ -277,7 +277,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Property list cleared..
+        ///   Looks up a localized string similar to Lista właściwości opróżniona..
         /// </summary>
         internal static string PropertySelector_Property_list_cleared {
             get {
@@ -286,7 +286,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove properties from the list. Usage: Remove &lt;p1&gt; [&lt;p2&gt;] [...].
+        ///   Looks up a localized string similar to Usuwa właściwości z listy. Użycie: Remove &lt;p1&gt; [&lt;p2&gt;] [...].
         /// </summary>
         internal static string PropertySelector_RemoveHelp {
             get {
@@ -295,7 +295,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected Properties:.
+        ///   Looks up a localized string similar to Wybrane właściwości:.
         /// </summary>
         internal static string PropertySelector_Selected_Properties {
             get {
@@ -304,7 +304,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New skip file: {0}.
+        ///   Looks up a localized string similar to Nowy plik pominięć: {0}.
         /// </summary>
         internal static string SkipFile_New_skip_file_format {
             get {
@@ -313,7 +313,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Old skip file: {0}.
+        ///   Looks up a localized string similar to Poprzedni plik pominięć: {0}.
         /// </summary>
         internal static string SkipFile_Old_skip_file_format {
             get {
@@ -322,7 +322,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the skip file path to use or press Enter to use the default:.
+        ///   Looks up a localized string similar to Podaj ścieżkę do pliku pominięć lub wciśnij Enter aby użyć domyślnej:.
         /// </summary>
         internal static string SkipFile_Prompt_Enter_the_skip_file {
             get {
@@ -331,7 +331,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press Enter once more to confirm or enter different path:.
+        ///   Looks up a localized string similar to Wciśnij Enter aby potwierdzić lub wprowadź inną ścieżkę:.
         /// </summary>
         internal static string SkipFile_Prompt_Press_Enter_once_more {
             get {
@@ -349,7 +349,7 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} - Type &apos;Help&apos; for help:.
+        ///   Looks up a localized string similar to {0} - Wpisz &apos;Help&apos; aby uzyskać pomoc:.
         /// </summary>
         internal static string Type_Help_for_help {
             get {
