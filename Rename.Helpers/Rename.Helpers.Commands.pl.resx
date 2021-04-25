@@ -117,4 +117,13 @@
     <data name="SkipFile_New_skip_file_format" xml:space="preserve">
         <value>Nowy plik pominięć: {0}</value>
     </data>
+    <data name="PropertySelector_ArtistsHelp" xml:space="preserve">
+        <value>Artyści-wykonawcy</value>
+    </data>
+    <data name="PropertySelector_TitleHelp" xml:space="preserve">
+        <value>Tytuł utworu</value>
+    </data>
+    <data name="PropertySelector_AlbumHelp" xml:space="preserve">
+        <value>Album zawierający ten utwór</value>
+    </data>
 </root>

@@ -187,6 +187,24 @@ namespace Rename.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Album zawierający ten utwór.
+        /// </summary>
+        internal static string PropertySelector_AlbumHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_AlbumHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artyści-wykonawcy.
+        /// </summary>
+        internal static string PropertySelector_ArtistsHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_ArtistsHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dostępne właściwości:.
         /// </summary>
         internal static string PropertySelector_Available_Properties {
@@ -300,6 +318,15 @@ namespace Rename.Helpers {
         internal static string PropertySelector_Selected_Properties {
             get {
                 return ResourceManager.GetString("PropertySelector_Selected_Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tytuł utworu.
+        /// </summary>
+        internal static string PropertySelector_TitleHelp {
+            get {
+                return ResourceManager.GetString("PropertySelector_TitleHelp", resourceCulture);
             }
         }
         

@@ -79,7 +79,9 @@ namespace Rename.Helpers
             SilenceAbleConsole.WriteLine(Rename_Helpers_Commands.PropertySelector_Available_Properties);
             const BindingFlags bindingFlags = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Static;
             foreach (MethodInfo method in typeof(Mp3InfoReader).GetMethods(bindingFlags))
-                SilenceAbleConsole.WriteLine(method.Name);
+                SilenceAbleConsole.WriteLine(
+                    $@"{method.Name,-16} - {Rename_Helpers_Commands.
+                        ResourceManager.GetString($"{GetType().Name}_{method.Name}Help")}");
         }
 
         /// <summary>
