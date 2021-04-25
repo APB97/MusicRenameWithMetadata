@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace FileMetadata
 {
@@ -31,7 +32,7 @@ namespace FileMetadata
                 var (valueRead, newSearchBegin) = SearchForValue(idSearchPattern, cumulativeString, searchBegin);
                 if (valueRead != null) return valueRead;
                 searchBegin = newSearchBegin;
-            } while (line != null);
+            } while (line != null && line.LastOrDefault() != SpecialChars.Bell);
 
             // Not found
             return string.Empty;

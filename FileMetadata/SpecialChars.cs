@@ -13,5 +13,9 @@
         /// Null, '\0', character.
         /// </summary>
         public const char NullChar = (char) 0x0;
+        /// <summary>
+        /// Bell character.
+        /// </summary>
+        public const char Bell = (char) 0x07;
     }
 }

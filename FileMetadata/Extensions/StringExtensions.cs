@@ -18,7 +18,8 @@ namespace FileMetadata.Extensions
         /// <returns>Joined strings for usage as a filename.</returns>
         public static string JoinForFilePath(this string[] joinThese, string separator = " - ")
         {
-            return new string(string.Join(separator, joinThese).Where(c => !InvalidChars.Contains(c)).ToArray());
+            return new string(string.Join(separator, joinThese.Where(s => !string.IsNullOrEmpty(s)))
+                .Where(c => !InvalidChars.Contains(c)).ToArray());
         }
     }
 }
