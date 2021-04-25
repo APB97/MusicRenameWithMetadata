@@ -1,32 +1,47 @@
 # Rename Music with Metadata
-Rename music files using their metadata with this tool.
+> Rename music files using their metadata with this tool.
 
-## Contents
+## Table of Contents
 
-1. [What does it do?](#what-does-it-do)
-2. [Who is it for?](#who-is-it-for)
-3. [Why is it different?](#why-is-it-different)
+1. [Description](#description)
     1. [Interactive mode](#interactive-mode)
     2. [Batch mode](#batch-mode)
-4. [How do I use it?](#how-do-i-use-it)
+2. [How to use](#how-to-use)
+    1. [Installation](#installation)
+    2. [Interactive mode](#interactive-mode)
+    3. [Batch mode](#batch-mode)
+3. [API Reference](#api-reference)
     1. [Console](#console)
     2. [Directory Selector](#directory-selector)
-5. [How does it work?](#how-does-it-work)
 
-## What does it do?
+## Description
 It allows users to specify properties to use for renaming and directories with files they want to rename.
 Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.
-There is default file _skip.txt_ for words user want to remove from final filenames.
-Renaming is done automatically after specifying all required settings. 
+There is default file `skip.txt` for words user want to remove from final filenames.
+Renaming is done automatically after specifying all required settings.
 
-## Who is it for?
-This project is for users wanting to rename many files at once with their files' metadata.
-
-## Why is it different?
+Currently only Album, Artists and Title properties are available.
 This tool features two modes used for renaming files: __Interactive__ and __Batch__.
 
+### Technologies
+- C#
+- .NET
+    - Extension methods
+    - Reflection
+    - Resources file(s)
+- Markdown
+
+[Back to the top](#rename-music-with-metadata)
+
+## How to use
+
+### Installation
+
+Before using this project, you need to compile it, for example using Visual Studio or Rider.
+Executable filename that can be used to launch will be `MusicMetadataRenamer.exe`.
+
 ### Interactive mode
-First one is the Interactive mode, started when program is launched without arguments.
+First available mode is the Interactive mode, started when program is launched without arguments.
 It allows to check/use available options for each step involved.
 All steps feature a `Help` command used to check available commands and their descriptions and usage.
 
@@ -44,9 +59,12 @@ That's all! Application will rename files at given path(s).
 ### Batch mode
 Second mode is triggered when application is launched with single argument - path to a `JSON` file containing action definitions.
 Example of such a file is included in `Actions.json`.
-For list of possible definitions and commands, see [How do I use it?](#how-do-i-use-it)
 
-## How do I use it?
+For list of possible definitions and commands, see [API Reference](#api-reference)
+
+[Back to the top](#rename-music-with-metadata)
+
+## API Reference
 
 ### Console
 
@@ -129,8 +147,4 @@ For list of possible definitions and commands, see [How do I use it?](#how-do-i-
     
         - Enter `Help Add Remove Clear` to display help for Add, Remove and Clear commands
 
-## How does it work?
-
-It works by reading properties from *.mp3 files using their ID3v2 metadata containers, currently only `Artists` (TPE1) and `Title` (TIT2) are supported.
-These values are used for renaming music files in given directories, however they are additionally processed to skip invalid path characters and words included in a skip file.
-Default skip file is supplied in `skip.txt`.
+[Back to the top](#rename-music-with-metadata)
