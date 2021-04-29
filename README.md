@@ -38,6 +38,7 @@ This tool features two modes used for renaming files: __Interactive__ and __Batc
 ### Installation
 
 Before using this project, you need to compile it, for example using Visual Studio or Rider.
+
 Executable filename that can be used to launch will be `MusicMetadataRenamer.exe`.
 
 ### Interactive mode
@@ -146,5 +147,15 @@ For list of possible definitions and commands, see [API Reference](#api-referenc
     - Enter `Help command1 [command2] [...]` to display help for given commands, for example:
     
         - Enter `Help Add Remove Clear` to display help for Add, Remove and Clear commands
+
+- To display directories-to-process list
+    
+    - Enter `List`
+    
+- To Remove directories from directories-to-process list
+
+    - Enter `Remove directory1 [directory2] [...]`
+    
+        - Enter `Remove C:\Music\Pending` to remove `C:\Music\Pending` directory from the list
 
 [Back to the top](#rename-music-with-metadata)

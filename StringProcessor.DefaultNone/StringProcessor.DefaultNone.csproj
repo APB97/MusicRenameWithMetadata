@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>net5.0</TargetFrameworks>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)StringProcessor.DefaultNone.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-        <Copy SourceFiles="$(OutputPath)StringProcessor.DefaultNone.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
+        <Copy SourceFiles="$(OutputPath)StringProcessor.DefaultNone.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
+        <Copy SourceFiles="$(OutputPath)StringProcessor.DefaultNone.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
     </Target>
 </Project>
