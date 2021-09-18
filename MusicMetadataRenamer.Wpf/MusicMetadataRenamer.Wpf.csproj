@@ -10,8 +10,4 @@
       <ProjectReference Include="..\Rename.Helpers\Rename.Helpers.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
-    </ItemGroup>
-
 </Project>

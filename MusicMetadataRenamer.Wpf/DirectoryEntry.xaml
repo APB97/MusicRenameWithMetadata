@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:MusicMetadataRenamer.Wpf"
              mc:Ignorable="d"
              d:DesignHeight="100" d:DesignWidth="300"
-             Name="This">
-    <StackPanel Orientation="Horizontal" Width="300">
-        <TextBlock Text="{Binding Path=DirectoryName}" Foreground="Black" FontSize="16" />
+             Name="This"
+             HorizontalAlignment="Stretch">
+    <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Stretch">
+        <TextBlock Text="{Binding Path=DirectoryName}" Foreground="Black" FontSize="16" MinWidth="90" />
         <Button Content="Exclude" Click="ButtonExclude_OnClick" />
     </StackPanel>
 </UserControl>
