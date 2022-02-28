@@ -73,7 +73,7 @@ namespace Rename.Helpers
                     // Set index to last found quotation mark
                     index = nextIndex;
                     // Add Directory to list if it exists
-                    if (Directory.Exists(dirBetween))                    
+                    if (Directory.Exists(dirBetween))
                         Directories.Add(dirBetween);
                 }
 
