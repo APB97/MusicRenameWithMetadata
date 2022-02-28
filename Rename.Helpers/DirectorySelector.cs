@@ -49,6 +49,7 @@ namespace Rename.Helpers
         /// </summary>
         public HashSet<string> Directories { get; } = new HashSet<string>();
 
+        /// <inheritdoc cref="ISilenceAble"/>
         public bool Silent => SilenceAbleConsole.Silent;
 
         /// <summary>

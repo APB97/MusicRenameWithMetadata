@@ -5,6 +5,9 @@
     /// </summary>
     public interface ISilenceAble
     {
+        /// <summary>
+        /// Does this object suppress output?
+        /// </summary>
         bool Silent { get; }
 
         /// <summary>
