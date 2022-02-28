@@ -1,16 +1,25 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using Rename.Helpers;
 
 namespace MusicMetadataRenamer.Wpf.Model
 {
     public class Id3PropertyModel : ObservableObject
     {
+        private PropertySelector _selector;
+
+        public Id3PropertyModel()
+        {
+        }
+
         private string propertyName;
         private bool included;
+        private Ioc ioC;
 
         public string PropertyName
         {
             get => propertyName;
-            set 
+            set
             {
                 if (propertyName != value)
                 {
@@ -29,7 +38,25 @@ namespace MusicMetadataRenamer.Wpf.Model
                 {
                     included = value;
                     OnPropertyChanged(nameof(Included));
+                    if (included)
+                    {
+                        _selector?.Add(propertyName);
+                    }
+                    else
+                    {
+                        _selector?.Remove(new[] { propertyName });
+                    }
                 }
+            }
+        }
+
+        public Ioc IoC
+        {
+            get => ioC;
+            set
+            {
+                ioC = value;
+                _selector = value.GetService<PropertySelector>();
             }
         }
     }

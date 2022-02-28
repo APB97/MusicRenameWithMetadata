@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Console;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using Rename.Helpers;
+using StringProcessor;
+using StringProcessor.SkipCommonWords;
 using System.Windows;
 
 namespace MusicMetadataRenamer.Wpf
@@ -13,5 +13,21 @@ namespace MusicMetadataRenamer.Wpf
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            var collection = new ServiceCollection();
+            collection.AddSingleton<ISilenceAbleConsole, DummyConsole>();
+            collection.AddSingleton<DirectorySelector>();
+            collection.AddSingleton<PropertySelector>();
+            collection.AddSingleton<SkipFile>();
+            collection.AddSingleton<IStringProcessor>(ioc => new SkipCommonWordsProcessor 
+            {
+                CommonWords = WordSkipping.GetCommonWordsFrom(ioc.GetRequiredService<SkipFile>().SelectedPath)
+            });
+
+            Ioc.Default.ConfigureServices(new DefaultServiceProviderFactory().CreateServiceProvider(collection));
+        }
     }
 }

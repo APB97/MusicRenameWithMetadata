@@ -9,8 +9,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <view:DirectoriesView/>
-            <view:PropertiesView/>
+            <view:DirectoriesView x:Name="directories"/>
+            <view:PropertiesView x:Name="properties"/>
         </StackPanel>
     </Grid>
 </Window>

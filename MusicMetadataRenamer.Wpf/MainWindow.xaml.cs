@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using MusicMetadataRenamer.Wpf.ViewModel;
+using System.Windows;
 
 namespace MusicMetadataRenamer.Wpf
 {
@@ -11,7 +13,7 @@ namespace MusicMetadataRenamer.Wpf
         {
             InitializeComponent();
 
-            //FrameMain.Navigate(new MenuPage());
+            (properties.DataContext as PropertiesViewModel).IoC = Ioc.Default;
         }
     }
 }
