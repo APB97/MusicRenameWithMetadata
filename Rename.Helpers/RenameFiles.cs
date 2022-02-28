@@ -42,7 +42,7 @@ namespace Rename.Helpers
         {
             Parallel.ForEach(directoriesToProcess, dirName =>
             {
-                string[] files = Directory.GetFiles(dirName, "*.*", allDirectoriesOrBaseOnly);
+                string[] files = Directory.GetFiles(dirName, "*.mp3", allDirectoriesOrBaseOnly);
                 _metadataRename.RenameMultiple(files, _wordProcessor, propertiesToUse);
                 _silenceAbleConsole.WriteLine($"Renaming in '{dirName}' complete.");
             });

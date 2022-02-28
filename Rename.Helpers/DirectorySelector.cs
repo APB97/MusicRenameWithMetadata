@@ -49,6 +49,8 @@ namespace Rename.Helpers
         /// </summary>
         public HashSet<string> Directories { get; } = new HashSet<string>();
 
+        public bool Silent => SilenceAbleConsole.Silent;
+
         /// <summary>
         /// Add directories to the set.
         /// </summary>
@@ -73,7 +75,7 @@ namespace Rename.Helpers
                     // Set index to last found quotation mark
                     index = nextIndex;
                     // Add Directory to list if it exists
-                    if (Directory.Exists(dirBetween))                    
+                    if (Directory.Exists(dirBetween))
                         Directories.Add(dirBetween);
                 }
 

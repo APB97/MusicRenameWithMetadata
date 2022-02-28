@@ -10,10 +10,12 @@
         /// </summary>
         /// <param name="text">Text to display on Console</param>
         void WriteLine(string text);
+        
         /// <summary>
         /// Clear Console's screen
         /// </summary>
         void Clear();
+        
         /// <summary>
         /// Write string representation of an object followed by current line terminator
         /// </summary>

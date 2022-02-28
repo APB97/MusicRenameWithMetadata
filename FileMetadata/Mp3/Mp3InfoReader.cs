@@ -1,15 +1,13 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
+﻿using System.IO;
 
 namespace FileMetadata.Mp3
 {
     /// <summary>
     /// Static class for reading Properties of *.mp3 file
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Used via Reflection")]
     public static class Mp3InfoReader
     {
-        private const string IdFormat = "{1}{0}{1}{1}{1}";
+        private const string IdFormat = "{0}{1}{1}{1}";
         /// <summary>
         /// Title ID
         /// </summary>
@@ -28,7 +26,6 @@ namespace FileMetadata.Mp3
         /// </summary>
         /// <param name="fileAtPath">Path to file we want to get title from</param>
         /// <returns>Returns Title from file properties or string.Empty</returns>
-        [SuppressMessage("ReSharper", "ConvertToUsingDeclaration")]
         public static string Title(string fileAtPath)
         {
             return ReadPropertyFromFile(fileAtPath, TitleIdSearchPattern);
