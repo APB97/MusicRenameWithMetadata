@@ -8,7 +8,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <view:DirectoriesView/>
+        <StackPanel Orientation="Horizontal">
+            <view:DirectoriesView/>
+            <view:DirectoriesView/>
+        </StackPanel>
         <!--<Frame Name="FrameMain" />-->
     </Grid>
 </Window>

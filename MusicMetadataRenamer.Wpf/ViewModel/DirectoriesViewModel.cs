@@ -3,7 +3,6 @@ using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
 using MusicMetadataRenamer.Wpf.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 
