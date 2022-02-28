@@ -12,6 +12,5 @@
             <view:DirectoriesView/>
             <view:PropertiesView/>
         </StackPanel>
-        <!--<Frame Name="FrameMain" />-->
     </Grid>
 </Window>
