@@ -76,10 +76,7 @@ namespace FileMetadata
             if (startIndex < cumulativeString.Length - 2 && cumulativeString[startIndex + 1] == SpecialChars.NullChar)
             {
                 valueLength = cumulativeString[startIndex] - 1;
-                if (valueLength > 0)
-                    return startIndex + 4;
-                else
-                    return startIndex + 3;
+                return valueLength > 0 ? startIndex + 4 : startIndex + 3;
             }
             else
             {
