@@ -1,10 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Console;
 using FileMetadata.Dynamic;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Microsoft.Win32;
 using StringProcessor.DefaultNone;
 
 namespace MusicMetadataRenamer.Wpf
@@ -21,16 +21,13 @@ namespace MusicMetadataRenamer.Wpf
 
         private void ButtonAddDirectory_OnClick(object sender, RoutedEventArgs e)
         {
-            CommonOpenFileDialog openDialog = new CommonOpenFileDialog
+            OpenFileDialog open = new OpenFileDialog();
+            open.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            open.Title = "Pick a file to use its directory";
+            var success = open.ShowDialog();
+            if (success == true)
             {
-                IsFolderPicker = true,
-                AddToMostRecentlyUsedList = true,
-                DefaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
-            };
-            var result = openDialog.ShowDialog(Window.GetWindow(this));
-            if (result == CommonFileDialogResult.Ok)
-            {
-                string directory = openDialog.FileName;
+                string directory = new FileInfo(open.FileName).DirectoryName;
                 var entry = new DirectoryEntry
                 {
                     DirectoryName = directory
@@ -51,24 +48,6 @@ namespace MusicMetadataRenamer.Wpf
         {
             var selected = ComboBoxProperties.SelectedItem as string;
             StackPanelProperties.Children.Add(new DirectoryEntry { DirectoryName = selected});
-        }
-    }
-
-    internal class DummyConsole : IConsole
-    {
-        public void WriteLine(string text)
-        {
-            
-        }
-
-        public void Clear()
-        {
-            
-        }
-
-        public void WriteLine(object value)
-        {
-            
         }
     }
 }
