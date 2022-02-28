@@ -14,9 +14,19 @@ namespace Rename.Helpers
         /// </summary>
         /// <param name="file">File to read words from.</param>
         /// <returns>Set of words compared using IgnoreCaseComparer.</returns>
-        public static async Task<HashSet<string>> GetCommonWordsFrom(string file)
+        public static async Task<HashSet<string>> GetCommonWordsFromAsync(string file)
         {
-            return await Task.Run(() => new HashSet<string>(File.Exists(file) ? File.ReadAllLines(file) : new string[0], new IgnoreCaseComparer()));
+            return await Task.Run(() => GetCommonWordsFrom(file));
+        }
+
+        /// <summary>
+        /// Get Set of common words from file using IgnoreCaseComparer.
+        /// </summary>
+        /// <param name="file">File to read words from.</param>
+        /// <returns>Set of words compared using IgnoreCaseComparer.</returns>
+        public static HashSet<string> GetCommonWordsFrom(string file)
+        {
+            return new HashSet<string>(File.Exists(file) ? File.ReadAllLines(file) : new string[0], new IgnoreCaseComparer());
         }
     }
 }
