@@ -1,4 +1,5 @@
 ﻿using Console;
+using FileMetadata.Dynamic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Rename.Helpers;
@@ -22,6 +23,8 @@ namespace MusicMetadataRenamer.Wpf
             collection.AddSingleton<DirectorySelector>();
             collection.AddSingleton<PropertySelector>();
             collection.AddSingleton<SkipFile>();
+            collection.AddSingleton<MetadataRename>();
+            collection.AddSingleton<RenameFiles>();
             collection.AddSingleton<IStringProcessor>(ioc => new SkipCommonWordsProcessor 
             {
                 CommonWords = WordSkipping.GetCommonWordsFrom(ioc.GetRequiredService<SkipFile>().SelectedPath)

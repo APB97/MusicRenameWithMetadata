@@ -1,4 +1,5 @@
 ﻿using Console;
+using System;
 using System.Collections.Generic;
 
 namespace MusicMetadataRenamer.Wpf
@@ -7,7 +8,7 @@ namespace MusicMetadataRenamer.Wpf
     {
         public bool Silent => true;
 
-        public IEnumerable<string> CommandsForJson => new string[0];
+        public IEnumerable<string> CommandsForJson => Array.Empty<string>();
 
         public void WriteLine(string text)
         {

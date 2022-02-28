@@ -14,6 +14,7 @@ namespace MusicMetadataRenamer.Wpf
             InitializeComponent();
 
             (properties.DataContext as PropertiesViewModel).IoC = Ioc.Default;
+            (directories.DataContext as DirectoriesViewModel).IoC = Ioc.Default;
         }
     }
 }
