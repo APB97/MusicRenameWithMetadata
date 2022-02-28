@@ -58,16 +58,36 @@ namespace FileMetadata
 
         private static string TryReadValue(string cumulativeString, int searchStart)
         {
-            var valueIndexBegin = GetValueIndexBegin(cumulativeString, searchStart);
+            var valueIndexBegin = GetValueIndexBegin(cumulativeString, searchStart, out int valueLength);
             if (valueIndexBegin >= cumulativeString.Length || valueIndexBegin <= 0)
                 return null;
+            if (valueLength >= 0)
+            {
+                return cumulativeString.Substring(valueIndexBegin, valueLength);
+            }
             return cumulativeString.Substring(valueIndexBegin,
                 cumulativeString.IndexOf(SpecialChars.NullChar, valueIndexBegin) - valueIndexBegin);
         }
 
-        private static int GetValueIndexBegin(string cumulativeString, int startIndex)
+        private static int GetValueIndexBegin(string cumulativeString, int startIndex, out int valueLength)
         {
-            return cumulativeString.IndexOf(SpecialChars.Etx, startIndex) + 1;
+            int etx;
+            valueLength = -1;
+            if (startIndex < cumulativeString.Length - 2 && cumulativeString[startIndex + 1] == SpecialChars.NullChar)
+            {
+                valueLength = cumulativeString[startIndex] - 1;
+                return startIndex + 4;
+            }
+            else
+            {
+                etx = cumulativeString.IndexOf(SpecialChars.Etx, startIndex) + 1;
+            }
+
+            if (etx < 0 || etx >= cumulativeString.Length)
+            {
+                etx = cumulativeString.IndexOf(SpecialChars.NullChar, startIndex) - 4;
+            }
+            return etx;
         }
     }
 }

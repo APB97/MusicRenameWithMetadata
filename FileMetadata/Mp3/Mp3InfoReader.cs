@@ -7,7 +7,7 @@ namespace FileMetadata.Mp3
     /// </summary>
     public static class Mp3InfoReader
     {
-        private const string IdFormat = "{1}{0}{1}{1}{1}";
+        private const string IdFormat = "{0}{1}{1}{1}";
         /// <summary>
         /// Title ID
         /// </summary>
