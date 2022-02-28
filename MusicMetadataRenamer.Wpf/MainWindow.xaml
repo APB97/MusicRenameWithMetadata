@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <view:DirectoriesView/>
-            <view:DirectoriesView/>
+            <view:PropertiesView/>
         </StackPanel>
         <!--<Frame Name="FrameMain" />-->
     </Grid>
