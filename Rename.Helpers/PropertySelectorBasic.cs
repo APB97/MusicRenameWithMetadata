@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Console;
 using FileMetadata.Mp3;
@@ -13,7 +12,6 @@ namespace Rename.Helpers
     {
         /// <inheritdoc />
         /// Additionally assigns value to CommandsForJson
-        [SuppressMessage("ReSharper", "MemberCanBeProtected.Global")]
         public PropertySelectorBasic(ISilenceAbleConsole silenceAbleConsole) : base(silenceAbleConsole)
         {
             CommandsForJson = new[] {nameof(Add)};

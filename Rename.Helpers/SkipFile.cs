@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using CommandClassInterface;
@@ -43,7 +42,6 @@ namespace Rename.Helpers
         /// Select new path for the skip file.
         /// </summary>
         /// <param name="selectedPath">New skip file's path.</param>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public void Select(string[] selectedPath)
         {
             // Return in case of null or empty selectedPath

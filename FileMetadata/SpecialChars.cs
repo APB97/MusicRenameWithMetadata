@@ -9,10 +9,12 @@
         /// End of text character.
         /// </summary>
         public const char Etx = (char) 0x03;
+
         /// <summary>
         /// Null, '\0', character.
         /// </summary>
         public const char NullChar = (char) 0x0;
+
         /// <summary>
         /// Bell character.
         /// </summary>
