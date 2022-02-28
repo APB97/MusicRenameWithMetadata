@@ -7,3 +7,4 @@ packages/
 *.testlog
 /.vs/MusicRenameWithMetadata/v16/TestStore/0/testlog.manifest
 /.vs/MusicRenameWithMetadata/v17/.futdcache.v1
+/.vs/MusicRenameWithMetadata/config/applicationhost.config
