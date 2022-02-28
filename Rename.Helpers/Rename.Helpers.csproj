@@ -40,10 +40,5 @@
         <DependentUpon>Rename.Helpers.Commands.resx</DependentUpon>
       </Compile>
     </ItemGroup>
-    
-    <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)Rename.Helpers.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
-        <Copy SourceFiles="$(OutputPath)Rename.Helpers.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
-        <Copy SourceFiles="$(OutputPath)pl\Rename.Helpers.resources.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97\pl" ContinueOnError="false" />
-    </Target>
+
 </Project>

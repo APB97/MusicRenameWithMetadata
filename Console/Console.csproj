@@ -37,9 +37,4 @@
       <ProjectReference Include="..\CommandClassInterface\CommandClassInterface.csproj" />
     </ItemGroup>
 
-    <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)Console.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
-        <Copy SourceFiles="$(OutputPath)Console.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false" />
-        <Copy SourceFiles="$(OutputPath)pl\Console.resources.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97\pl" ContinueOnError="false" />
-    </Target>
 </Project>

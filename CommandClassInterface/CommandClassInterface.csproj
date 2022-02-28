@@ -12,8 +12,4 @@
       <DocumentationFile>bin\Release\CommandClassInterface.xml</DocumentationFile>
     </PropertyGroup>
 
-    <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)CommandClassInterface.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-        <Copy SourceFiles="$(OutputPath)CommandClassInterface.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-    </Target>
 </Project>

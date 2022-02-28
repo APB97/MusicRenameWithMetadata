@@ -49,6 +49,8 @@ namespace Rename.Helpers
         /// </summary>
         public HashSet<string> Directories { get; } = new HashSet<string>();
 
+        public bool Silent => SilenceAbleConsole.Silent;
+
         /// <summary>
         /// Add directories to the set.
         /// </summary>

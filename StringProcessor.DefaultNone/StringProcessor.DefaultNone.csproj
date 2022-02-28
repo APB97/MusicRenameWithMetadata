@@ -16,8 +16,4 @@
       <ProjectReference Include="..\StringProcessor\StringProcessor.csproj" />
     </ItemGroup>
 
-    <Target Name="AfterBuildCopy" AfterTargets="Build">
-        <Copy SourceFiles="$(OutputPath)StringProcessor.DefaultNone.dll" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-        <Copy SourceFiles="$(OutputPath)StringProcessor.DefaultNone.xml" DestinationFolder="C:\Projects\Unity-MusicRenameWithMetadata\Unity-MusicRename\Assets\Plugins\APB97" ContinueOnError="false"/>
-    </Target>
 </Project>

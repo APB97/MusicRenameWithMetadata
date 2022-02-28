@@ -5,7 +5,7 @@ namespace Console
     /// <inheritdoc cref="ISilenceAbleConsole"/>
     public class SilenceAbleConsole : ISilenceAbleConsole
     {
-        private bool Silent { get; set; }
+        public bool Silent { get; private set; }
 
         /// <inheritdoc />
         public IEnumerable<string> CommandsForJson { get; }

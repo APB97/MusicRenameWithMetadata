@@ -5,6 +5,8 @@
     /// </summary>
     public interface ISilenceAble
     {
+        bool Silent { get; }
+
         /// <summary>
         /// Implement in class to disable output when called
         /// </summary>
