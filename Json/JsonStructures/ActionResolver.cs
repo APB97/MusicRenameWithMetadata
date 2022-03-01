@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -56,7 +57,7 @@ namespace JsonStructures
                 ICommandClass defaultObject = _classDefaultObjects[action.ActionClass];
                 MethodInfo method = defaultObject.GetType().GetMethod(action.ActionName);
                 await Task.Run(() => method?.Invoke(defaultObject,
-                    method.GetParameters().Length == 0 ? new object[0] : new object[] {action.ActionParameters}));
+                    method.GetParameters().Length == 0 ? Array.Empty<object>() : new object[] {action.ActionParameters}));
             }
         }
     }

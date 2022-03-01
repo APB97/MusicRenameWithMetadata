@@ -1,26 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMetadataRenamer", "MusicMetadataRenamer\MusicMetadataRenamer.csproj", "{51B88263-2444-4329-BBE2-BB741AD0CEB6}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicMetadataRenamer", "MusicMetadataRenamer\MusicMetadataRenamer.csproj", "{51B88263-2444-4329-BBE2-BB741AD0CEB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMetadata", "FileMetadata\FileMetadata.csproj", "{2110A7D2-3003-4A71-80E3-08C1DB15E541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileMetadata", "FileMetadata\FileMetadata.csproj", "{2110A7D2-3003-4A71-80E3-08C1DB15E541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor", "StringProcessor\StringProcessor.csproj", "{61641265-018C-4F20-95D0-25F2B31BAE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringProcessor", "StringProcessor\StringProcessor.csproj", "{61641265-018C-4F20-95D0-25F2B31BAE1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.SkipCommonWords", "StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj", "{CD02A2C8-98AD-4BDB-B406-745882CB760C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringProcessor.SkipCommonWords", "StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj", "{CD02A2C8-98AD-4BDB-B406-745882CB760C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.DefaultNone", "StringProcessor.DefaultNone\StringProcessor.DefaultNone.csproj", "{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringProcessor.DefaultNone", "StringProcessor.DefaultNone\StringProcessor.DefaultNone.csproj", "{97DEBF7E-98CA-41A4-9AB8-314E8340CED9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rename.Helpers", "Rename.Helpers\Rename.Helpers.csproj", "{C086C6CA-8632-4437-AB14-40BAA3687E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rename.Helpers", "Rename.Helpers\Rename.Helpers.csproj", "{C086C6CA-8632-4437-AB14-40BAA3687E73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{DCAF7CE8-4467-428F-9272-F725A029AE9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "Console\Console.csproj", "{DCAF7CE8-4467-428F-9272-F725A029AE9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandClassInterface", "CommandClassInterface\CommandClassInterface.csproj", "{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandClassInterface", "CommandClassInterface\CommandClassInterface.csproj", "{75EC3BDB-1726-40F4-A1AA-4D3D86CCCB97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonStructures", "Json\JsonStructures\JsonStructures.csproj", "{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonStructures", "Json\JsonStructures\JsonStructures.csproj", "{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMetadata.Tests", "Tests\FileMetadata.Tests\FileMetadata.Tests.csproj", "{8B61E19F-3D6B-4F71-9B2F-629C7615020C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringProcessor.SkipCommonWords.Tests", "StringProcessor.SkipCommonWords.Tests\StringProcessor.SkipCommonWords.Tests.csproj", "{BD218E01-F7F1-45CC-A1E4-EB131AABA537}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicMetadataRenamer.Wpf", "MusicMetadataRenamer.Wpf\MusicMetadataRenamer.Wpf.csproj", "{2FCEE054-12AF-4EE9-BF71-FE5661F9D984}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,13 +65,15 @@ Global
 		{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12ABBC8F-BD01-49D7-974B-4E5A5257D2C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B61E19F-3D6B-4F71-9B2F-629C7615020C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD218E01-F7F1-45CC-A1E4-EB131AABA537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD218E01-F7F1-45CC-A1E4-EB131AABA537}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD218E01-F7F1-45CC-A1E4-EB131AABA537}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD218E01-F7F1-45CC-A1E4-EB131AABA537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCEE054-12AF-4EE9-BF71-FE5661F9D984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCEE054-12AF-4EE9-BF71-FE5661F9D984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCEE054-12AF-4EE9-BF71-FE5661F9D984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCEE054-12AF-4EE9-BF71-FE5661F9D984}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25352801-FF89-48E3-9EDC-DA180386C00D}
 	EndGlobalSection
 EndGlobal

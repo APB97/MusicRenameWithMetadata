@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFrameworks>net5.0</TargetFrameworks>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\FileMetadata\FileMetadata.csproj" />
       <ProjectReference Include="..\Json\JsonStructures\JsonStructures.csproj" />
       <ProjectReference Include="..\Rename.Helpers\Rename.Helpers.csproj" />
       <ProjectReference Include="..\StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj" />
@@ -19,9 +20,6 @@
     <ItemGroup>
       <None Update="skip.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="Actions.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 

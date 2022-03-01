@@ -23,7 +23,7 @@ namespace MusicMetadataRenamer
             ISupportsInteractiveMode[] selectors = { directorySelector, propertySelector };
             SkipFile skipFile = new SkipFile(silenceAbleConsole);
 
-            IStringProcessor processor = new SkipCommonWordsProcessor { CommonWords = await WordSkipping.GetCommonWordsFrom(skipFile.SelectedPath) };
+            IStringProcessor processor = new SkipCommonWordsProcessor { CommonWords = await WordSkipping.GetCommonWordsFromAsync(skipFile.SelectedPath) };
 
             switch (args.Length)
             {
@@ -36,7 +36,7 @@ namespace MusicMetadataRenamer
                         skipFile.Prompt();
                         if (skipFile.SelectedPath != defaultPath)
                         {
-                            processor = new SkipCommonWordsProcessor { CommonWords = await WordSkipping.GetCommonWordsFrom(skipFile.SelectedPath) };
+                            processor = new SkipCommonWordsProcessor { CommonWords = await WordSkipping.GetCommonWordsFromAsync(skipFile.SelectedPath) };
                         }
 
 

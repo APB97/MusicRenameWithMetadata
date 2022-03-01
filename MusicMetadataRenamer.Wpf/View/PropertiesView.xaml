@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="MusicMetadataRenamer.Wpf.View.PropertiesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MusicMetadataRenamer.Wpf.View" xmlns:viewmodel="clr-namespace:MusicMetadataRenamer.Wpf.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodel:PropertiesViewModel x:Name="ViewModel"/>
+    </UserControl.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Left">
+            <TextBlock Text="Properties" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <ListBox ItemsSource="{Binding Path=Properties}" SelectedItem="{Binding Path=Selected}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding Path=Included, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            <TextBox IsReadOnly="True" Text="{Binding Path=PropertyName, Mode=TwoWay}" Width="120" Margin="4"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Move Up" Command="{Binding Path=MoveUpCommand}" Margin="4"/>
+                <Button Content="Move Down" Command="{Binding Path=MoveDownCommand}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Width="100"
+                        Margin="4"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

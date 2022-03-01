@@ -9,3 +9,4 @@ packages/
 /.vs/MusicRenameWithMetadata/v17/.futdcache.v1
 /.vs/MusicRenameWithMetadata/config/applicationhost.config
 MusicMetadataRenamer/Properties/launchSettings.json
+/MusicMetadataRenamer.Wpf/*.user

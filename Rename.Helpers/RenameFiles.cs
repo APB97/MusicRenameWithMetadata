@@ -27,7 +27,7 @@ namespace Rename.Helpers
         public RenameFiles(IConsole silenceAbleConsole, IStringProcessor wordProcessor, MetadataRename metadataRename)
         {
             _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
-            _wordProcessor = wordProcessor ?? new DefaultNoProcessor();
+            _wordProcessor = wordProcessor ?? DefaultNoProcessor.Instance;
             _metadataRename = metadataRename ?? throw new ArgumentNullException(nameof(metadataRename));
         }
 

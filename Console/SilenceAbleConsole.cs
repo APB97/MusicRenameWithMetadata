@@ -5,6 +5,7 @@ namespace Console
     /// <inheritdoc cref="ISilenceAbleConsole"/>
     public class SilenceAbleConsole : ISilenceAbleConsole
     {
+        /// <inheritdoc cref="ISilenceAble"/>
         public bool Silent { get; private set; }
 
         /// <inheritdoc />

@@ -70,7 +70,9 @@ namespace Rename.Helpers
         /// <summary>
         /// Complete this step of interactive mode.
         /// </summary>
+#pragma warning disable CA1822 // Mark members as static
         public void Complete() { }
+#pragma warning restore CA1822 // Mark members as static
 
         /// <summary>
         /// Collection of commands exposed for use through a JSON file.
@@ -117,7 +119,7 @@ namespace Rename.Helpers
             methodInfo?.Invoke(this,
                 methodInfo.GetParameters().Length == 1
                     ? new object[] {inputs.Skip(1).ToArray()}
-                    : new object[] { });
+                    : Array.Empty<object>());
             
             return true;
         }
