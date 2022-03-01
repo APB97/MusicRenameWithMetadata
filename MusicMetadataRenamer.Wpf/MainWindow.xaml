@@ -15,6 +15,7 @@
                 <view:SkipFileView x:Name="skipFile"/>
             </StackPanel>
             <view:ActionsView x:Name="actions"/>
+            <view:ConsoleView x:Name="console" Height="170"/>
         </StackPanel>
     </Grid>
 </Window>

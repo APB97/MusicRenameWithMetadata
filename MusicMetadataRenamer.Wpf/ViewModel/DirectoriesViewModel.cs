@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using Console;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -12,17 +13,20 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
 {
     public class DirectoriesViewModel : ObservableObject
     {
+        private IConsole console;
+
         public Ioc IoC
         {
             get => ioC;
             set
             {
                 ioC = value;
-                _directorySelector = value.GetService<DirectorySelector>();
+                directorySelector = value.GetService<DirectorySelector>();
+                console = value.GetRequiredService<IConsole>();
             }
         }
 
-        private DirectorySelector _directorySelector;
+        private DirectorySelector directorySelector;
         private ObservableCollection<DirectoryModel> directories;
         private DirectoryModel selectedDirectory;
         private Ioc ioC;
@@ -55,7 +59,7 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
 
         public DirectoriesViewModel(DirectorySelector directorySelector) : this()
         {
-            _directorySelector = directorySelector;
+            this.directorySelector = directorySelector;
         }
 
         public DirectoriesViewModel()
@@ -78,7 +82,8 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
                 string directory = new FileInfo(open.FileName).DirectoryName;
                 Directories.Add(new DirectoryModel { Path = directory });
                 OnPropertyChanged(nameof(Directories));
-                _directorySelector.Directories.Add(directory);
+                directorySelector.Directories.Add(directory);
+                console.WriteLine($"Directory included: {directory}");
             }
         }
 
@@ -90,7 +95,8 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
         private void ExcludeSelectedDirectory()
         {
             Directories.Remove(selectedDirectory);
-            _directorySelector.Directories.Remove(selectedDirectory.Path);
+            directorySelector.Directories.Remove(selectedDirectory.Path);
+            console.WriteLine($"Directory excluded: {selectedDirectory.Path}");
         }
     }
 }

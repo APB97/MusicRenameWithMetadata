@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using Console;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -10,6 +11,7 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
     public class SkipFileViewModel : ObservableObject
     {
         private Ioc ioC;
+        private IConsole console;
         private SkipFile skipFile;
         private FileModel fileModel = new FileModel { Path = "skip.txt" };
 
@@ -19,6 +21,7 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
             set
             {
                 ioC = value;
+                console = value.GetRequiredService<IConsole>();
                 skipFile = value.GetService<SkipFile>();
                 skipFile.Select(new[] { fileModel.Path });
             }
@@ -54,6 +57,7 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
             if (dialog.ShowDialog() == true)
             {
                 fileModel = new FileModel { Path = dialog.FileName };
+                console?.WriteLine($"Selected skip file: {fileModel.Path}");
             }
         }
     }

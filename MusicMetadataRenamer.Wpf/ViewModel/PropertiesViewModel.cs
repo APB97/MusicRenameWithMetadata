@@ -1,4 +1,5 @@
-﻿using FileMetadata.Mp3;
+﻿using Console;
+using FileMetadata.Mp3;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
@@ -17,8 +18,9 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
             set
             {
                 ioC = value;
-                _propertySelector = value.GetService<PropertySelector>();
-                _propertySelector.Add(properties.Where(p => p.Included).Select(p => p.PropertyName).ToArray());
+                console = value.GetRequiredService<IConsole>();
+                propertySelector = value.GetService<PropertySelector>();
+                propertySelector.Add(properties.Where(p => p.Included).Select(p => p.PropertyName).ToArray());
                 foreach (var item in Properties)
                 {
                     item.IoC = ioC;
@@ -26,12 +28,13 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
             }
         }
 
-        private PropertySelector _propertySelector;
+        private PropertySelector propertySelector;
 
         private ObservableCollection<Id3PropertyModel> properties;
 
         private Id3PropertyModel selected;
         private Ioc ioC;
+        private IConsole console;
 
         public ObservableCollection<Id3PropertyModel> Properties
         {
@@ -68,7 +71,7 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
 
         public PropertiesViewModel(PropertySelector propertySelector) : this()
         {
-            _propertySelector = propertySelector;
+            this.propertySelector = propertySelector;
         }
 
         public PropertiesViewModel()
@@ -112,17 +115,19 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
             (Properties[current], Properties[current - 1]) = (Properties[current - 1], Properties[current]);
             if (currentProp.Included && previousProp.Included)
             {
-                int oneIndex = _propertySelector.Properties.FindIndex(s => s == currentProp.PropertyName);
-                int otherIndex = _propertySelector.Properties.FindIndex(s => s == previousProp.PropertyName);
+                int oneIndex = propertySelector.Properties.FindIndex(s => s == currentProp.PropertyName);
+                int otherIndex = propertySelector.Properties.FindIndex(s => s == previousProp.PropertyName);
                 if (oneIndex < 0)
                 {
-                    _propertySelector.Properties.Add(currentProp.PropertyName);
+                    propertySelector.Properties.Add(currentProp.PropertyName);
+                    console.WriteLine($"Property included: {currentProp.PropertyName}");
                 }
                 if (otherIndex < 0)
                 {
-                    _propertySelector.Properties.Add(previousProp.PropertyName);
+                    propertySelector.Properties.Add(previousProp.PropertyName);
+                    console.WriteLine($"Property included: {currentProp.PropertyName}");
                 }
-                (_propertySelector.Properties[oneIndex], _propertySelector.Properties[otherIndex]) = (_propertySelector.Properties[otherIndex], _propertySelector.Properties[oneIndex]);
+                (propertySelector.Properties[oneIndex], propertySelector.Properties[otherIndex]) = (propertySelector.Properties[otherIndex], propertySelector.Properties[oneIndex]);
             }
         }
 
@@ -134,9 +139,9 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
             (Properties[current], Properties[current + 1]) = (Properties[current + 1], Properties[current]);
             if (currentProp.Included && nextProp.Included)
             {
-                int oneIndex = _propertySelector.Properties.FindIndex(s => s == currentProp.PropertyName);
-                int otherIndex = _propertySelector.Properties.FindIndex(s => s == nextProp.PropertyName);
-                (_propertySelector.Properties[oneIndex], _propertySelector.Properties[otherIndex]) = (_propertySelector.Properties[otherIndex], _propertySelector.Properties[oneIndex]);
+                int oneIndex = propertySelector.Properties.FindIndex(s => s == currentProp.PropertyName);
+                int otherIndex = propertySelector.Properties.FindIndex(s => s == nextProp.PropertyName);
+                (propertySelector.Properties[oneIndex], propertySelector.Properties[otherIndex]) = (propertySelector.Properties[otherIndex], propertySelector.Properties[oneIndex]);
             }
         }
     }

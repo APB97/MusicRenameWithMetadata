@@ -12,7 +12,7 @@ namespace Rename.Helpers
     /// </summary>
     public class SkipFile : ICommandClass
     {
-        private readonly IConsole _silenceAbleConsole;
+        private readonly ISilenceAbleConsole _silenceAbleConsole;
 
         /// <inheritdoc />
         public IEnumerable<string> CommandsForJson { get; }
@@ -27,7 +27,7 @@ namespace Rename.Helpers
         /// Create instance of SkipFile with IConsole dependency for output.
         /// </summary>
         /// <param name="silenceAbleConsole">Console to use for output.</param>
-        public SkipFile(IConsole silenceAbleConsole)
+        public SkipFile(ISilenceAbleConsole silenceAbleConsole)
         {
             _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
             CommandsForJson = new[] {nameof(Select)};

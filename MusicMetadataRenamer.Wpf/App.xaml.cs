@@ -2,6 +2,7 @@
 using FileMetadata.Dynamic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using MusicMetadataRenamer.Wpf.ViewModel;
 using Rename.Helpers;
 using StringProcessor;
 using StringProcessor.SkipCommonWords;
@@ -9,9 +10,6 @@ using System.Windows;
 
 namespace MusicMetadataRenamer.Wpf
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
@@ -19,8 +17,9 @@ namespace MusicMetadataRenamer.Wpf
             base.OnStartup(e);
 
             var collection = new ServiceCollection();
+            collection.AddSingleton<ConsoleViewModel>();
             collection.AddSingleton<ISilenceAbleConsole, DummyConsole>();
-            collection.AddSingleton<IConsole>(ioc => ioc.GetRequiredService<ISilenceAbleConsole>());
+            collection.AddSingleton<IConsole>(ioc => ioc.GetRequiredService<ConsoleViewModel>());
             collection.AddSingleton<DirectorySelector>();
             collection.AddSingleton<PropertySelector>();
             collection.AddSingleton<SkipFile>();
