@@ -54,13 +54,9 @@ namespace FileMetadata.Mp3
         private static string ReadPropertyFromFile(string fileAtPath, string propertyIdPattern)
         {
             // using declarations
-            using (FileStream stream = File.OpenRead(fileAtPath))
-            {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    return Id3InfoReader.ReadInfoByPattern(reader, propertyIdPattern);
-                }
-            }
+            using FileStream stream = File.OpenRead(fileAtPath);
+            using StreamReader reader = new(stream);
+            return Id3InfoReader.ReadInfoByPattern(reader, propertyIdPattern);
         }
     }
 }

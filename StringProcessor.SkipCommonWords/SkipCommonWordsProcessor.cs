@@ -12,7 +12,7 @@ namespace StringProcessor.SkipCommonWords
         public string Process(string text)
         {
             char[] remainingChars = text.Where(c => !SkipAbleChars.Contains(c)).ToArray();
-            string preProcessed = new string(remainingChars);
+            string preProcessed = new(remainingChars);
             string[] words = preProcessed.Split(' ');
             string processedResult = string.Join(" ", words.Where(word => !CommonWords.Contains(word)).ToArray());
             
