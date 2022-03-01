@@ -49,6 +49,9 @@ Executable filename that can be used to launch will be `MusicMetadataRenamer.exe
 ### WPF App
 
 You can use the WPF version, which has Directory, Property and SkipFile selection.
+
+__Note:__ Directory selection needs a non-empty directory because of unavailability of FolderOpenDialog.
+
 It shows output from changes to settings but currently does not show any output from renaming files.
 
 It also allows users to save current settings to `.json` file to load them later.
