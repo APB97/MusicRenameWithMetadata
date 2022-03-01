@@ -20,6 +20,7 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
 
         public DirectoriesViewModel DirectoriesViewModel { get; set; }
         public PropertiesViewModel PropertiesViewModel { get; set; }
+        public SkipFileViewModel SkipFileViewModel { get; set; }
 
         public ActionsViewModel()
         {
@@ -97,18 +98,41 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
                 ApplyProperties(setOfProperties);
                 HashSet<string> setOfDirectories = DetermineDirectorySet(definitons);
                 ApplyDirectories(setOfDirectories);
+                string skipFile = DetermineSkipFilePath(definitons);
+                ApplySkipFile(skipFile);
             }
+        }
+
+        private void ApplySkipFile(string skipFile)
+        {
+            if (!string.IsNullOrEmpty(skipFile))
+            {
+                SkipFileViewModel.FileModel = new FileModel { Path = skipFile };
+            }
+        }
+
+        private string DetermineSkipFilePath(ActionDefinitions definitons)
+        {
+            var parameters = definitons.Actions.FirstOrDefault(action => action.ActionClass == nameof(SkipFile)).ActionParameters;
+            if (parameters != null)
+            {
+                return parameters.FirstOrDefault();
+            }
+            return string.Empty;
         }
 
         private void ApplyDirectories(HashSet<string> setOfDirectories)
         {
+            var selector = Ioc.Default.GetRequiredService<DirectorySelector>();
             var list = setOfDirectories.ToList();
             if (DirectoriesViewModel != null)
             {
                 DirectoriesViewModel.Directories.Clear();
+                selector.Directories.Clear();
                 foreach (var item in list)
                 {
                     DirectoriesViewModel.Directories.Add(new DirectoryModel { Path = item });
+                    selector.Directories.Add(item);
                 }
             }
         }

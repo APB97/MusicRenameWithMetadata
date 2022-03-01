@@ -11,6 +11,7 @@
     </UserControl.DataContext>
     <Grid>
         <StackPanel HorizontalAlignment="Left">
+            <TextBlock Text="Properties" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <ListBox ItemsSource="{Binding Path=Properties}" SelectedItem="{Binding Path=Selected}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

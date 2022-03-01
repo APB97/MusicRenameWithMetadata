@@ -12,10 +12,12 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition  Height="14*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="13*"/>
             <RowDefinition  Height="1*"/>
         </Grid.RowDefinitions>
-            <ListBox ItemsSource="{Binding Path=Directories}" SelectedItem="{Binding Path=SelectedDirectory}">
+            <TextBlock Text="Directories" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <ListBox ItemsSource="{Binding Path=Directories}" SelectedItem="{Binding Path=SelectedDirectory}" Grid.Row="1">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -24,7 +26,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>
-            <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
                 <Button Content="Add directory" Command="{Binding Path=AddCommand}" Margin="4"/>
                 <Button Content="Exclude selected" Command="{Binding Path=ExcludeCommand}"
                         HorizontalAlignment="Left"

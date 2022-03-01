@@ -12,6 +12,7 @@
             <StackPanel Orientation="Horizontal">
                 <view:DirectoriesView x:Name="directories"/>
                 <view:PropertiesView x:Name="properties"/>
+                <view:SkipFileView x:Name="skipFile"/>
             </StackPanel>
             <view:ActionsView x:Name="actions"/>
         </StackPanel>
