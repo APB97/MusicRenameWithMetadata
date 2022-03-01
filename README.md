@@ -8,8 +8,9 @@
     2. [Batch mode](#batch-mode)
 2. [How to use](#how-to-use)
     1. [Installation](#installation)
-    2. [Interactive mode](#interactive-mode)
-    3. [Batch mode](#batch-mode)
+    2. [WPF App](#wpf-app)
+    3. [Interactive mode](#interactive-mode)
+    4. [Batch mode](#batch-mode)
 3. [API Reference](#api-reference)
     1. [Console](#console)
     2. [Directory Selector](#directory-selector)
@@ -28,7 +29,11 @@ This tool features two modes used for renaming files: __Interactive__ and __Batc
 - .NET
     - Extension methods
     - Reflection
-    - Resources file(s)
+    - Resource file(s)
+- NuGet Packages
+    - Newtonsoft.Json
+    - Microsoft.Toolkit.Mvvm
+    - Microsoft.Extensions.DependencyInjection
 - Markdown
 
 [Back to the top](#rename-music-with-metadata)
@@ -39,10 +44,21 @@ This tool features two modes used for renaming files: __Interactive__ and __Batc
 
 Before using this project, you need to compile it, for example using Visual Studio or Rider.
 
-Executable filename that can be used to launch will be `MusicMetadataRenamer.exe`.
+Executable filename that can be used to launch will be `MusicMetadataRenamer.exe` for console version and `MusicMetadataRenamer.Wpf.exe` for WPF application.
+
+### WPF App
+
+You can use the WPF version, which has Directory, Property and SkipFile selection, but currently does not show any output from renaming files.
+
+It also allows users to save current settings to `.json` file to load them later.
+
+You can see the user inteface here:
+
+![WPF UI](https://user-images.githubusercontent.com/16359542/156168928-344dd277-749f-44f1-b56e-031d571e3ec9.png)
+
 
 ### Interactive mode
-First available mode is the Interactive mode, started when program is launched without arguments.
+First available mode of the console version is the Interactive mode, started when program is launched without arguments.
 It allows to check/use available options for each step involved.
 All steps feature a `Help` command used to check available commands and their descriptions and usage.
 
