@@ -20,6 +20,7 @@ namespace MusicMetadataRenamer.Wpf
 
             var collection = new ServiceCollection();
             collection.AddSingleton<ISilenceAbleConsole, DummyConsole>();
+            collection.AddSingleton<IConsole>(ioc => ioc.GetRequiredService<ISilenceAbleConsole>());
             collection.AddSingleton<DirectorySelector>();
             collection.AddSingleton<PropertySelector>();
             collection.AddSingleton<SkipFile>();

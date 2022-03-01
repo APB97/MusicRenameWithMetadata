@@ -65,8 +65,7 @@ namespace FileMetadata
             {
                 return cumulativeString.Substring(valueIndexBegin, valueLength);
             }
-            return cumulativeString.Substring(valueIndexBegin,
-                cumulativeString.IndexOf(SpecialChars.NullChar, valueIndexBegin) - valueIndexBegin);
+            return cumulativeString[valueIndexBegin..cumulativeString.IndexOf(SpecialChars.NullChar, valueIndexBegin)];
         }
 
         private static int GetValueIndexBegin(string cumulativeString, int startIndex, out int valueLength)

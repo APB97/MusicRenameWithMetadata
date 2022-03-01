@@ -67,9 +67,11 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
 
         private void AddDirectory()
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            open.Title = "Pick a file to use its directory";
+            OpenFileDialog open = new OpenFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                Title = "Pick a file to use its directory"
+            };
             var success = open.ShowDialog();
             if (success == true)
             {

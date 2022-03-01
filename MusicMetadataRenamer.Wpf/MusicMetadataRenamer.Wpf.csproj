@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Json\JsonStructures\JsonStructures.csproj" />
       <ProjectReference Include="..\Rename.Helpers\Rename.Helpers.csproj" />
       <ProjectReference Include="..\StringProcessor.SkipCommonWords\StringProcessor.SkipCommonWords.csproj" />
     </ItemGroup>

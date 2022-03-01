@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace Rename.Helpers
         /// <returns>Set of words compared using IgnoreCaseComparer.</returns>
         public static HashSet<string> GetCommonWordsFrom(string file)
         {
-            return new HashSet<string>(File.Exists(file) ? File.ReadAllLines(file) : new string[0], new IgnoreCaseComparer());
+            return new HashSet<string>(File.Exists(file) ? File.ReadAllLines(file) : Array.Empty<string>(), new IgnoreCaseComparer());
         }
     }
 }

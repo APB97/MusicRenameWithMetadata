@@ -11,7 +11,10 @@
         <viewmodel:DirectoriesViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="14*"/>
+            <RowDefinition  Height="1*"/>
+        </Grid.RowDefinitions>
             <ListBox ItemsSource="{Binding Path=Directories}" SelectedItem="{Binding Path=SelectedDirectory}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -21,14 +24,12 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <Button Content="Add directory" Command="{Binding Path=AddCommand}" Margin="4"/>
                 <Button Content="Exclude selected" Command="{Binding Path=ExcludeCommand}"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
                         Width="100"
                         Margin="4"/>
             </StackPanel>
-        </StackPanel>
     </Grid>
 </UserControl>

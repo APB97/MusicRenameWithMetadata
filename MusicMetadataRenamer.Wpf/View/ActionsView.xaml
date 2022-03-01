@@ -11,7 +11,8 @@
     </UserControl.DataContext>
     <Grid>
         <StackPanel>
-            <Button Command="{Binding Path=ExecuteCommand}" Content="Rename files"/>
+            <Button Command="{Binding Path=ExecuteCommand}" Content="Rename files" Margin="4"/>
+            <Button Command="{Binding Path=SaveActionsCommand}" Content="Save actions to file" Margin="4"/>
         </StackPanel>
     </Grid>
 </UserControl>
