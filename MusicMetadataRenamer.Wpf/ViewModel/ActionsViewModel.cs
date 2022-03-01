@@ -97,9 +97,6 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
                 ApplyProperties(setOfProperties);
                 HashSet<string> setOfDirectories = DetermineDirectorySet(definitons);
                 ApplyDirectories(setOfDirectories);
-                //var directorySelector = Ioc.Default.GetRequiredService<DirectorySelector>();
-                //var console = Ioc.Default.GetRequiredService<ISilenceAbleConsole>();
-                //var skipFile = Ioc.Default.GetRequiredService<SkipFile>();
             }
         }
 
