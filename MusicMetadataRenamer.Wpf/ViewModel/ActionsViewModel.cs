@@ -9,12 +9,13 @@ using Rename.Helpers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MusicMetadataRenamer.Wpf.ViewModel
 {
     public class ActionsViewModel
     {
-        public IRelayCommand ExecuteCommand { get; }
+        public IAsyncRelayCommand ExecuteCommand { get; }
         public IRelayCommand SaveActionsCommand { get; }
         public IRelayCommand LoadActionsCommand { get; }
 
@@ -24,17 +25,22 @@ namespace MusicMetadataRenamer.Wpf.ViewModel
 
         public ActionsViewModel()
         {
-            ExecuteCommand = new RelayCommand(Rename);
+            ExecuteCommand = new AsyncRelayCommand(RenameAsync, CanRename);
             SaveActionsCommand = new RelayCommand(SaveActions);
             LoadActionsCommand = new RelayCommand(LoadActions);
         }
 
-        private void Rename()
+        private bool CanRename()
+        {
+            return ExecuteCommand.IsRunning == false;
+        }
+
+        private async Task RenameAsync()
         {
             var renameService = Ioc.Default.GetRequiredService<RenameFiles>();
             var directoriesService = Ioc.Default.GetRequiredService<DirectorySelector>();
             var propertiesService = Ioc.Default.GetRequiredService<PropertySelector>();
-            renameService.RenameMultiple(directoriesService.Directories, propertiesService.Properties);
+            await renameService.RenameMultipleAsync(directoriesService.Directories, propertiesService.Properties);
         }
 
         private void SaveActions()

@@ -89,7 +89,7 @@ namespace MusicMetadataRenamer
             }
 
             RenameFiles renameFiles = new RenameFiles(silenceAbleConsole, processor, new MetadataRename(silenceAbleConsole));
-            renameFiles.RenameMultiple(directorySelector.Directories, propertySelector.Properties);
+            await renameFiles.RenameMultipleAsync(directorySelector.Directories, propertySelector.Properties);
         }
     }
 }

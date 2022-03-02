@@ -21,12 +21,12 @@ namespace Rename.Helpers
         /// <summary>
         /// Creates new instance of RenameFiles passing dependencies.
         /// </summary>
-        /// <param name="silenceAbleConsole">Console to use for output.</param>
+        /// <param name="console">Console to use for output.</param>
         /// <param name="wordProcessor">Optional parameter - can be null to use no additional word processing.</param>
         /// <param name="metadataRename">Instance of MetadataRename class to use for renaming.</param>
-        public RenameFiles(IConsole silenceAbleConsole, IStringProcessor wordProcessor, MetadataRename metadataRename)
+        public RenameFiles(IConsole console, IStringProcessor wordProcessor, MetadataRename metadataRename)
         {
-            _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
+            _silenceAbleConsole = console ?? throw new ArgumentNullException(nameof(console));
             _wordProcessor = wordProcessor ?? DefaultNoProcessor.Instance;
             _metadataRename = metadataRename ?? throw new ArgumentNullException(nameof(metadataRename));
         }
@@ -37,14 +37,17 @@ namespace Rename.Helpers
         /// <param name="directoriesToProcess">Directories to include in operation.</param>
         /// <param name="propertiesToUse">Properties to use for renaming.</param>
         /// <param name="allDirectoriesOrBaseOnly">Should all or only top directory be processed?</param>
-        public void RenameMultiple(IEnumerable<string> directoriesToProcess, IEnumerable<string> propertiesToUse,
+        public async Task RenameMultipleAsync(IEnumerable<string> directoriesToProcess, IEnumerable<string> propertiesToUse,
             SearchOption allDirectoriesOrBaseOnly = SearchOption.AllDirectories)
         {
-            Parallel.ForEach(directoriesToProcess, dirName =>
+            await Task.Run(() =>
             {
-                string[] files = Directory.GetFiles(dirName, "*.mp3", allDirectoriesOrBaseOnly);
-                _metadataRename.RenameMultiple(files, _wordProcessor, propertiesToUse);
-                _silenceAbleConsole.WriteLine($"Renaming in '{dirName}' complete.");
+                foreach (var dirName in directoriesToProcess)
+                {
+                    string[] files = Directory.GetFiles(dirName, "*.mp3", allDirectoriesOrBaseOnly);
+                    _metadataRename.RenameMultiple(files, _wordProcessor, propertiesToUse);
+                    _silenceAbleConsole.WriteLine($"Renaming in '{dirName}' complete.");
+                }
             });
             _silenceAbleConsole.WriteLine("Renaming finished.");
         }

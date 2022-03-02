@@ -15,17 +15,17 @@ namespace FileMetadata.Dynamic
     /// </summary>
     public class MetadataRename
     {
-        private readonly IConsole _silenceAbleConsole;
+        private readonly IConsole _console;
         private readonly string _separator;
         
         /// <summary>
         /// Create new instance of MetadataRename for use when renaming files
         /// </summary>
-        /// <param name="silenceAbleConsole">Console instance</param>
+        /// <param name="console">Console instance</param>
         /// <param name="separator">Separator used when joining multiple properties</param>
-        public MetadataRename(IConsole silenceAbleConsole, string separator = null)
+        public MetadataRename(IConsole console, string separator = null)
         {
-            _silenceAbleConsole = silenceAbleConsole ?? throw new ArgumentNullException(nameof(silenceAbleConsole));
+            _console = console ?? throw new ArgumentNullException(nameof(console));
             _separator = separator ?? " - ";
         }
 
@@ -51,7 +51,7 @@ namespace FileMetadata.Dynamic
             }
             catch (Exception e)
             {
-                _silenceAbleConsole.WriteLine(e);
+                _console.WriteLine(e);
             }
         }
 
@@ -86,10 +86,14 @@ namespace FileMetadata.Dynamic
             return Path.Combine(directoryName, $"{processor.Process(withNoInvalid)}{extension}");
         }
 
-        private static void MoveToDestinationIfDoesNotExist(string filePath, string destFileName)
+        private void MoveToDestinationIfDoesNotExist(string filePath, string destFileName)
         {
             if (!File.Exists(destFileName))
+            {
                 File.Move(filePath, destFileName);
+                _console.WriteLine($"Renamed {filePath}");
+                _console.WriteLine($"New path: {destFileName}");
+            }
         }
     }
 }
